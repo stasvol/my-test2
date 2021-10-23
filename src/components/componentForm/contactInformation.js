@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Button, FormGroup, Label, Input } from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import classnames from 'classnames';
-import style from '../CSS/tabs.module.css';
+import style from '../style/tabs.module.css';
 
 const ContactInformation = ({
   activeTab,

@@ -13,7 +13,7 @@ import {
 } from 'reactstrap';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import style from '../CSS/tabs.module.css';
+import style from '../style/tabs.module.css';
 
 const Publication = ({
   activeTab,

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Form, FormGroup, Label, Input, ButtonGroup } from 'reactstrap';
 import classnames from 'classnames';
-import style from '../CSS/tabs.module.css';
+import style from '../style/tabs.module.css';
 //  eslint-disable-next-line
 const PhotoFile = ({ activeTab, toggleTab, createDataChildImg, ...props }) => {
   const [, setSelectedFile] = useState();

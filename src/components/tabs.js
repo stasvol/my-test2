@@ -11,11 +11,11 @@ import {
   TabPane,
 } from 'reactstrap';
 // import PropType from 'prop-types';
-import style from './CSS/tabs.module.css';
-import BasicInformation from './ComponentForm/basicInformation';
-import ContactInformation from './ComponentForm/contactInformation';
-import PhotoFile from './ComponentForm/photoFiles';
-import Publication from './ComponentForm/publication';
+import style from './style/tabs.module.css';
+import BasicInformation from './componentForm/basicInformation';
+import ContactInformation from './componentForm/contactInformation';
+import PhotoFile from './componentForm/photoFiles';
+import Publication from './componentForm/publication';
 
 const Tabs = () => {
   const [activeTab, setActiveTab] = useState('1');
