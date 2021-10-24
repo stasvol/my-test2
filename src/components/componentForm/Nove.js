@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ImageUploader from 'react-images-upload';
 
-class Nove extends React.Component {
+class Nove extends Component {
   constructor(props) {
     super(props);
     this.state = { pictures: [] };
@@ -11,7 +11,8 @@ class Nove extends React.Component {
 
   onDrop(picture) {
     this.setState({
-      pictures: this.pictures.concat(picture),
+      // pictures: this.pictures.concat(picture),
+      pictures: [...this.pictures, picture],
     });
   }
 

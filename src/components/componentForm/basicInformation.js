@@ -83,7 +83,7 @@ const BasicInformation = ({
             {isCheck ? (
               <i className={style.on}> ON</i>
             ) : (
-              <i className={style.off}> OF</i>
+              <i className={style.off}> OFF</i>
             )}
           </b>
           <CustomInput

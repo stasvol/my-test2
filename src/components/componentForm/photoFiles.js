@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Form, FormGroup, Label, Input, ButtonGroup } from 'reactstrap';
+import { Button, Form, FormGroup, Label, ButtonGroup } from 'reactstrap';
 import classnames from 'classnames';
 import style from '../style/tabs.module.css';
-//  eslint-disable-next-line
-const PhotoFile = ({ activeTab, toggleTab, createDataChildImg, ...props }) => {
+
+const PhotoFile = ({ activeTab, toggleTab, createDataChildImg }) => {
   const [, setSelectedFile] = useState();
   const [, setIsSelected] = useState(false);
   const [imgFile, setImgFile] = useState([]);
-
+  const maxSize = 5242880;
   // const [valueTab, setValueTab] = useState('')
   // const [valueTab, setValueTab] = useState('')
 
@@ -25,20 +25,9 @@ const PhotoFile = ({ activeTab, toggleTab, createDataChildImg, ...props }) => {
   //     // console.log(valueTabOne)
   // }
 
-  // const InputRef = useRef( null );
-
-  // const handleBtnClick = () => {
-  //
-  //
-  //     /*Collecting node-element and performing click*/
-  //     InputRef.currentTarget.click();
-  //
-  // }
+  const InputRef = useRef(null);
 
   const saveFile = e => {
-    // if (!e.target.files.length){
-    //     return
-    // }
     const files = Array.from(e.target.files);
     setSelectedFile(e.target.files[0]);
     setIsSelected(true);
@@ -96,31 +85,24 @@ const PhotoFile = ({ activeTab, toggleTab, createDataChildImg, ...props }) => {
     createDataChildImg(imgFile);
   }, [createDataChildImg, imgFile]);
 
-  // document.getElementById('button').addEventListener('click',()=>{
-  //     document.getElementById('exampleFile').click()
-  // })
-  //   console.log(imgFile)
   const upload = () => {
-    // InputRef.currentTarget.click();
-    document.getElementById('exampleFile').click();
+    InputRef.current.click();
+    // document.getElementById('exampleFile').click();
   };
 
-  // <div style={{display: 'grid'}}>
-  //     <button id='plus' onClick={this.upload}>+</button>
-  // <input id='selectImage' hidden type="file" onChange={fileSelectHandler} />
-  // </div>
   return (
     <Form>
       <FormGroup>
         <Label for="exampleFile">
-          <Input
+          <input
+            ref={InputRef}
             hidden
             onChange={saveFile}
             type="file"
             name="file"
             id="exampleFile"
             multiple
-            maxfilesize={5242880}
+            maxfilesize={maxSize}
           />
         </Label>
         <Button
@@ -141,37 +123,11 @@ const PhotoFile = ({ activeTab, toggleTab, createDataChildImg, ...props }) => {
             >
               &times;
             </Button>
-            {/* eslint-disable-next-line */}
-            <img accessKey={i} src={file} alt="" className={style.img} />{' '}
+            <img i={i} src={file} alt="img" className={style.img} />
           </div>
         ))}
       </FormGroup>
-      <FormGroup>
-        {/* {isSelected ? ( */}
-        {/*    <div> */}
-        {/*        <p>Filename: {selectedFile.name}</p> */}
-        {/*        <p>Filetype: {selectedFile.type}</p> */}
-        {/*        <p>Size in bytes: {selectedFile.size}</p> */}
-        {/*        <p>lastModified: {selectedFile.lastModified}</p> */}
-        {/*          <p>Date:{selectedFile.lastModifiedDate
-                     .toLocaleString()}</p> */}
-        {/*    </div> */}
-        {/* ) : ( */}
-        {/*    <p>Select a file to show details</p> */}
-        {/* )} */}
-        {/*    <FormText color="default"> */}
-        {/*    This is some placeholder block-level
-               help text for the above input. */}
-        {/*    It's a bit lighter and easily wraps
-               to a new line. */}
-        {/* </FormText> */}
-        {/* <FormGroup> */}
-        {/*    <Label for="exampleRange">
-             Range</Label> */}
-        {/*    <Input type="range" name="range"
-            id="exampleRange"  width={"10%"}/> */}
-        {/* </FormGroup> */}
-      </FormGroup>
+      <FormGroup />
       <FormGroup>
         <ButtonGroup>
           <Button
@@ -201,10 +157,12 @@ const PhotoFile = ({ activeTab, toggleTab, createDataChildImg, ...props }) => {
 PhotoFile.propTypes = {
   activeTab: PropTypes.string,
   toggleTab: PropTypes.func,
+  createDataChildImg: PropTypes.func,
 };
 PhotoFile.defaultProps = {
   activeTab: '',
   toggleTab: () => {},
+  createDataChildImg: () => {},
 };
 
 export default PhotoFile;

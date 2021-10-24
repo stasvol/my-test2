@@ -31,14 +31,6 @@ const ContactInformation = ({
     createDataChildContact(valueContact);
   }, [createDataChildContact, valueContact]);
 
-  // const handleSubmit = (e)=> {
-  //
-  //     e.preventDefault()
-  //
-  //
-  // }
-  // console.log(valueData)
-
   return (
     <AvForm>
       {/* <AvForm > */}
@@ -90,13 +82,6 @@ const ContactInformation = ({
       >
         Next
       </Button>
-      {/* </AvForm> */}
-      {/*  <FormGroup> */}
-      {/*    <ButtonGroup> */}
-      {/*    <Button className={style.btn} color={'warning'}>Prev</Button> */}
-      {/*    <Button className={style.btn} color={'success'}>Next</Button> */}
-      {/*    </ButtonGroup> */}
-      {/* </FormGroup> */}
     </AvForm>
   );
 };

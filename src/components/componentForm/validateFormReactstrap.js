@@ -11,12 +11,12 @@ export default class Example extends React.Component {
     this.state = { email: false };
   }
 
-  handleValidSubmit(event, values) {
-    this.setState({ email: values.email });
+  handleValidSubmit(event, { email }) {
+    this.setState({ email });
   }
 
-  handleInvalidSubmit(event, errors, values) {
-    this.setState({ email: values.email, error: true });
+  handleInvalidSubmit(event, errors, email) {
+    this.setState({ email, error: true });
   }
 
   closeModal() {
@@ -38,7 +38,7 @@ export default class Example extends React.Component {
 
         {/* below this is just for show, it's not
             needed unless you want a modal upon form submission */}
-        <Modal isOpen={email !== false} toggle={this.closeModal}>
+        <Modal isOpen={email} toggle={this.closeModal}>
           <ModalHeader toggle={this.closeModal}>
             Form is {modalError} valid!
           </ModalHeader>
