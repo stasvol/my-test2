@@ -5,21 +5,22 @@ import { AvForm, AvField } from 'availity-reactstrap-validation';
 import classnames from 'classnames';
 import style from '../style/tabs.module.css';
 
+const objValueContact = {
+  telephone: '',
+  email: '',
+};
+
 const ContactInformation = ({
   activeTab,
   toggleTab,
   createDataChildContact,
 }) => {
   // const [valueTab, setValueTab] = useState('')
-  const [valueContact, setValueContact] = useState({
-    telephone: '',
-    email: '',
-  });
+  const [valueContact, setValueContact] = useState(objValueContact);
 
   const handleChange = e => {
     e.preventDefault();
-    const { value } = e.target;
-    const { name } = e.target;
+    const { value, name } = e.target;
     // valueData.push(value)
     setValueContact(prevValueContact => ({
       ...prevValueContact,

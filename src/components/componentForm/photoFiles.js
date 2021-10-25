@@ -5,80 +5,31 @@ import classnames from 'classnames';
 import style from '../style/tabs.module.css';
 
 const PhotoFile = ({ activeTab, toggleTab, createDataChildImg }) => {
-  const [, setSelectedFile] = useState();
-  const [, setIsSelected] = useState(false);
   const [imgFile, setImgFile] = useState([]);
+
   const maxSize = 5242880;
-  // const [valueTab, setValueTab] = useState('')
-  // const [valueTab, setValueTab] = useState('')
-
-  // const handleChange = (e)=>{
-  //
-  //     e.preventDefault()
-  //
-  //     const value = (e.target.value)
-  //
-  //     setValueTab( [...valueTab,value])
-  //
-  //
-  //     // props.createDataChild(imgFile)
-  //     // console.log(valueTabOne)
-  // }
-
   const InputRef = useRef(null);
 
-  const saveFile = e => {
-    const files = Array.from(e.target.files);
-    setSelectedFile(e.target.files[0]);
-    setIsSelected(true);
+  const saveFile = ({ target: { files } }) => {
+    const filesArr = [...files];
 
-    files.forEach(file => {
-      // if (!file.type.match('image')){
-      //     return
-      // }
+    filesArr.forEach(file => {
+      if (!file.type.match('image')) {
+        return;
+      }
       const reader = new FileReader();
 
-      reader.onload = ev => {
-        if (e.target.files.length <= 5) {
-          setImgFile(prevImgFile => [...prevImgFile, ev.currentTarget.result]);
+      reader.onload = e => {
+        if (files.length <= 5) {
+          setImgFile(prevImgFile => [...prevImgFile, e.currentTarget.result]);
         }
-        // console.log(ev.currentTarget.result)
-        // eslint-disable-next-line
-        // Input.insertAdjacentHTML('afterend',`< img src=${ev.target.result}/>`)
-        // const image =  files.map(file=>  {
-        //     return  `<img src="${ev.currentTarget.result}" alt="image"/>`
-        // })
-        // console.log(image)
       };
       reader.readAsDataURL(file);
-
-      // props.createDataChildImg(imgFile)
-      // console.log(file)
     });
-    // if (e.target.files.length <= 5) {
-    //     const arr =[]
-    //     const file = e.target.files
-    //      arr.push(file)
-    //
-    //     arr.map(el => {return  <div><span>{el.name}</span></div>})
-    //
-    //     // props.addPhotoFile(e.target.files)
-    //     console.log(file)
-    // }
   };
 
   const removeImage = file => {
-    // const newImage = imgFile.filter((img) => img !== file);
-    // setImgFile(newImage)
-
     setImgFile(prev => prev.filter(img => img !== file));
-
-    // const key = e.target.accessKey
-    //      const imgFileArr = [...imgFile]
-    //           imgFileArr.splice(key,1)
-    //       setImgFile([... imgFileArr])
-    //
-    //     console.log(imgFileArr)
   };
 
   useEffect(() => {
@@ -115,17 +66,17 @@ const PhotoFile = ({ activeTab, toggleTab, createDataChildImg }) => {
         </Button>
       </FormGroup>
       <FormGroup>
-        {imgFile.map((file, i) => (
-          <div key={i} className={style.closeImage} id={i}>
-            <Button
-              onClick={() => removeImage(file)}
-              className={style.btnClose}
-            >
-              &times;
-            </Button>
-            <img i={i} src={file} alt="img" className={style.img} />
-          </div>
-        ))}
+        {imgFile.map((file, i) => {
+          const removeImgFile = () => removeImage(file);
+          return (
+            <div key={i} className={style.closeImage} id={i}>
+              <Button onClick={removeImgFile} className={style.btnClose}>
+                &times;
+              </Button>
+              <img i={i} src={file} alt="img" className={style.img} />
+            </div>
+          );
+        })}
       </FormGroup>
       <FormGroup />
       <FormGroup>

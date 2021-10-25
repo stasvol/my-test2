@@ -1,18 +1,8 @@
 import React, { useState } from 'react';
-import {
-  Button,
-  ButtonGroup,
-  Form,
-  FormGroup,
-  Input,
-  Label,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-} from 'reactstrap';
+import { Button, ButtonGroup, Form, FormGroup, Input, Label } from 'reactstrap';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
+import ModalInfo from '../modal/modalInfo';
 import style from '../style/tabs.module.css';
 
 const Publication = ({
@@ -22,31 +12,23 @@ const Publication = ({
   isCheck,
   valueContact,
   imgFile,
-  className,
 }) => {
   const [check, setCheck] = useState([]);
   const [modal, setModal] = useState(false);
-  // const { buttonLabel, className } = props;
+
   const toggle = () => setModal(!modal);
-  const closeBtn = (
-    <button className="close" onClick={toggle}>
-      &times;
-    </button>
-  );
 
-  const toggleImage = () => {};
-
-  const handleChange = e => {
+  const handleChange = ({ target: { name } }) => {
     setCheck(prevCheck => {
-      const checkInArr = prevCheck.some(check => check === e.target.name);
+      const checkInArr = prevCheck.some(check => check === name);
 
       return checkInArr
-        ? prevCheck.filter(check => check !== e.target.name)
-        : [...prevCheck, e.target.name];
+        ? prevCheck.filter(check => check !== name)
+        : [...prevCheck, name];
     });
   };
 
-  const objProps = { ...valueInfo, isCheck, ...valueContact, imgFile, check };
+  const objProps = { ...valueInfo, ...valueContact, isCheck, imgFile, check };
   // const objProps = { ...props, check };
   return (
     <div className={style.body}>
@@ -134,63 +116,13 @@ const Publication = ({
         </FormGroup>
       </Form>
       <div>
-        <div>
-          <Modal isOpen={modal} toggle={toggle} className={className}>
-            <ModalHeader toggle={toggle} close={closeBtn}>
-              Ваше объявление
-            </ModalHeader>
-
-            <ModalBody>
-              {Object.entries(objProps)
-                // .filter((key,value) => key !== props.imgFile  &&
-                //  value !== imgFile.value )
-                .filter(([key, value]) => {
-                  return (
-                    key !== 'imgFile' &&
-                    value &&
-                    (typeof value === 'string' || Array.isArray(value)
-                      ? value.length
-                      : true)
-                  );
-                })
-
-                .map(([key, value]) => {
-                  return (
-                    <div key={key.toString()}>
-                      <div className={style.wid}>
-                        <b>{key} :</b>
-                        <span className={style.modInput}>
-                          <i>{value?.toString()}</i>
-                        </span>
-                      </div>
-                    </div>
-                  );
-                })}
-
-              {objProps.imgFile.map((src, i) => (
-                <div
-                  key={i.toString()}
-                  onClick={toggleImage}
-                  className={style.closeImage}
-                >
-                  <img className={style.img} key={i} src={src} alt="⚽" />
-                </div>
-              ))}
-            </ModalBody>
-            <ModalFooter>
-              <Button color="secondary" onClick={toggle}>
-                Cancel
-              </Button>
-            </ModalFooter>
-          </Modal>
-        </div>
+        <ModalInfo objProps={objProps} toggle={toggle} modal={modal} />
       </div>
     </div>
   );
 };
 Publication.propTypes = {
   activeTab: PropTypes.string,
-  className: PropTypes.string,
   toggleTab: PropTypes.func,
   valueInfo: PropTypes.shape({
     mainName: PropTypes.string,
@@ -205,7 +137,6 @@ Publication.propTypes = {
 };
 Publication.defaultProps = {
   activeTab: '',
-  className: '',
   toggleTab: () => {},
   valueInfo: {},
   isCheck: true,

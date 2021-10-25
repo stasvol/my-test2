@@ -5,6 +5,11 @@ import { AvForm, AvField } from 'availity-reactstrap-validation';
 import classnames from 'classnames';
 import style from '../style/tabs.module.css';
 
+const objValueInfo = {
+  mainName: '',
+  description: '',
+};
+
 const BasicInformation = ({
   activeTab,
   toggleTab,
@@ -12,7 +17,7 @@ const BasicInformation = ({
   createDataChildInfo,
 }) => {
   const [isCheck, setIsCheck] = useState(false);
-  const [valueInfo, setValueInfo] = useState({ mainName: '', description: '' });
+  const [valueInfo, setValueInfo] = useState(objValueInfo);
 
   const handleChange = e => {
     e.preventDefault();

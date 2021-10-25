@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-export default class Example extends React.Component {
+export default class Example extends Component {
   constructor(props) {
     super(props);
     this.handleValidSubmit = this.handleValidSubmit.bind(this);
