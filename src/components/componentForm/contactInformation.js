@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Button, FormGroup, Label, Input } from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
@@ -13,16 +13,19 @@ const objValueContact = {
 const ContactInformation = ({
   activeTab,
   toggleTab,
+  valueContact,
+  useContactValue,
   createDataChildContact,
 }) => {
   // const [valueTab, setValueTab] = useState('')
-  const [valueContact, setValueContact] = useState(objValueContact);
+  // const [valueContact, setValueContact] = useState(objValueContact);
+  useContactValue(objValueContact);
 
   const handleChange = e => {
     e.preventDefault();
     const { value, name } = e.target;
     // valueData.push(value)
-    setValueContact(prevValueContact => ({
+    createDataChildContact(prevValueContact => ({
       ...prevValueContact,
       [name]: value,
     }));
@@ -89,11 +92,18 @@ const ContactInformation = ({
 ContactInformation.propTypes = {
   activeTab: PropTypes.string,
   toggleTab: PropTypes.func,
+  useContactValue: PropTypes.func,
+  valueContact: PropTypes.shape({
+    telephone: PropTypes.string,
+    email: PropTypes.string,
+  }),
   createDataChildContact: PropTypes.func,
 };
 ContactInformation.defaultProps = {
   activeTab: '',
+  valueContact: {},
   toggleTab: () => {},
+  useContactValue: () => {},
   createDataChildContact: () => {},
 };
 

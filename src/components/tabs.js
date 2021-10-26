@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 import {
   Col,
@@ -14,44 +14,54 @@ import BasicInformation from './componentForm/basicInformation';
 import ContactInformation from './componentForm/contactInformation';
 import PhotoFile from './componentForm/photoFiles';
 import Publication from './componentForm/publication';
+import useActiveTab from './hooks/useActiveTab';
+import useBasicValueInfo from './hooks/useValueInfo';
+import useBasicIsCheck from './hooks/useIsCheck';
+import usePhotoImgFile from './hooks/usePhotoImgFile';
+import useContactValue from './hooks/useContactValue';
 import style from './style/tabs.module.css';
 
 const Tabs = () => {
-  const [activeTab, setActiveTab] = useState('1');
-  const [valueInfo, setValueInfo] = useState();
-  const [isCheck, setIsCheck] = useState();
-  const [imgFile, setImgFile] = useState([]);
-  const [valueContact, setValueContact] = useState();
-  const [, setCheck] = useState();
+  // const [activeTab, setActiveTab] = useState('1');
+  const [activeTab, toggleTab] = useActiveTab();
+  // const [valueInfo, setValueInfo] = useState();
+  const [valueInfo, createDataChildInfo] = useBasicValueInfo();
+  // const [isCheck, setIsCheck] = useState(false);
+  const [isCheck, createDataChildContIsCheck] = useBasicIsCheck();
+  // const [imgFile, setImgFile] = useState([]);
+  const [imgFile, createDataChildImg] = usePhotoImgFile();
+  // const [valueContact, setValueContact] = useState();
+  const [valueContact, createDataChildContact] = useContactValue();
+  // const [, setCheck] = useState();
 
-  const toggleTab = tab => {
-    if (activeTab === tab) return;
-    setActiveTab(tab);
-  };
+  // const toggleTab = tab => {
+  //   if (activeTab === tab) return;
+  //   setActiveTab(tab);
+  // };
 
   // const clickTab = () => {
   //   toggleTab(activeTab);
   // };
 
-  const createDataChildInfo = value => {
-    setValueInfo(value);
-    // setDescription(value)
-  };
+  // const createDataChildInfo = value => {
+  //   setValueInfo(value);
+  //   // setDescription(value)
+  // };
 
-  const createDataChildContact = value => {
-    setValueContact(value);
-  };
+  // const createDataChildContact = value => {
+  //   setValueContact(value);
+  // };
 
-  const createDataChildImg = value => {
-    setImgFile(value);
-  };
+  // const createDataChildImg = value => {
+  //   setImgFile(value);
+  // };
 
-  const createDataChildContIsCheck = value => {
-    setIsCheck(value);
-  };
+  // const createDataChildContIsCheck = value => {
+  //   setIsCheck(value);
+  // };
 
   const createDataChildPublicCheck = value => {
-    setCheck(value);
+    createDataChildContIsCheck(value);
   };
 
   return (
@@ -113,6 +123,10 @@ const Tabs = () => {
                   createDataChildContIsCheck={createDataChildContIsCheck}
                   toggleTab={toggleTab}
                   activeTab={activeTab}
+                  valueInfo={valueInfo}
+                  useBasicValueInfo={useBasicValueInfo}
+                  isCheck={isCheck}
+                  useBasicIsCheck={useBasicIsCheck}
                 />
               </Col>
             </Row>
@@ -125,6 +139,8 @@ const Tabs = () => {
                   createDataChildContact={createDataChildContact}
                   toggleTab={toggleTab}
                   activeTab={activeTab}
+                  valueContact={valueContact}
+                  useContactValue={useContactValue}
                 />
               </Col>
             </Row>
@@ -137,6 +153,8 @@ const Tabs = () => {
                   createDataChildImg={createDataChildImg}
                   toggleTab={toggleTab}
                   activeTab={activeTab}
+                  imgFile={imgFile}
+                  usePhotoImgFile={usePhotoImgFile}
                 />
               </Col>
             </Row>
@@ -149,6 +167,7 @@ const Tabs = () => {
                   createDataChildPublicCheck={createDataChildPublicCheck}
                   valueInfo={valueInfo}
                   isCheck={isCheck}
+                  useBasicIsCheck={useBasicIsCheck}
                   valueContact={valueContact}
                   imgFile={imgFile}
                   toggleTab={toggleTab}

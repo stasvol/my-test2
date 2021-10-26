@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FormGroup, Label, CustomInput, Button, ButtonGroup } from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
@@ -13,16 +13,22 @@ const objValueInfo = {
 const BasicInformation = ({
   activeTab,
   toggleTab,
+  valueInfo,
+  useBasicValueInfo,
+  isCheck,
+  useBasicIsCheck,
   createDataChildContIsCheck,
   createDataChildInfo,
 }) => {
-  const [isCheck, setIsCheck] = useState(false);
-  const [valueInfo, setValueInfo] = useState(objValueInfo);
+  // const [isCheck, setIsCheck] = useState(false);
+  // const [valueInfo, setValueInfo] = useState(objValueInfo);
+  useBasicValueInfo(objValueInfo);
+  useBasicIsCheck();
 
   const handleChange = e => {
     e.preventDefault();
     const { value, name } = e.target;
-    setValueInfo(prevValueInfo => ({
+    createDataChildInfo(prevValueInfo => ({
       ...prevValueInfo,
       [name]: value,
     }));
@@ -33,7 +39,7 @@ const BasicInformation = ({
   }, [createDataChildInfo, valueInfo]);
 
   const toggleCheck = () => {
-    setIsCheck(prevIsCheck => !prevIsCheck);
+    createDataChildContIsCheck(prevIsCheck => !prevIsCheck);
   };
 
   useEffect(() => {
@@ -118,15 +124,26 @@ const BasicInformation = ({
 };
 BasicInformation.propTypes = {
   activeTab: PropTypes.string,
+  isCheck: PropTypes.bool,
   toggleTab: PropTypes.func,
+  useBasicValueInfo: PropTypes.func,
+  useBasicIsCheck: PropTypes.func,
   createDataChildInfo: PropTypes.func,
   createDataChildContIsCheck: PropTypes.func,
+  valueInfo: PropTypes.shape({
+    mainName: PropTypes.string,
+    description: PropTypes.string,
+  }),
 };
 BasicInformation.defaultProps = {
   activeTab: '',
+  isCheck: false,
   toggleTab: () => {},
+  useBasicValueInfo: () => {},
+  useBasicIsCheck: () => {},
   createDataChildInfo: () => {},
   createDataChildContIsCheck: () => {},
+  valueInfo: {},
 };
 
 export default BasicInformation;

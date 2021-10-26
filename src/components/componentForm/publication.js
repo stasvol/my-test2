@@ -10,6 +10,7 @@ const Publication = ({
   toggleTab,
   valueInfo,
   isCheck,
+  useBasicIsCheck,
   valueContact,
   imgFile,
 }) => {
@@ -27,6 +28,7 @@ const Publication = ({
         : [...prevCheck, name];
     });
   };
+  useBasicIsCheck();
 
   const objProps = { ...valueInfo, ...valueContact, isCheck, imgFile, check };
   // const objProps = { ...props, check };
@@ -124,6 +126,7 @@ const Publication = ({
 Publication.propTypes = {
   activeTab: PropTypes.string,
   toggleTab: PropTypes.func,
+  useBasicIsCheck: PropTypes.func,
   valueInfo: PropTypes.shape({
     mainName: PropTypes.string,
     description: PropTypes.string,
@@ -138,6 +141,7 @@ Publication.propTypes = {
 Publication.defaultProps = {
   activeTab: '',
   toggleTab: () => {},
+  useBasicIsCheck: () => {},
   valueInfo: {},
   isCheck: true,
   valueContact: {},

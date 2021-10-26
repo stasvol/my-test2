@@ -1,11 +1,17 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Form, FormGroup, Label, ButtonGroup } from 'reactstrap';
 import classnames from 'classnames';
 import style from '../style/tabs.module.css';
 
-const PhotoFile = ({ activeTab, toggleTab, createDataChildImg }) => {
-  const [imgFile, setImgFile] = useState([]);
+const PhotoFile = ({
+  activeTab,
+  toggleTab,
+  createDataChildImg,
+  imgFile,
+  usePhotoImgFile,
+}) => {
+  // const [imgFile, setImgFile] = useState([]);
 
   const maxSize = 5242880;
   const InputRef = useRef(null);
@@ -19,17 +25,19 @@ const PhotoFile = ({ activeTab, toggleTab, createDataChildImg }) => {
       }
       const reader = new FileReader();
 
-      reader.onload = e => {
+      reader.onload = ({ currentTarget: { result } }) => {
         if (files.length <= 5) {
-          setImgFile(prevImgFile => [...prevImgFile, e.currentTarget.result]);
+          createDataChildImg(prevImgFile => [...prevImgFile, result]);
         }
       };
       reader.readAsDataURL(file);
     });
   };
 
+  usePhotoImgFile();
+
   const removeImage = file => {
-    setImgFile(prev => prev.filter(img => img !== file));
+    createDataChildImg(prev => prev.filter(img => img !== file));
   };
 
   useEffect(() => {
@@ -108,12 +116,16 @@ const PhotoFile = ({ activeTab, toggleTab, createDataChildImg }) => {
 PhotoFile.propTypes = {
   activeTab: PropTypes.string,
   toggleTab: PropTypes.func,
+  usePhotoImgFile: PropTypes.func,
   createDataChildImg: PropTypes.func,
+  imgFile: PropTypes.arrayOf(PropTypes.string),
 };
 PhotoFile.defaultProps = {
   activeTab: '',
   toggleTab: () => {},
+  usePhotoImgFile: () => {},
   createDataChildImg: () => {},
+  imgFile: [],
 };
 
 export default PhotoFile;
