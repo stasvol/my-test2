@@ -33,7 +33,24 @@ const Tabs = () => {
   // const [valueContact, setValueContact] = useState();
   const [valueContact, createDataChildContact] = useContactValue();
   // const [, setCheck] = useState();
-
+  const handleOneToggleTab = () => {
+    toggleTab('1');
+  };
+  const handleTwoToggleTab = () => {
+    toggleTab('2');
+  };
+  const handleThreeToggleTab = () => {
+    toggleTab('3');
+  };
+  const handleForthToggleTab = () => {
+    toggleTab('4');
+  };
+  const arrTab = [
+    { name: 'Tab 1', id: 1 },
+    { name: 'Tab 2', id: 2 },
+    { name: 'Tab 3', id: 3 },
+    { name: 'Tab 4', id: 4 },
+  ];
   // const toggleTab = tab => {
   //   if (activeTab === tab) return;
   //   setActiveTab(tab);
@@ -60,54 +77,51 @@ const Tabs = () => {
   //   setIsCheck(value);
   // };
 
-  const createDataChildPublicCheck = value => {
-    createDataChildContIsCheck(value);
-  };
+  // const createDataChildPublicCheck = value => {
+  //   createDataChildContIsCheck(value);
+  // };
 
   return (
     <div>
+      {arrTab.map((tab, i) => (
+        <div key={i}>
+          <span>{tab.name}</span>
+        </div>
+      ))}
       <Container className="mt-3">
         <Nav tabs className={style.nav}>
           <NavItem className={style.botton}>
             <NavLink
-              // disabled
+              disabled
               className={classnames({ active: activeTab === '1' })}
-              onClick={() => {
-                toggleTab('1');
-              }}
+              onClick={handleOneToggleTab}
             >
               Tab1
             </NavLink>
           </NavItem>
           <NavItem>
             <NavLink
-              // disabled
+              disabled
               className={classnames({ active: activeTab === '2' })}
-              onClick={() => {
-                toggleTab('2');
-              }}
+              onClick={handleTwoToggleTab}
             >
               Tab2
             </NavLink>
           </NavItem>
           <NavItem>
             <NavLink
-              // disabled
+              disabled
               className={classnames({ active: activeTab === '3' })}
-              onClick={() => {
-                toggleTab('3');
-              }}
+              onClick={handleThreeToggleTab}
             >
               Tab3
             </NavLink>
           </NavItem>
           <NavItem>
             <NavLink
-              // disabled
+              disabled
               className={classnames({ active: activeTab === '4' })}
-              onClick={() => {
-                toggleTab('4');
-              }}
+              onClick={handleForthToggleTab}
             >
               Tab4
             </NavLink>
@@ -164,7 +178,7 @@ const Tabs = () => {
               <Col sm="12">
                 <h4>Публикация:</h4>
                 <Publication
-                  createDataChildPublicCheck={createDataChildPublicCheck}
+                  // createDataChildPublicCheck={createDataChildPublicCheck}
                   valueInfo={valueInfo}
                   isCheck={isCheck}
                   useBasicIsCheck={useBasicIsCheck}

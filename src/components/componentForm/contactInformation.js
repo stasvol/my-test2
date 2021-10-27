@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Button, FormGroup, Label, Input } from 'reactstrap';
+import { Button, FormGroup, Label } from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import classnames from 'classnames';
 import style from '../style/tabs.module.css';
@@ -39,13 +39,13 @@ const ContactInformation = ({
     <AvForm>
       {/* <AvForm > */}
       <FormGroup>
-        <Label for="exampleEmail">
+        <Label for="exampleTelephone">
           Telephone:
           <AvField
             onChange={handleChange}
             type="text"
             name="telephone"
-            id="exampleEmail"
+            id="exampleTelephone"
             placeholder="telephone number"
             bsSize="lg"
             required
@@ -56,7 +56,7 @@ const ContactInformation = ({
       <FormGroup>
         <Label for="exampleEmail">
           Email:
-          <Input
+          <AvField
             onChange={handleChange}
             type="email"
             name="email"
@@ -77,7 +77,7 @@ const ContactInformation = ({
         Prev
       </Button>
       <Button
-        disabled={valueContact.telephone <= 0}
+        disabled={!valueContact.telephone}
         className={classnames({ active: activeTab === '3' }, style.btn)}
         onClick={() => {
           toggleTab('3');

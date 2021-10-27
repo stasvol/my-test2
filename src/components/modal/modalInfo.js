@@ -13,12 +13,14 @@ const ModalInfo = ({ objProps, toggle, modal }) => {
       ) {
         return value.length;
       }
-      return null;
-      // key !== 'imgFile' &&
-      // value &&
-      // (typeof value === 'string' || Array.isArray(value)
-      //   ? value.length
-      //   : true)
+      return key !== 'imgFile';
+      // return (
+      //   key !== 'imgFile' &&
+      //   value &&
+      //   (typeof value === 'string' || Array.isArray(value)
+      //     ? value.length
+      //     : true)
+      // );
     })
 
     .map(([key, value]) => {
@@ -27,7 +29,7 @@ const ModalInfo = ({ objProps, toggle, modal }) => {
           <div className={style.wid}>
             <b>{key} :</b>
             <span className={style.modInput}>
-              <i>{value?.toString()}</i>
+              <i>{value?.toLocaleString()}</i>
             </span>
           </div>
         </div>

@@ -30,7 +30,13 @@ const Publication = ({
   };
   useBasicIsCheck();
 
-  const objProps = { ...valueInfo, ...valueContact, isCheck, imgFile, check };
+  const objProps = {
+    ...valueInfo,
+    ...valueContact,
+    isCheck,
+    imgFile,
+    check,
+  };
   // const objProps = { ...props, check };
   return (
     <div className={style.body}>

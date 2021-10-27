@@ -109,7 +109,7 @@ const BasicInformation = ({
       </FormGroup>
       <ButtonGroup>
         <Button
-          disabled={valueInfo.mainName <= 0}
+          disabled={!valueInfo.mainName}
           className={classnames({ active: activeTab === '2' }, style.btnNext)}
           onClick={() => {
             toggleTab('2');
