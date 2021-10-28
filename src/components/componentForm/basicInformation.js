@@ -46,18 +46,23 @@ const BasicInformation = ({
     createDataChildContIsCheck(isCheck);
   }, [createDataChildContIsCheck, isCheck]);
 
-  const handleValidSubmit = e => {
-    e.preventDefault();
-  };
-  const handleInvalidSubmit = e => {
-    e.preventDefault();
+  // const handleValidSubmit = e => {
+  //   e.preventDefault();
+  // };
+  //
+  // const handleInvalidSubmit = e => {
+  //   e.preventDefault();
+  // };
+
+  const handleToggleTab = () => {
+    toggleTab('2');
   };
 
   return (
     <AvForm
       className="mt-2"
-      onValidSubmit={handleValidSubmit}
-      onInvalidSubmit={handleInvalidSubmit}
+      // onValidSubmit={handleValidSubmit}
+      // onInvalidSubmit={handleInvalidSubmit}
     >
       <FormGroup check inline>
         <Label sm="12">
@@ -111,9 +116,7 @@ const BasicInformation = ({
         <Button
           disabled={!valueInfo.mainName}
           className={classnames({ active: activeTab === '2' }, style.btnNext)}
-          onClick={() => {
-            toggleTab('2');
-          }}
+          onClick={handleToggleTab}
           color="success"
         >
           Next

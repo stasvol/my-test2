@@ -35,6 +35,14 @@ const ContactInformation = ({
     createDataChildContact(valueContact);
   }, [createDataChildContact, valueContact]);
 
+  const handleToggleTabNext = () => {
+    toggleTab('3');
+  };
+
+  const handleToggleTabPrev = () => {
+    toggleTab('1');
+  };
+
   return (
     <AvForm>
       {/* <AvForm > */}
@@ -69,9 +77,7 @@ const ContactInformation = ({
       </FormGroup>
       <Button
         className={classnames({ active: activeTab === '1' }, style.btn)}
-        onClick={() => {
-          toggleTab('1');
-        }}
+        onClick={handleToggleTabPrev}
         color="warning"
       >
         Prev
@@ -79,9 +85,7 @@ const ContactInformation = ({
       <Button
         disabled={!valueContact.telephone}
         className={classnames({ active: activeTab === '3' }, style.btn)}
-        onClick={() => {
-          toggleTab('3');
-        }}
+        onClick={handleToggleTabNext}
         color="success"
       >
         Next

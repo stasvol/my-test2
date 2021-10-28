@@ -28,6 +28,9 @@ const Publication = ({
         : [...prevCheck, name];
     });
   };
+  const handleToggleTab = () => {
+    toggleTab('3');
+  };
   useBasicIsCheck();
 
   const objProps = {
@@ -110,9 +113,7 @@ const Publication = ({
           <ButtonGroup>
             <Button
               className={classnames({ active: activeTab === '3' }, style.btn)}
-              onClick={() => {
-                toggleTab('3');
-              }}
+              onClick={handleToggleTab}
               color="warning"
             >
               Prev

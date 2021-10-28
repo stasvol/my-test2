@@ -49,6 +49,14 @@ const PhotoFile = ({
     // document.getElementById('exampleFile').click();
   };
 
+  const handleToggleTabPrev = () => {
+    toggleTab('2');
+  };
+
+  const handleToggleTabNext = () => {
+    toggleTab('4');
+  };
+
   return (
     <Form>
       <FormGroup>
@@ -91,9 +99,7 @@ const PhotoFile = ({
         <ButtonGroup>
           <Button
             className={classnames({ active: activeTab === '2' }, style.btn)}
-            onClick={() => {
-              toggleTab('2');
-            }}
+            onClick={handleToggleTabPrev}
             color="warning"
           >
             Prev
@@ -101,9 +107,7 @@ const PhotoFile = ({
 
           <Button
             className={classnames({ active: activeTab === '4' }, style.btn)}
-            onClick={() => {
-              toggleTab('4');
-            }}
+            onClick={handleToggleTabNext}
             color="success"
           >
             Next

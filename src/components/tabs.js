@@ -36,15 +36,15 @@ const Tabs = () => {
   const handleOneToggleTab = () => {
     toggleTab('1');
   };
-  const handleTwoToggleTab = () => {
-    toggleTab('2');
-  };
-  const handleThreeToggleTab = () => {
-    toggleTab('3');
-  };
-  const handleForthToggleTab = () => {
-    toggleTab('4');
-  };
+  // const handleTwoToggleTab = () => {
+  //   toggleTab('2');
+  // };
+  // const handleThreeToggleTab = () => {
+  //   toggleTab('3');
+  // };
+  // const handleForthToggleTab = () => {
+  //   toggleTab('4');
+  // };
   const arrTab = [
     { name: 'Tab 1', id: 1 },
     { name: 'Tab 2', id: 2 },
@@ -83,49 +83,49 @@ const Tabs = () => {
 
   return (
     <div>
-      {arrTab.map((tab, i) => (
-        <div key={i}>
-          <span>{tab.name}</span>
-        </div>
-      ))}
       <Container className="mt-3">
         <Nav tabs className={style.nav}>
-          <NavItem className={style.botton}>
-            <NavLink
-              disabled
-              className={classnames({ active: activeTab === '1' })}
-              onClick={handleOneToggleTab}
-            >
-              Tab1
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink
-              disabled
-              className={classnames({ active: activeTab === '2' })}
-              onClick={handleTwoToggleTab}
-            >
-              Tab2
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink
-              disabled
-              className={classnames({ active: activeTab === '3' })}
-              onClick={handleThreeToggleTab}
-            >
-              Tab3
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink
-              disabled
-              className={classnames({ active: activeTab === '4' })}
-              onClick={handleForthToggleTab}
-            >
-              Tab4
-            </NavLink>
-          </NavItem>
+          {arrTab.map((tab, i) => {
+            return (
+              <NavItem className={style.botton} key={i + 1}>
+                <NavLink
+                  disabled
+                  id={tab.id}
+                  className={classnames({ active: activeTab === '1' })}
+                  onClick={handleOneToggleTab}
+                >
+                  {tab.name}
+                </NavLink>
+              </NavItem>
+            );
+          })}
+          {/* <NavItem> */}
+          {/*  <NavLink */}
+          {/*    disabled */}
+          {/*    className={classnames({ active: activeTab === '2' })} */}
+          {/*    onClick={handleTwoToggleTab} */}
+          {/*  > */}
+          {/*    Tab2 */}
+          {/*  </NavLink> */}
+          {/* </NavItem> */}
+          {/* <NavItem> */}
+          {/*  <NavLink */}
+          {/*    disabled */}
+          {/*    className={classnames({ active: activeTab === '3' })} */}
+          {/*    onClick={handleThreeToggleTab} */}
+          {/*  > */}
+          {/*    Tab3 */}
+          {/*  </NavLink> */}
+          {/* </NavItem> */}
+          {/* <NavItem> */}
+          {/*  <NavLink */}
+          {/*    disabled */}
+          {/*    className={classnames({ active: activeTab === '4' })} */}
+          {/*    onClick={handleForthToggleTab} */}
+          {/*  > */}
+          {/*    Tab4 */}
+          {/*  </NavLink> */}
+          {/* </NavItem> */}
         </Nav>
         <TabContent activeTab={activeTab}>
           <TabPane tabId="1">
