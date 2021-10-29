@@ -12,15 +12,12 @@ const objValueContact = {
 
 const ContactInformation = ({
   activeTab,
-  // toggleTab,
   valueContact,
   useContactValue,
   createDataChildContact,
   toggleTabNext,
   toggleTabPrev,
 }) => {
-  // const [valueTab, setValueTab] = useState('')
-  // const [valueContact, setValueContact] = useState(objValueContact);
   useContactValue(objValueContact);
 
   const handleChange = e => {
@@ -36,14 +33,6 @@ const ContactInformation = ({
   useEffect(() => {
     createDataChildContact(valueContact);
   }, [createDataChildContact, valueContact]);
-
-  // const handleToggleTabNext = () => {
-  //   toggleTab(3);
-  // };
-  //
-  // const handleToggleTabPrev = () => {
-  //   toggleTab(1);
-  // };
 
   return (
     <AvForm>
@@ -97,7 +86,6 @@ const ContactInformation = ({
 };
 ContactInformation.propTypes = {
   activeTab: PropTypes.number,
-  // toggleTab: PropTypes.func,
   toggleTabPrev: PropTypes.func,
   toggleTabNext: PropTypes.func,
   useContactValue: PropTypes.func,
@@ -110,7 +98,6 @@ ContactInformation.propTypes = {
 ContactInformation.defaultProps = {
   activeTab: 1,
   valueContact: {},
-  // toggleTab: () => {},
   toggleTabPrev: () => {},
   toggleTabNext: () => {},
   useContactValue: () => {},

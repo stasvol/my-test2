@@ -6,15 +6,12 @@ import style from '../style/tabs.module.css';
 
 const PhotoFile = ({
   activeTab,
-  // toggleTab,
   createDataChildImg,
   imgFile,
   usePhotoImgFile,
   toggleTabPrev,
   toggleTabNext,
 }) => {
-  // const [imgFile, setImgFile] = useState([]);
-
   const maxSize = 5242880;
   const InputRef = useRef(null);
 
@@ -50,14 +47,6 @@ const PhotoFile = ({
     InputRef.current.click();
     // document.getElementById('exampleFile').click();
   };
-
-  // const handleToggleTabPrev = () => {
-  //   toggleTab(2);
-  // };
-
-  // const handleToggleTabNext = () => {
-  //   toggleTab(4);
-  // };
 
   return (
     <Form>
@@ -121,7 +110,6 @@ const PhotoFile = ({
 };
 PhotoFile.propTypes = {
   activeTab: PropTypes.number,
-  // toggleTab: PropTypes.func,
   toggleTabPrev: PropTypes.func,
   toggleTabNext: PropTypes.func,
   usePhotoImgFile: PropTypes.func,
@@ -130,7 +118,6 @@ PhotoFile.propTypes = {
 };
 PhotoFile.defaultProps = {
   activeTab: 1,
-  // toggleTab: () => {},
   toggleTabPrev: () => {},
   toggleTabNext: () => {},
   usePhotoImgFile: () => {},

@@ -22,64 +22,18 @@ import useContactValue from './hooks/useContactValue';
 import style from './style/tabs.module.css';
 
 const Tabs = () => {
-  // const [activeTab, setActiveTab] = useState('1');
   const { activeTab, toggleTab, toggleTabPrev, toggleTabNext } = useActiveTab();
-  // const [valueInfo, setValueInfo] = useState();
   const [valueInfo, createDataChildInfo] = useBasicValueInfo();
-  // const [isCheck, setIsCheck] = useState(false);
   const [isCheck, createDataChildContIsCheck] = useBasicIsCheck();
-  // const [imgFile, setImgFile] = useState([]);
   const [imgFile, createDataChildImg] = usePhotoImgFile();
-  // const [valueContact, setValueContact] = useState();
   const [valueContact, createDataChildContact] = useContactValue();
-  // const [, setCheck] = useState();
-  const handleOneToggleTab = () => {
-    toggleTab(1);
-  };
-  // const handleTwoToggleTab = () => {
-  //   toggleTab('2');
-  // };
-  // const handleThreeToggleTab = () => {
-  //   toggleTab('3');
-  // };
-  // const handleForthToggleTab = () => {
-  //   toggleTab('4');
-  // };
+
   const arrTab = [
     { name: 'Tab 1', id: 1 },
     { name: 'Tab 2', id: 2 },
     { name: 'Tab 3', id: 3 },
     { name: 'Tab 4', id: 4 },
   ];
-  // const toggleTab = tab => {
-  //   if (activeTab === tab) return;
-  //   setActiveTab(tab);
-  // };
-
-  // const clickTab = () => {
-  //   toggleTab(activeTab);
-  // };
-
-  // const createDataChildInfo = value => {
-  //   setValueInfo(value);
-  //   // setDescription(value)
-  // };
-
-  // const createDataChildContact = value => {
-  //   setValueContact(value);
-  // };
-
-  // const createDataChildImg = value => {
-  //   setImgFile(value);
-  // };
-
-  // const createDataChildContIsCheck = value => {
-  //   setIsCheck(value);
-  // };
-
-  // const createDataChildPublicCheck = value => {
-  //   createDataChildContIsCheck(value);
-  // };
 
   return (
     <div>
@@ -92,40 +46,13 @@ const Tabs = () => {
                   disabled
                   id={tab.id}
                   className={classnames({ active: activeTab === 1 })}
-                  onClick={handleOneToggleTab}
+                  onClick={toggleTabPrev}
                 >
                   {tab.name}
                 </NavLink>
               </NavItem>
             );
           })}
-          {/* <NavItem> */}
-          {/*  <NavLink */}
-          {/*    disabled */}
-          {/*    className={classnames({ active: activeTab === '2' })} */}
-          {/*    onClick={handleTwoToggleTab} */}
-          {/*  > */}
-          {/*    Tab2 */}
-          {/*  </NavLink> */}
-          {/* </NavItem> */}
-          {/* <NavItem> */}
-          {/*  <NavLink */}
-          {/*    disabled */}
-          {/*    className={classnames({ active: activeTab === '3' })} */}
-          {/*    onClick={handleThreeToggleTab} */}
-          {/*  > */}
-          {/*    Tab3 */}
-          {/*  </NavLink> */}
-          {/* </NavItem> */}
-          {/* <NavItem> */}
-          {/*  <NavLink */}
-          {/*    disabled */}
-          {/*    className={classnames({ active: activeTab === '4' })} */}
-          {/*    onClick={handleForthToggleTab} */}
-          {/*  > */}
-          {/*    Tab4 */}
-          {/*  </NavLink> */}
-          {/* </NavItem> */}
         </Nav>
         <TabContent activeTab={activeTab}>
           <TabPane tabId={1}>

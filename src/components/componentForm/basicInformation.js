@@ -12,7 +12,6 @@ const objValueInfo = {
 
 const BasicInformation = ({
   activeTab,
-  // toggleTab,
   valueInfo,
   useBasicValueInfo,
   isCheck,
@@ -21,8 +20,6 @@ const BasicInformation = ({
   createDataChildInfo,
   toggleTabNext,
 }) => {
-  // const [isCheck, setIsCheck] = useState(false);
-  // const [valueInfo, setValueInfo] = useState(objValueInfo);
   useBasicValueInfo(objValueInfo);
   useBasicIsCheck();
 
@@ -47,24 +44,8 @@ const BasicInformation = ({
     createDataChildContIsCheck(isCheck);
   }, [createDataChildContIsCheck, isCheck]);
 
-  // const handleValidSubmit = e => {
-  //   e.preventDefault();
-  // };
-  //
-  // const handleInvalidSubmit = e => {
-  //   e.preventDefault();
-  // };
-
-  // const handleToggleTab = () => {
-  //   toggleTab(2);
-  // };
-
   return (
-    <AvForm
-      className="mt-2"
-      // onValidSubmit={handleValidSubmit}
-      // onInvalidSubmit={handleInvalidSubmit}
-    >
+    <AvForm className="mt-2">
       <FormGroup check inline>
         <Label sm="12">
           Заголовок:
@@ -129,7 +110,6 @@ const BasicInformation = ({
 BasicInformation.propTypes = {
   activeTab: PropTypes.number,
   isCheck: PropTypes.bool,
-  // toggleTab: PropTypes.func,
   toggleTabNext: PropTypes.func,
   useBasicValueInfo: PropTypes.func,
   useBasicIsCheck: PropTypes.func,
@@ -143,7 +123,6 @@ BasicInformation.propTypes = {
 BasicInformation.defaultProps = {
   activeTab: 1,
   isCheck: false,
-  // toggleTab: () => {},
   toggleTabNext: () => {},
   useBasicValueInfo: () => {},
   useBasicIsCheck: () => {},

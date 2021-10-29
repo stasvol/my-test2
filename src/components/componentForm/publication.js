@@ -7,7 +7,6 @@ import style from '../style/tabs.module.css';
 
 const Publication = ({
   activeTab,
-  // toggleTab,
   valueInfo,
   isCheck,
   useBasicIsCheck,
@@ -70,58 +69,6 @@ const Publication = ({
             </FormGroup>
           );
         })}
-        {/* <FormGroup check> */}
-        {/*  <Label check> */}
-        {/*    <div className={style.check}> */}
-        {/*      <Input */}
-        {/*        onChange={handleChange} */}
-        {/*        type="checkbox" */}
-        {/*        name="Услуга 2 " */}
-        {/*        checkbox="Услуга 2" */}
-        {/*      />{' '} */}
-        {/*      Услуга 2 */}
-        {/*    </div> */}
-        {/*  </Label> */}
-        {/* </FormGroup> */}
-        {/* <FormGroup check> */}
-        {/*  <Label check> */}
-        {/*    <div className={style.check}> */}
-        {/*      <Input */}
-        {/*        onChange={handleChange} */}
-        {/*        type="checkbox" */}
-        {/*        name="Услуга 3 " */}
-        {/*        checkbox="Услуга 3" */}
-        {/*      />{' '} */}
-        {/*      Услуга 3 */}
-        {/*    </div> */}
-        {/*  </Label> */}
-        {/* </FormGroup> */}
-        {/* <FormGroup check> */}
-        {/*  <Label check> */}
-        {/*    <div className={style.check}> */}
-        {/*      <Input */}
-        {/*        onChange={handleChange} */}
-        {/*        type="checkbox" */}
-        {/*        name="Услуга 4 " */}
-        {/*        checkbox="Услуга 4" */}
-        {/*      />{' '} */}
-        {/*      Услуга 4 */}
-        {/*    </div> */}
-        {/*  </Label> */}
-        {/* </FormGroup> */}
-        {/* <FormGroup check> */}
-        {/*  <Label check> */}
-        {/*    <div className={style.check}> */}
-        {/*      <Input */}
-        {/*        onChange={handleChange} */}
-        {/*        type="checkbox" */}
-        {/*        name="Услуга 5 " */}
-        {/*        checkbox="Услуга 5" */}
-        {/*      />{' '} */}
-        {/*      Услуга 5 */}
-        {/*    </div> */}
-        {/*  </Label> */}
-        {/* </FormGroup> */}
         <FormGroup check>
           <ButtonGroup>
             <Button
@@ -145,7 +92,6 @@ const Publication = ({
 };
 Publication.propTypes = {
   activeTab: PropTypes.number,
-  // toggleTab: PropTypes.func,
   toggleTabPrev: PropTypes.func,
   useBasicIsCheck: PropTypes.func,
   valueInfo: PropTypes.shape({
@@ -161,7 +107,6 @@ Publication.propTypes = {
 };
 Publication.defaultProps = {
   activeTab: 1,
-  // toggleTab: () => {},
   toggleTabPrev: () => {},
   useBasicIsCheck: () => {},
   valueInfo: {},
