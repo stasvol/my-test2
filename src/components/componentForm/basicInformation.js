@@ -12,13 +12,14 @@ const objValueInfo = {
 
 const BasicInformation = ({
   activeTab,
-  toggleTab,
+  // toggleTab,
   valueInfo,
   useBasicValueInfo,
   isCheck,
   useBasicIsCheck,
   createDataChildContIsCheck,
   createDataChildInfo,
+  toggleTabNext,
 }) => {
   // const [isCheck, setIsCheck] = useState(false);
   // const [valueInfo, setValueInfo] = useState(objValueInfo);
@@ -54,9 +55,9 @@ const BasicInformation = ({
   //   e.preventDefault();
   // };
 
-  const handleToggleTab = () => {
-    toggleTab('2');
-  };
+  // const handleToggleTab = () => {
+  //   toggleTab(2);
+  // };
 
   return (
     <AvForm
@@ -115,8 +116,8 @@ const BasicInformation = ({
       <ButtonGroup>
         <Button
           disabled={!valueInfo.mainName}
-          className={classnames({ active: activeTab === '2' }, style.btnNext)}
-          onClick={handleToggleTab}
+          className={classnames({ active: activeTab === 2 }, style.btnNext)}
+          onClick={toggleTabNext}
           color="success"
         >
           Next
@@ -126,9 +127,10 @@ const BasicInformation = ({
   );
 };
 BasicInformation.propTypes = {
-  activeTab: PropTypes.string,
+  activeTab: PropTypes.number,
   isCheck: PropTypes.bool,
-  toggleTab: PropTypes.func,
+  // toggleTab: PropTypes.func,
+  toggleTabNext: PropTypes.func,
   useBasicValueInfo: PropTypes.func,
   useBasicIsCheck: PropTypes.func,
   createDataChildInfo: PropTypes.func,
@@ -139,9 +141,10 @@ BasicInformation.propTypes = {
   }),
 };
 BasicInformation.defaultProps = {
-  activeTab: '',
+  activeTab: 1,
   isCheck: false,
-  toggleTab: () => {},
+  // toggleTab: () => {},
+  toggleTabNext: () => {},
   useBasicValueInfo: () => {},
   useBasicIsCheck: () => {},
   createDataChildInfo: () => {},

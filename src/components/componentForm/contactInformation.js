@@ -12,10 +12,12 @@ const objValueContact = {
 
 const ContactInformation = ({
   activeTab,
-  toggleTab,
+  // toggleTab,
   valueContact,
   useContactValue,
   createDataChildContact,
+  toggleTabNext,
+  toggleTabPrev,
 }) => {
   // const [valueTab, setValueTab] = useState('')
   // const [valueContact, setValueContact] = useState(objValueContact);
@@ -35,13 +37,13 @@ const ContactInformation = ({
     createDataChildContact(valueContact);
   }, [createDataChildContact, valueContact]);
 
-  const handleToggleTabNext = () => {
-    toggleTab('3');
-  };
-
-  const handleToggleTabPrev = () => {
-    toggleTab('1');
-  };
+  // const handleToggleTabNext = () => {
+  //   toggleTab(3);
+  // };
+  //
+  // const handleToggleTabPrev = () => {
+  //   toggleTab(1);
+  // };
 
   return (
     <AvForm>
@@ -76,16 +78,16 @@ const ContactInformation = ({
         </Label>
       </FormGroup>
       <Button
-        className={classnames({ active: activeTab === '1' }, style.btn)}
-        onClick={handleToggleTabPrev}
+        className={classnames({ active: activeTab === 1 }, style.btn)}
+        onClick={toggleTabPrev}
         color="warning"
       >
         Prev
       </Button>
       <Button
         disabled={!valueContact.telephone}
-        className={classnames({ active: activeTab === '3' }, style.btn)}
-        onClick={handleToggleTabNext}
+        className={classnames({ active: activeTab === 3 }, style.btn)}
+        onClick={toggleTabNext}
         color="success"
       >
         Next
@@ -94,8 +96,10 @@ const ContactInformation = ({
   );
 };
 ContactInformation.propTypes = {
-  activeTab: PropTypes.string,
-  toggleTab: PropTypes.func,
+  activeTab: PropTypes.number,
+  // toggleTab: PropTypes.func,
+  toggleTabPrev: PropTypes.func,
+  toggleTabNext: PropTypes.func,
   useContactValue: PropTypes.func,
   valueContact: PropTypes.shape({
     telephone: PropTypes.string,
@@ -104,9 +108,11 @@ ContactInformation.propTypes = {
   createDataChildContact: PropTypes.func,
 };
 ContactInformation.defaultProps = {
-  activeTab: '',
+  activeTab: 1,
   valueContact: {},
-  toggleTab: () => {},
+  // toggleTab: () => {},
+  toggleTabPrev: () => {},
+  toggleTabNext: () => {},
   useContactValue: () => {},
   createDataChildContact: () => {},
 };

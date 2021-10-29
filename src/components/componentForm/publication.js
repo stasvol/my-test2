@@ -7,15 +7,24 @@ import style from '../style/tabs.module.css';
 
 const Publication = ({
   activeTab,
-  toggleTab,
+  // toggleTab,
   valueInfo,
   isCheck,
   useBasicIsCheck,
   valueContact,
   imgFile,
+  toggleTabPrev,
 }) => {
   const [check, setCheck] = useState([]);
   const [modal, setModal] = useState(false);
+
+  const checkArr = [
+    { name: 'Услуга 1 ', id: 1 },
+    { name: 'Услуга 2 ', id: 2 },
+    { name: 'Услуга 3 ', id: 3 },
+    { name: 'Услуга 4 ', id: 4 },
+    { name: 'Услуга 5 ', id: 5 },
+  ];
 
   const toggle = () => setModal(!modal);
 
@@ -28,9 +37,9 @@ const Publication = ({
         : [...prevCheck, name];
     });
   };
-  const handleToggleTab = () => {
-    toggleTab('3');
-  };
+  // const handleToggleTab = () => {
+  //   toggleTab(3);
+  // };
   useBasicIsCheck();
 
   const objProps = {
@@ -44,76 +53,80 @@ const Publication = ({
   return (
     <div className={style.body}>
       <Form>
-        <FormGroup check>
-          <Label check>
-            <div className={style.check}>
-              <Input
-                onChange={handleChange}
-                type="checkbox"
-                name="Услуга 1 "
-                checkbox="Услуга 1"
-              />{' '}
-              Услуга 1
-            </div>
-          </Label>
-        </FormGroup>
-        <FormGroup check>
-          <Label check>
-            <div className={style.check}>
-              <Input
-                onChange={handleChange}
-                type="checkbox"
-                name="Услуга 2 "
-                checkbox="Услуга 2"
-              />{' '}
-              Услуга 2
-            </div>
-          </Label>
-        </FormGroup>
-        <FormGroup check>
-          <Label check>
-            <div className={style.check}>
-              <Input
-                onChange={handleChange}
-                type="checkbox"
-                name="Услуга 3 "
-                checkbox="Услуга 3"
-              />{' '}
-              Услуга 3
-            </div>
-          </Label>
-        </FormGroup>
-        <FormGroup check>
-          <Label check>
-            <div className={style.check}>
-              <Input
-                onChange={handleChange}
-                type="checkbox"
-                name="Услуга 4 "
-                checkbox="Услуга 4"
-              />{' '}
-              Услуга 4
-            </div>
-          </Label>
-        </FormGroup>
-        <FormGroup check>
-          <Label check>
-            <div className={style.check}>
-              <Input
-                onChange={handleChange}
-                type="checkbox"
-                name="Услуга 5 "
-                checkbox="Услуга 5"
-              />{' '}
-              Услуга 5
-            </div>
-          </Label>
-        </FormGroup>
+        {checkArr.map(el => {
+          return (
+            <FormGroup check key={el.id + el.name}>
+              <Label check>
+                <div className={style.check}>
+                  <Input
+                    onChange={handleChange}
+                    type="checkbox"
+                    name="Услуга 1 "
+                    checkbox="Услуга 1"
+                  />{' '}
+                  {el.name}
+                </div>
+              </Label>
+            </FormGroup>
+          );
+        })}
+        {/* <FormGroup check> */}
+        {/*  <Label check> */}
+        {/*    <div className={style.check}> */}
+        {/*      <Input */}
+        {/*        onChange={handleChange} */}
+        {/*        type="checkbox" */}
+        {/*        name="Услуга 2 " */}
+        {/*        checkbox="Услуга 2" */}
+        {/*      />{' '} */}
+        {/*      Услуга 2 */}
+        {/*    </div> */}
+        {/*  </Label> */}
+        {/* </FormGroup> */}
+        {/* <FormGroup check> */}
+        {/*  <Label check> */}
+        {/*    <div className={style.check}> */}
+        {/*      <Input */}
+        {/*        onChange={handleChange} */}
+        {/*        type="checkbox" */}
+        {/*        name="Услуга 3 " */}
+        {/*        checkbox="Услуга 3" */}
+        {/*      />{' '} */}
+        {/*      Услуга 3 */}
+        {/*    </div> */}
+        {/*  </Label> */}
+        {/* </FormGroup> */}
+        {/* <FormGroup check> */}
+        {/*  <Label check> */}
+        {/*    <div className={style.check}> */}
+        {/*      <Input */}
+        {/*        onChange={handleChange} */}
+        {/*        type="checkbox" */}
+        {/*        name="Услуга 4 " */}
+        {/*        checkbox="Услуга 4" */}
+        {/*      />{' '} */}
+        {/*      Услуга 4 */}
+        {/*    </div> */}
+        {/*  </Label> */}
+        {/* </FormGroup> */}
+        {/* <FormGroup check> */}
+        {/*  <Label check> */}
+        {/*    <div className={style.check}> */}
+        {/*      <Input */}
+        {/*        onChange={handleChange} */}
+        {/*        type="checkbox" */}
+        {/*        name="Услуга 5 " */}
+        {/*        checkbox="Услуга 5" */}
+        {/*      />{' '} */}
+        {/*      Услуга 5 */}
+        {/*    </div> */}
+        {/*  </Label> */}
+        {/* </FormGroup> */}
         <FormGroup check>
           <ButtonGroup>
             <Button
-              className={classnames({ active: activeTab === '3' }, style.btn)}
-              onClick={handleToggleTab}
+              className={classnames({ active: activeTab === 3 }, style.btn)}
+              onClick={toggleTabPrev}
               color="warning"
             >
               Prev
@@ -131,8 +144,9 @@ const Publication = ({
   );
 };
 Publication.propTypes = {
-  activeTab: PropTypes.string,
-  toggleTab: PropTypes.func,
+  activeTab: PropTypes.number,
+  // toggleTab: PropTypes.func,
+  toggleTabPrev: PropTypes.func,
   useBasicIsCheck: PropTypes.func,
   valueInfo: PropTypes.shape({
     mainName: PropTypes.string,
@@ -146,8 +160,9 @@ Publication.propTypes = {
   imgFile: PropTypes.arrayOf(PropTypes.string),
 };
 Publication.defaultProps = {
-  activeTab: '',
-  toggleTab: () => {},
+  activeTab: 1,
+  // toggleTab: () => {},
+  toggleTabPrev: () => {},
   useBasicIsCheck: () => {},
   valueInfo: {},
   isCheck: true,

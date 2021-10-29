@@ -23,7 +23,7 @@ import style from './style/tabs.module.css';
 
 const Tabs = () => {
   // const [activeTab, setActiveTab] = useState('1');
-  const [activeTab, toggleTab] = useActiveTab();
+  const { activeTab, toggleTab, toggleTabPrev, toggleTabNext } = useActiveTab();
   // const [valueInfo, setValueInfo] = useState();
   const [valueInfo, createDataChildInfo] = useBasicValueInfo();
   // const [isCheck, setIsCheck] = useState(false);
@@ -34,7 +34,7 @@ const Tabs = () => {
   const [valueContact, createDataChildContact] = useContactValue();
   // const [, setCheck] = useState();
   const handleOneToggleTab = () => {
-    toggleTab('1');
+    toggleTab(1);
   };
   // const handleTwoToggleTab = () => {
   //   toggleTab('2');
@@ -87,11 +87,11 @@ const Tabs = () => {
         <Nav tabs className={style.nav}>
           {arrTab.map((tab, i) => {
             return (
-              <NavItem className={style.botton} key={i + 1}>
+              <NavItem className={style.botton} key={tab.id + i}>
                 <NavLink
                   disabled
                   id={tab.id}
-                  className={classnames({ active: activeTab === '1' })}
+                  className={classnames({ active: activeTab === 1 })}
                   onClick={handleOneToggleTab}
                 >
                   {tab.name}
@@ -128,7 +128,7 @@ const Tabs = () => {
           {/* </NavItem> */}
         </Nav>
         <TabContent activeTab={activeTab}>
-          <TabPane tabId="1">
+          <TabPane tabId={1}>
             <Row>
               <Col sm="12">
                 <h4>Основная информация:</h4>
@@ -141,11 +141,12 @@ const Tabs = () => {
                   useBasicValueInfo={useBasicValueInfo}
                   isCheck={isCheck}
                   useBasicIsCheck={useBasicIsCheck}
+                  toggleTabNext={toggleTabNext}
                 />
               </Col>
             </Row>
           </TabPane>
-          <TabPane tabId="2">
+          <TabPane tabId={2}>
             <Row>
               <Col sm="12">
                 <h4>Контактная информация:</h4>
@@ -155,11 +156,13 @@ const Tabs = () => {
                   activeTab={activeTab}
                   valueContact={valueContact}
                   useContactValue={useContactValue}
+                  toggleTabPrev={toggleTabPrev}
+                  toggleTabNext={toggleTabNext}
                 />
               </Col>
             </Row>
           </TabPane>
-          <TabPane tabId="3">
+          <TabPane tabId={3}>
             <Row>
               <Col sm="12">
                 <h4>Добавить фотографию:</h4>
@@ -169,11 +172,13 @@ const Tabs = () => {
                   activeTab={activeTab}
                   imgFile={imgFile}
                   usePhotoImgFile={usePhotoImgFile}
+                  toggleTabPrev={toggleTabPrev}
+                  toggleTabNext={toggleTabNext}
                 />
               </Col>
             </Row>
           </TabPane>
-          <TabPane tabId="4">
+          <TabPane tabId={4}>
             <Row>
               <Col sm="12">
                 <h4>Публикация:</h4>
@@ -186,6 +191,7 @@ const Tabs = () => {
                   imgFile={imgFile}
                   toggleTab={toggleTab}
                   activeTab={activeTab}
+                  toggleTabPrev={toggleTabPrev}
                 />
               </Col>
             </Row>

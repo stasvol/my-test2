@@ -6,10 +6,12 @@ import style from '../style/tabs.module.css';
 
 const PhotoFile = ({
   activeTab,
-  toggleTab,
+  // toggleTab,
   createDataChildImg,
   imgFile,
   usePhotoImgFile,
+  toggleTabPrev,
+  toggleTabNext,
 }) => {
   // const [imgFile, setImgFile] = useState([]);
 
@@ -49,13 +51,13 @@ const PhotoFile = ({
     // document.getElementById('exampleFile').click();
   };
 
-  const handleToggleTabPrev = () => {
-    toggleTab('2');
-  };
+  // const handleToggleTabPrev = () => {
+  //   toggleTab(2);
+  // };
 
-  const handleToggleTabNext = () => {
-    toggleTab('4');
-  };
+  // const handleToggleTabNext = () => {
+  //   toggleTab(4);
+  // };
 
   return (
     <Form>
@@ -98,16 +100,16 @@ const PhotoFile = ({
       <FormGroup>
         <ButtonGroup>
           <Button
-            className={classnames({ active: activeTab === '2' }, style.btn)}
-            onClick={handleToggleTabPrev}
+            className={classnames({ active: activeTab === 2 }, style.btn)}
+            onClick={toggleTabPrev}
             color="warning"
           >
             Prev
           </Button>
 
           <Button
-            className={classnames({ active: activeTab === '4' }, style.btn)}
-            onClick={handleToggleTabNext}
+            className={classnames({ active: activeTab === 4 }, style.btn)}
+            onClick={toggleTabNext}
             color="success"
           >
             Next
@@ -118,15 +120,19 @@ const PhotoFile = ({
   );
 };
 PhotoFile.propTypes = {
-  activeTab: PropTypes.string,
-  toggleTab: PropTypes.func,
+  activeTab: PropTypes.number,
+  // toggleTab: PropTypes.func,
+  toggleTabPrev: PropTypes.func,
+  toggleTabNext: PropTypes.func,
   usePhotoImgFile: PropTypes.func,
   createDataChildImg: PropTypes.func,
   imgFile: PropTypes.arrayOf(PropTypes.string),
 };
 PhotoFile.defaultProps = {
-  activeTab: '',
-  toggleTab: () => {},
+  activeTab: 1,
+  // toggleTab: () => {},
+  toggleTabPrev: () => {},
+  toggleTabNext: () => {},
   usePhotoImgFile: () => {},
   createDataChildImg: () => {},
   imgFile: [],
