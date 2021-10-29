@@ -110,7 +110,6 @@ const Tabs = () => {
               <Col sm="12">
                 <h4>Публикация:</h4>
                 <Publication
-                  // createDataChildPublicCheck={createDataChildPublicCheck}
                   valueInfo={valueInfo}
                   isCheck={isCheck}
                   useBasicIsCheck={useBasicIsCheck}

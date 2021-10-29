@@ -45,7 +45,6 @@ const PhotoFile = ({
 
   const upload = () => {
     InputRef.current.click();
-    // document.getElementById('exampleFile').click();
   };
 
   return (

@@ -36,9 +36,7 @@ const Publication = ({
         : [...prevCheck, name];
     });
   };
-  // const handleToggleTab = () => {
-  //   toggleTab(3);
-  // };
+
   useBasicIsCheck();
 
   const objProps = {

@@ -23,7 +23,6 @@ const ContactInformation = ({
   const handleChange = e => {
     e.preventDefault();
     const { value, name } = e.target;
-    // valueData.push(value)
     createDataChildContact(prevValueContact => ({
       ...prevValueContact,
       [name]: value,
@@ -36,7 +35,6 @@ const ContactInformation = ({
 
   return (
     <AvForm>
-      {/* <AvForm > */}
       <FormGroup>
         <Label for="exampleTelephone">
           Telephone:
