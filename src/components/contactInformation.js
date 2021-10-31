@@ -5,20 +5,15 @@ import { AvForm, AvField } from 'availity-reactstrap-validation';
 import classnames from 'classnames';
 import style from '../style/tabs.module.css';
 
-const objValueContact = {
-  telephone: '',
-  email: '',
-};
-
 const ContactInformation = ({
   activeTab,
   valueContact,
-  useContactValue,
+  // useContactValue,
   createDataChildContact,
   toggleTabNext,
   toggleTabPrev,
 }) => {
-  useContactValue(objValueContact);
+  // useContactValue(objValueContact);
 
   const handleChange = e => {
     e.preventDefault();
@@ -86,7 +81,7 @@ ContactInformation.propTypes = {
   activeTab: PropTypes.number,
   toggleTabPrev: PropTypes.func,
   toggleTabNext: PropTypes.func,
-  useContactValue: PropTypes.func,
+  // useContactValue: PropTypes.func,
   valueContact: PropTypes.shape({
     telephone: PropTypes.string,
     email: PropTypes.string,
@@ -98,7 +93,7 @@ ContactInformation.defaultProps = {
   valueContact: {},
   toggleTabPrev: () => {},
   toggleTabNext: () => {},
-  useContactValue: () => {},
+  // useContactValue: () => {},
   createDataChildContact: () => {},
 };
 

@@ -1,28 +1,18 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { FormGroup, Label, CustomInput, Button, ButtonGroup } from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
+import { FormGroup, Label, CustomInput, Button, ButtonGroup } from 'reactstrap';
 import classnames from 'classnames';
 import style from '../style/tabs.module.css';
-
-const objValueInfo = {
-  mainName: '',
-  description: '',
-};
 
 const BasicInformation = ({
   activeTab,
   valueInfo,
-  useBasicValueInfo,
   isCheck,
-  useBasicIsCheck,
   createDataChildContIsCheck,
   createDataChildInfo,
   toggleTabNext,
 }) => {
-  useBasicValueInfo(objValueInfo);
-  useBasicIsCheck();
-
   const handleChange = e => {
     e.preventDefault();
     const { value, name } = e.target;
@@ -48,7 +38,7 @@ const BasicInformation = ({
     <AvForm className="mt-2">
       <FormGroup check inline>
         <Label sm="12">
-          Заголовок:
+          Введите имя:
           <AvField
             onChange={handleChange}
             name="mainName"
@@ -111,8 +101,6 @@ BasicInformation.propTypes = {
   activeTab: PropTypes.number,
   isCheck: PropTypes.bool,
   toggleTabNext: PropTypes.func,
-  useBasicValueInfo: PropTypes.func,
-  useBasicIsCheck: PropTypes.func,
   createDataChildInfo: PropTypes.func,
   createDataChildContIsCheck: PropTypes.func,
   valueInfo: PropTypes.shape({
@@ -124,8 +112,6 @@ BasicInformation.defaultProps = {
   activeTab: 1,
   isCheck: false,
   toggleTabNext: () => {},
-  useBasicValueInfo: () => {},
-  useBasicIsCheck: () => {},
   createDataChildInfo: () => {},
   createDataChildContIsCheck: () => {},
   valueInfo: {},

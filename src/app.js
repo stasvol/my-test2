@@ -1,6 +1,6 @@
 import React from 'react';
 import Tabs from './components/tabs';
-import style from './components/style/app.module.css';
+import style from './style/app.module.css';
 
 const App = () => (
   <div className={style.app}>

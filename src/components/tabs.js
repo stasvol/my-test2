@@ -10,23 +10,37 @@ import {
   TabContent,
   TabPane,
 } from 'reactstrap';
-import BasicInformation from './componentForm/basicInformation';
-import ContactInformation from './componentForm/contactInformation';
-import PhotoFile from './componentForm/photoFiles';
-import Publication from './componentForm/publication';
-import useActiveTab from './hooks/useActiveTab';
-import useBasicValueInfo from './hooks/useValueInfo';
-import useBasicIsCheck from './hooks/useIsCheck';
-import usePhotoImgFile from './hooks/usePhotoImgFile';
-import useContactValue from './hooks/useContactValue';
-import style from './style/tabs.module.css';
+import BasicInformation from './basicInformation';
+import ContactInformation from './contactInformation';
+import PhotoFile from './photoFiles';
+import Publication from './publication';
+import useActiveTab from '../hooks/useActiveTab';
+// import useBasicValueInfo from '../hooks/useValueInfo';
+// import useBasicIsCheck from '../hooks/useIsCheck';
+import useUniversalHook from '../hooks/universalHook';
+// import usePhotoImgFile from '../hooks/usePhotoImgFile';
+// import useContactValue from '../hooks/useContactValue';
+import style from '../style/tabs.module.css';
+
+const mainNameDescription = {
+  mainName: '',
+  description: '',
+};
+const contactTelephoneEmail = {
+  telephone: '',
+  email: '',
+};
 
 const Tabs = () => {
-  const { activeTab, toggleTab, toggleTabPrev, toggleTabNext } = useActiveTab();
-  const [valueInfo, createDataChildInfo] = useBasicValueInfo();
-  const [isCheck, createDataChildContIsCheck] = useBasicIsCheck();
-  const [imgFile, createDataChildImg] = usePhotoImgFile();
-  const [valueContact, createDataChildContact] = useContactValue();
+  const { activeTab, toggleTabPrev, toggleTabNext } = useActiveTab();
+  const [valueInfo, createDataChildInfo] = useUniversalHook(
+    mainNameDescription,
+  );
+  const [isCheck, createDataChildContIsCheck] = useUniversalHook(false);
+  const [imgFile, createDataChildImg] = useUniversalHook([]);
+  const [valueContact, createDataChildContact] = useUniversalHook(
+    contactTelephoneEmail,
+  );
 
   const arrTab = [
     { name: 'Tab 1', id: 1 },
@@ -39,9 +53,9 @@ const Tabs = () => {
     <div>
       <Container className="mt-3">
         <Nav tabs className={style.nav}>
-          {arrTab.map((tab, i) => {
+          {arrTab.map(tab => {
             return (
-              <NavItem className={style.botton} key={tab.id + i}>
+              <NavItem className={style.botton} key={tab.id + tab.name}>
                 <NavLink
                   disabled
                   id={tab.id}
@@ -62,12 +76,12 @@ const Tabs = () => {
                 <BasicInformation
                   createDataChildInfo={createDataChildInfo}
                   createDataChildContIsCheck={createDataChildContIsCheck}
-                  toggleTab={toggleTab}
+                  // toggleTab={toggleTab}
                   activeTab={activeTab}
                   valueInfo={valueInfo}
-                  useBasicValueInfo={useBasicValueInfo}
+                  // useBasicValueInfo={useBasicValueInfo}
                   isCheck={isCheck}
-                  useBasicIsCheck={useBasicIsCheck}
+                  // useBasicIsCheck={useBasicIsCheck}
                   toggleTabNext={toggleTabNext}
                 />
               </Col>
@@ -79,10 +93,10 @@ const Tabs = () => {
                 <h4>Контактная информация:</h4>
                 <ContactInformation
                   createDataChildContact={createDataChildContact}
-                  toggleTab={toggleTab}
+                  // toggleTab={toggleTab}
                   activeTab={activeTab}
                   valueContact={valueContact}
-                  useContactValue={useContactValue}
+                  // useContactValue={useContactValue}
                   toggleTabPrev={toggleTabPrev}
                   toggleTabNext={toggleTabNext}
                 />
@@ -95,10 +109,10 @@ const Tabs = () => {
                 <h4>Добавить фотографию:</h4>
                 <PhotoFile
                   createDataChildImg={createDataChildImg}
-                  toggleTab={toggleTab}
+                  // toggleTab={toggleTab}
                   activeTab={activeTab}
                   imgFile={imgFile}
-                  usePhotoImgFile={usePhotoImgFile}
+                  // usePhotoImgFile={usePhotoImgFile}
                   toggleTabPrev={toggleTabPrev}
                   toggleTabNext={toggleTabNext}
                 />
@@ -112,10 +126,10 @@ const Tabs = () => {
                 <Publication
                   valueInfo={valueInfo}
                   isCheck={isCheck}
-                  useBasicIsCheck={useBasicIsCheck}
+                  // useBasicIsCheck={useBasicIsCheck}
                   valueContact={valueContact}
                   imgFile={imgFile}
-                  toggleTab={toggleTab}
+                  // toggleTab={toggleTab}
                   activeTab={activeTab}
                   toggleTabPrev={toggleTabPrev}
                 />

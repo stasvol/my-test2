@@ -8,11 +8,11 @@ const PhotoFile = ({
   activeTab,
   createDataChildImg,
   imgFile,
-  usePhotoImgFile,
+  // usePhotoImgFile,
   toggleTabPrev,
   toggleTabNext,
 }) => {
-  const maxSize = 5242880;
+  const maxSizeBit = 5242880;
   const InputRef = useRef(null);
 
   const saveFile = ({ target: { files } }) => {
@@ -32,8 +32,6 @@ const PhotoFile = ({
       reader.readAsDataURL(file);
     });
   };
-
-  usePhotoImgFile();
 
   const removeImage = file => {
     createDataChildImg(prev => prev.filter(img => img !== file));
@@ -59,7 +57,7 @@ const PhotoFile = ({
             name="file"
             id="exampleFile"
             multiple
-            maxfilesize={maxSize}
+            maxfilesize={maxSizeBit}
           />
         </Label>
         <Button
@@ -75,7 +73,7 @@ const PhotoFile = ({
         {imgFile.map((file, i) => {
           const removeImgFile = () => removeImage(file);
           return (
-            <div key={i} className={style.closeImage} id={i}>
+            <div key={`${file}`} className={style.closeImage} id={i}>
               <Button onClick={removeImgFile} className={style.btnClose}>
                 &times;
               </Button>
@@ -111,7 +109,7 @@ PhotoFile.propTypes = {
   activeTab: PropTypes.number,
   toggleTabPrev: PropTypes.func,
   toggleTabNext: PropTypes.func,
-  usePhotoImgFile: PropTypes.func,
+  // usePhotoImgFile: PropTypes.func,
   createDataChildImg: PropTypes.func,
   imgFile: PropTypes.arrayOf(PropTypes.string),
 };
@@ -119,7 +117,7 @@ PhotoFile.defaultProps = {
   activeTab: 1,
   toggleTabPrev: () => {},
   toggleTabNext: () => {},
-  usePhotoImgFile: () => {},
+  // usePhotoImgFile: () => {},
   createDataChildImg: () => {},
   imgFile: [],
 };

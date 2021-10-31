@@ -52,7 +52,12 @@ const ModalInfo = ({ objProps, toggle, modal }) => {
         {showModalInfo}
         {objProps.imgFile.map((src, i) => (
           <div key={i.toString()} className={style.closeImage}>
-            <img className={style.img} key={i} src={src} alt="img" />
+            <img
+              className={style.img}
+              key={`${i.toString()}${src}`}
+              src={src}
+              alt="img"
+            />
           </div>
         ))}
       </ModalBody>
