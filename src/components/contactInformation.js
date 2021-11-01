@@ -3,18 +3,16 @@ import PropTypes from 'prop-types';
 import { Button, FormGroup, Label } from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import classnames from 'classnames';
+import Buttons from '../buttons/buttonGroup';
 import style from '../style/tabs.module.css';
 
 const ContactInformation = ({
   activeTab,
   valueContact,
-  // useContactValue,
   createDataChildContact,
   toggleTabNext,
   toggleTabPrev,
 }) => {
-  // useContactValue(objValueContact);
-
   const handleChange = e => {
     e.preventDefault();
     const { value, name } = e.target;
@@ -59,6 +57,7 @@ const ContactInformation = ({
           />
         </Label>
       </FormGroup>
+      <Buttons onClick={toggleTabPrev} />
       <Button
         className={classnames({ active: activeTab === 1 }, style.btn)}
         onClick={toggleTabPrev}
@@ -81,7 +80,6 @@ ContactInformation.propTypes = {
   activeTab: PropTypes.number,
   toggleTabPrev: PropTypes.func,
   toggleTabNext: PropTypes.func,
-  // useContactValue: PropTypes.func,
   valueContact: PropTypes.shape({
     telephone: PropTypes.string,
     email: PropTypes.string,
@@ -93,7 +91,6 @@ ContactInformation.defaultProps = {
   valueContact: {},
   toggleTabPrev: () => {},
   toggleTabNext: () => {},
-  // useContactValue: () => {},
   createDataChildContact: () => {},
 };
 

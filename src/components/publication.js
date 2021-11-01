@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Button, ButtonGroup, Form, FormGroup, Input, Label } from 'reactstrap';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
-// import useBasicValueInfo from '../hooks/universalHook';
 import ModalInfo from '../modal/modalInfo';
 import style from '../style/tabs.module.css';
 
@@ -10,13 +9,10 @@ const Publication = ({
   activeTab,
   valueInfo,
   isCheck,
-  // useBasicIsCheck,
   valueContact,
   imgFile,
   toggleTabPrev,
 }) => {
-  // const [valueInfo, createDataChildInfo] = useBasicValueInfo();
-  // const [isCheck, createDataChildContIsCheck] = useBasicValueInfo(false);
   const [check, setCheck] = useState([]);
   const [modal, setModal] = useState(false);
 
@@ -40,8 +36,6 @@ const Publication = ({
     });
   };
 
-  // useBasicIsCheck();
-
   const objProps = {
     ...valueInfo,
     ...valueContact,
@@ -55,7 +49,7 @@ const Publication = ({
       <Form>
         {checkArr.map(el => {
           return (
-            <FormGroup check key={el.id + el.name}>
+            <FormGroup check key={`${el.id}${el.name}`}>
               <Label check>
                 <div className={style.check}>
                   <Input
@@ -94,7 +88,6 @@ const Publication = ({
 Publication.propTypes = {
   activeTab: PropTypes.number,
   toggleTabPrev: PropTypes.func,
-  // useBasicIsCheck: PropTypes.func,
   valueInfo: PropTypes.shape({
     mainName: PropTypes.string,
     description: PropTypes.string,
@@ -109,7 +102,6 @@ Publication.propTypes = {
 Publication.defaultProps = {
   activeTab: 1,
   toggleTabPrev: () => {},
-  // useBasicIsCheck: () => {},
   valueInfo: {},
   isCheck: true,
   valueContact: {},

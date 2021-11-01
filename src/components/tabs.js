@@ -10,16 +10,12 @@ import {
   TabContent,
   TabPane,
 } from 'reactstrap';
+import useActiveTab from '../hooks/useActiveTab';
+import useUniversalHook from '../hooks/universalHook';
 import BasicInformation from './basicInformation';
 import ContactInformation from './contactInformation';
 import PhotoFile from './photoFiles';
 import Publication from './publication';
-import useActiveTab from '../hooks/useActiveTab';
-// import useBasicValueInfo from '../hooks/useValueInfo';
-// import useBasicIsCheck from '../hooks/useIsCheck';
-import useUniversalHook from '../hooks/universalHook';
-// import usePhotoImgFile from '../hooks/usePhotoImgFile';
-// import useContactValue from '../hooks/useContactValue';
 import style from '../style/tabs.module.css';
 
 const mainNameDescription = {
@@ -76,12 +72,9 @@ const Tabs = () => {
                 <BasicInformation
                   createDataChildInfo={createDataChildInfo}
                   createDataChildContIsCheck={createDataChildContIsCheck}
-                  // toggleTab={toggleTab}
                   activeTab={activeTab}
                   valueInfo={valueInfo}
-                  // useBasicValueInfo={useBasicValueInfo}
                   isCheck={isCheck}
-                  // useBasicIsCheck={useBasicIsCheck}
                   toggleTabNext={toggleTabNext}
                 />
               </Col>
@@ -93,10 +86,8 @@ const Tabs = () => {
                 <h4>Контактная информация:</h4>
                 <ContactInformation
                   createDataChildContact={createDataChildContact}
-                  // toggleTab={toggleTab}
                   activeTab={activeTab}
                   valueContact={valueContact}
-                  // useContactValue={useContactValue}
                   toggleTabPrev={toggleTabPrev}
                   toggleTabNext={toggleTabNext}
                 />
@@ -109,10 +100,8 @@ const Tabs = () => {
                 <h4>Добавить фотографию:</h4>
                 <PhotoFile
                   createDataChildImg={createDataChildImg}
-                  // toggleTab={toggleTab}
                   activeTab={activeTab}
                   imgFile={imgFile}
-                  // usePhotoImgFile={usePhotoImgFile}
                   toggleTabPrev={toggleTabPrev}
                   toggleTabNext={toggleTabNext}
                 />
@@ -126,10 +115,8 @@ const Tabs = () => {
                 <Publication
                   valueInfo={valueInfo}
                   isCheck={isCheck}
-                  // useBasicIsCheck={useBasicIsCheck}
                   valueContact={valueContact}
                   imgFile={imgFile}
-                  // toggleTab={toggleTab}
                   activeTab={activeTab}
                   toggleTabPrev={toggleTabPrev}
                 />

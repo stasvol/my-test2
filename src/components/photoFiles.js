@@ -8,7 +8,6 @@ const PhotoFile = ({
   activeTab,
   createDataChildImg,
   imgFile,
-  // usePhotoImgFile,
   toggleTabPrev,
   toggleTabNext,
 }) => {
@@ -19,9 +18,8 @@ const PhotoFile = ({
     const filesArr = [...files];
 
     filesArr.forEach(file => {
-      if (!file.type.match('image')) {
-        return;
-      }
+      if (!file.type.match('image')) return;
+
       const reader = new FileReader();
 
       reader.onload = ({ currentTarget: { result } }) => {
@@ -73,7 +71,7 @@ const PhotoFile = ({
         {imgFile.map((file, i) => {
           const removeImgFile = () => removeImage(file);
           return (
-            <div key={`${file}`} className={style.closeImage} id={i}>
+            <div key={`${file}${file[i]}`} className={style.closeImage} id={i}>
               <Button onClick={removeImgFile} className={style.btnClose}>
                 &times;
               </Button>
@@ -82,7 +80,6 @@ const PhotoFile = ({
           );
         })}
       </FormGroup>
-      <FormGroup />
       <FormGroup>
         <ButtonGroup>
           <Button
@@ -109,7 +106,6 @@ PhotoFile.propTypes = {
   activeTab: PropTypes.number,
   toggleTabPrev: PropTypes.func,
   toggleTabNext: PropTypes.func,
-  // usePhotoImgFile: PropTypes.func,
   createDataChildImg: PropTypes.func,
   imgFile: PropTypes.arrayOf(PropTypes.string),
 };
@@ -117,7 +113,6 @@ PhotoFile.defaultProps = {
   activeTab: 1,
   toggleTabPrev: () => {},
   toggleTabNext: () => {},
-  // usePhotoImgFile: () => {},
   createDataChildImg: () => {},
   imgFile: [],
 };
