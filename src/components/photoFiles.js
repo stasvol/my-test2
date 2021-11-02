@@ -1,11 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Form, FormGroup, Label, ButtonGroup } from 'reactstrap';
-import classnames from 'classnames';
+// import classnames from 'classnames';
+import ButtonPrev from '../buttons/buttonPrev';
+import ButtonNext from '../buttons/buttonNext';
 import style from '../style/tabs.module.css';
 
 const PhotoFile = ({
-  activeTab,
+  // activeTab,
   createDataChildImg,
   imgFile,
   toggleTabPrev,
@@ -64,7 +66,7 @@ const PhotoFile = ({
           color="info"
           onClick={upload}
         >
-          Upload files
+          UPLOAD FILES
         </Button>
       </FormGroup>
       <FormGroup>
@@ -82,35 +84,37 @@ const PhotoFile = ({
       </FormGroup>
       <FormGroup>
         <ButtonGroup>
-          <Button
-            className={classnames({ active: activeTab === 2 }, style.btn)}
-            onClick={toggleTabPrev}
-            color="warning"
-          >
-            Prev
-          </Button>
+          <ButtonPrev onClick={toggleTabPrev} />
+          {/* <Button */}
+          {/* className={classnames({active:activeTab === 2 },style.btn)} */}
+          {/*  onClick={toggleTabPrev} */}
+          {/*  color="warning" */}
+          {/* > */}
+          {/*  prev */}
+          {/* </Button> */}
 
-          <Button
-            className={classnames({ active: activeTab === 4 }, style.btn)}
-            onClick={toggleTabNext}
-            color="success"
-          >
-            Next
-          </Button>
+          {/* <Button */}
+          {/* className={classnames({active:activeTab === 4},style.btn)} */}
+          {/*  onClick={toggleTabNext} */}
+          {/*  color="success" */}
+          {/* > */}
+          {/*  next */}
+          {/* </Button> */}
+          <ButtonNext onClick={toggleTabNext} />
         </ButtonGroup>
       </FormGroup>
     </Form>
   );
 };
 PhotoFile.propTypes = {
-  activeTab: PropTypes.number,
+  // activeTab: PropTypes.number,
   toggleTabPrev: PropTypes.func,
   toggleTabNext: PropTypes.func,
   createDataChildImg: PropTypes.func,
   imgFile: PropTypes.arrayOf(PropTypes.string),
 };
 PhotoFile.defaultProps = {
-  activeTab: 1,
+  // activeTab: 1,
   toggleTabPrev: () => {},
   toggleTabNext: () => {},
   createDataChildImg: () => {},

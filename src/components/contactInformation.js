@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Button, FormGroup, Label } from 'reactstrap';
+import { FormGroup, Label } from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
-import classnames from 'classnames';
-import Buttons from '../buttons/buttonGroup';
-import style from '../style/tabs.module.css';
+// import classnames from 'classnames';
+import ButtonPrev from '../buttons/buttonPrev';
+import ButtonNext from '../buttons/buttonNext';
+// import style from '../style/tabs.module.css';
 
 const ContactInformation = ({
-  activeTab,
+  // activeTab,
   valueContact,
   createDataChildContact,
   toggleTabNext,
@@ -57,27 +58,28 @@ const ContactInformation = ({
           />
         </Label>
       </FormGroup>
-      <Buttons onClick={toggleTabPrev} />
-      <Button
-        className={classnames({ active: activeTab === 1 }, style.btn)}
-        onClick={toggleTabPrev}
-        color="warning"
-      >
-        Prev
-      </Button>
-      <Button
-        disabled={!valueContact.telephone}
-        className={classnames({ active: activeTab === 3 }, style.btn)}
-        onClick={toggleTabNext}
-        color="success"
-      >
-        Next
-      </Button>
+      <ButtonPrev onClick={toggleTabPrev} />
+      {/* <Button */}
+      {/*  className={classnames({ active: activeTab === 1 }, style.btn)} */}
+      {/*  onClick={toggleTabPrev} */}
+      {/*  color="warning" */}
+      {/* > */}
+      {/*  prev */}
+      {/* </Button> */}
+      {/* <Button */}
+      {/* disabled={!valueContact.telephone} */}
+      {/*  className={classnames({ active: activeTab === 3 }, style.btn)} */}
+      {/*  onClick={toggleTabNext} */}
+      {/*  color="success" */}
+      {/* > */}
+      {/*  next */}
+      {/* </Button> */}
+      <ButtonNext onClick={toggleTabNext} disabled={!valueContact.telephone} />
     </AvForm>
   );
 };
 ContactInformation.propTypes = {
-  activeTab: PropTypes.number,
+  // activeTab: PropTypes.number,
   toggleTabPrev: PropTypes.func,
   toggleTabNext: PropTypes.func,
   valueContact: PropTypes.shape({
@@ -87,7 +89,7 @@ ContactInformation.propTypes = {
   createDataChildContact: PropTypes.func,
 };
 ContactInformation.defaultProps = {
-  activeTab: 1,
+  // activeTab: 1,
   valueContact: {},
   toggleTabPrev: () => {},
   toggleTabNext: () => {},

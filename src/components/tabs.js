@@ -16,6 +16,7 @@ import BasicInformation from './basicInformation';
 import ContactInformation from './contactInformation';
 import PhotoFile from './photoFiles';
 import Publication from './publication';
+import arrTab from '../dataComponent/tabArrTabs';
 import style from '../style/tabs.module.css';
 
 const mainNameDescription = {
@@ -37,13 +38,6 @@ const Tabs = () => {
   const [valueContact, createDataChildContact] = useUniversalHook(
     contactTelephoneEmail,
   );
-
-  const arrTab = [
-    { name: 'Tab 1', id: 1 },
-    { name: 'Tab 2', id: 2 },
-    { name: 'Tab 3', id: 3 },
-    { name: 'Tab 4', id: 4 },
-  ];
 
   return (
     <div>

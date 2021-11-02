@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import { Button, ButtonGroup, Form, FormGroup, Input, Label } from 'reactstrap';
-import classnames from 'classnames';
+import { ButtonGroup, Form, FormGroup, Input, Label } from 'reactstrap';
+// import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import ModalInfo from '../modal/modalInfo';
+import ButtonPrev from '../buttons/buttonPrev';
+import ButtonSave from '../buttons/buttonSave';
+import checkArr from '../dataComponent/checkArrPublication';
 import style from '../style/tabs.module.css';
 
 const Publication = ({
-  activeTab,
+  // activeTab,
   valueInfo,
   isCheck,
   valueContact,
@@ -15,14 +18,6 @@ const Publication = ({
 }) => {
   const [check, setCheck] = useState([]);
   const [modal, setModal] = useState(false);
-
-  const checkArr = [
-    { name: 'Услуга 1 ', id: 1 },
-    { name: 'Услуга 2 ', id: 2 },
-    { name: 'Услуга 3 ', id: 3 },
-    { name: 'Услуга 4 ', id: 4 },
-    { name: 'Услуга 5 ', id: 5 },
-  ];
 
   const toggle = () => setModal(!modal);
 
@@ -66,16 +61,18 @@ const Publication = ({
         })}
         <FormGroup check>
           <ButtonGroup>
-            <Button
-              className={classnames({ active: activeTab === 3 }, style.btn)}
-              onClick={toggleTabPrev}
-              color="warning"
-            >
-              Prev
-            </Button>
-            <Button className={style.btn} color="info" onClick={toggle}>
-              Save
-            </Button>
+            <ButtonPrev onClick={toggleTabPrev} />
+            {/* <Button */}
+            {/* className={classnames({active:activeTab === 3},style.btn)} */}
+            {/*  onClick={toggleTabPrev} */}
+            {/*  color="warning" */}
+            {/* > */}
+            {/*  prev */}
+            {/* </Button> */}
+            {/* <Button className={style.btn} color="info" onClick={toggle}> */}
+            {/*  save */}
+            {/* </Button> */}
+            <ButtonSave onClick={toggle} />
           </ButtonGroup>
         </FormGroup>
       </Form>
@@ -86,7 +83,7 @@ const Publication = ({
   );
 };
 Publication.propTypes = {
-  activeTab: PropTypes.number,
+  // activeTab: PropTypes.number,
   toggleTabPrev: PropTypes.func,
   valueInfo: PropTypes.shape({
     mainName: PropTypes.string,
@@ -100,7 +97,7 @@ Publication.propTypes = {
   imgFile: PropTypes.arrayOf(PropTypes.string),
 };
 Publication.defaultProps = {
-  activeTab: 1,
+  // activeTab: 1,
   toggleTabPrev: () => {},
   valueInfo: {},
   isCheck: true,

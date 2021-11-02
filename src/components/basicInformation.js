@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
-import { FormGroup, Label, CustomInput, Button, ButtonGroup } from 'reactstrap';
-import classnames from 'classnames';
+import { FormGroup, Label, CustomInput, ButtonGroup } from 'reactstrap';
+// import classnames from 'classnames';
+import ButtonNext from '../buttons/buttonNext';
 import style from '../style/tabs.module.css';
 
 const BasicInformation = ({
-  activeTab,
+  // activeTab,
   valueInfo,
   isCheck,
   createDataChildContIsCheck,
@@ -85,20 +86,26 @@ const BasicInformation = ({
         </Label>
       </FormGroup>
       <ButtonGroup>
-        <Button
-          disabled={!valueInfo.mainName}
-          className={classnames({ active: activeTab === 2 }, style.btnNext)}
+        <ButtonNext
+          className={style.btnNext}
           onClick={toggleTabNext}
-          color="success"
-        >
-          Next
-        </Button>
+          disabled={!valueInfo.mainName}
+        />
+        {/* <Button */}
+        {/*  disabled={!valueInfo.mainName} */}
+        {/*  className={classnames({ active: activeTab === 2 },
+        style.btnNext)} */}
+        {/*  onClick={toggleTabNext} */}
+        {/*  color="success" */}
+        {/* > */}
+        {/*  next */}
+        {/* </Button> */}
       </ButtonGroup>
     </AvForm>
   );
 };
 BasicInformation.propTypes = {
-  activeTab: PropTypes.number,
+  // activeTab: PropTypes.number,
   isCheck: PropTypes.bool,
   toggleTabNext: PropTypes.func,
   createDataChildInfo: PropTypes.func,
@@ -109,7 +116,7 @@ BasicInformation.propTypes = {
   }),
 };
 BasicInformation.defaultProps = {
-  activeTab: 1,
+  // activeTab: 1,
   isCheck: false,
   toggleTabNext: () => {},
   createDataChildInfo: () => {},
