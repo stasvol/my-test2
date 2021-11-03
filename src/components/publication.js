@@ -42,18 +42,18 @@ const Publication = ({
   return (
     <div className={style.body}>
       <Form>
-        {checkArr.map(el => {
+        {checkArr.map(({ name, id }) => {
           return (
-            <FormGroup check key={`${el.id}${el.name}`}>
+            <FormGroup check key={`${id}${name}`}>
               <Label check>
                 <div className={style.check}>
                   <Input
                     onChange={handleChange}
                     type="checkbox"
-                    name={el.name}
+                    name={name}
                     checkbox="Услуга 1"
                   />{' '}
-                  {el.name}
+                  {name}
                 </div>
               </Label>
             </FormGroup>

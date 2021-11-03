@@ -6,12 +6,20 @@ import style from '../style/tabs.module.css';
 const ModalInfo = ({ objProps, toggle, modal }) => {
   const showModalInfo = Object.entries(objProps)
     .filter(([key, value]) => {
-      if (
-        key !== 'imgFile' &&
-        value &&
-        (typeof value === 'string' || Array.isArray(value))
-      ) {
-        return value.length;
+      // if (
+      //   key !== 'imgFile' &&
+      //   value &&
+      //   (typeof value === 'string' || Array.isArray(value))
+      // ) {
+      //   return value.length;
+      // }
+      // return key !== 'imgFile';
+
+      if (key !== 'imgFile' && value) {
+        if (typeof value === 'string' || Array.isArray(value)) {
+          return value.length;
+        }
+        return true;
       }
       return key !== 'imgFile';
       // return (

@@ -18,6 +18,7 @@ import PhotoFile from './photoFiles';
 import Publication from './publication';
 import arrTab from '../dataComponent/tabArrTabs';
 import style from '../style/tabs.module.css';
+// import classesStyle from '../style/styleComponent'
 
 const mainNameDescription = {
   mainName: '',
@@ -43,16 +44,16 @@ const Tabs = () => {
     <div>
       <Container className="mt-3">
         <Nav tabs className={style.nav}>
-          {arrTab.map(tab => {
+          {arrTab.map(({ name, id }) => {
             return (
-              <NavItem className={style.botton} key={tab.id + tab.name}>
+              <NavItem className={style.botton} key={`${id}${name}`}>
                 <NavLink
                   disabled
-                  id={tab.id}
+                  id={id}
                   className={classnames({ active: activeTab === 1 })}
                   onClick={toggleTabPrev}
                 >
-                  {tab.name}
+                  {name}
                 </NavLink>
               </NavItem>
             );
