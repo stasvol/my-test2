@@ -40,6 +40,63 @@ const Tabs = () => {
     contactTelephoneEmail,
   );
 
+  const getTabContent = (id, props) => {
+    switch (id) {
+      case 'basicInfo':
+        return <BasicInformation {...props} id={id} />;
+      case 'contactInfo':
+        return <ContactInformation {...props} id={id} />;
+      case 'photoInfo':
+        return <PhotoFile {...props} id={id} />;
+      case 'publicInfo':
+        return <Publication {...props} id={id} />;
+
+      default:
+        return null;
+    }
+  };
+
+  const tabContent = [
+    {
+      title: 'Основная информация:',
+      id: 'basicInfo',
+      props: {
+        createDataChildInfo,
+        createDataChildContIsCheck,
+        valueInfo,
+        isCheck,
+        toggleTabNext,
+      },
+    },
+    {
+      title: 'Контактная информация:',
+      id: 'contactInfo',
+      props: {
+        createDataChildContact,
+        valueContact,
+        toggleTabNext,
+        toggleTabPrev,
+      },
+    },
+    {
+      title: 'Добавить фотографию:',
+      id: 'photoInfo',
+      props: { createDataChildImg, imgFile, toggleTabPrev, toggleTabNext },
+    },
+    {
+      title: 'Публикация:',
+      id: 'publicInfo',
+      props: {
+        activeTab,
+        valueInfo,
+        isCheck,
+        valueContact,
+        imgFile,
+        toggleTabPrev,
+      },
+    },
+  ];
+
   return (
     <div>
       <Container className="mt-3">
@@ -60,64 +117,68 @@ const Tabs = () => {
           })}
         </Nav>
         <TabContent activeTab={activeTab}>
-          <TabPane tabId={1}>
-            <Row>
-              <Col sm="12">
-                <h4>Основная информация:</h4>
-                <BasicInformation
-                  createDataChildInfo={createDataChildInfo}
-                  createDataChildContIsCheck={createDataChildContIsCheck}
-                  activeTab={activeTab}
-                  valueInfo={valueInfo}
-                  isCheck={isCheck}
-                  toggleTabNext={toggleTabNext}
-                />
-              </Col>
-            </Row>
-          </TabPane>
-          <TabPane tabId={2}>
-            <Row>
-              <Col sm="12">
-                <h4>Контактная информация:</h4>
-                <ContactInformation
-                  createDataChildContact={createDataChildContact}
-                  activeTab={activeTab}
-                  valueContact={valueContact}
-                  toggleTabPrev={toggleTabPrev}
-                  toggleTabNext={toggleTabNext}
-                />
-              </Col>
-            </Row>
-          </TabPane>
-          <TabPane tabId={3}>
-            <Row>
-              <Col sm="12">
-                <h4>Добавить фотографию:</h4>
-                <PhotoFile
-                  createDataChildImg={createDataChildImg}
-                  activeTab={activeTab}
-                  imgFile={imgFile}
-                  toggleTabPrev={toggleTabPrev}
-                  toggleTabNext={toggleTabNext}
-                />
-              </Col>
-            </Row>
-          </TabPane>
-          <TabPane tabId={4}>
-            <Row>
-              <Col sm="12">
-                <h4>Публикация:</h4>
-                <Publication
-                  valueInfo={valueInfo}
-                  isCheck={isCheck}
-                  valueContact={valueContact}
-                  imgFile={imgFile}
-                  activeTab={activeTab}
-                  toggleTabPrev={toggleTabPrev}
-                />
-              </Col>
-            </Row>
-          </TabPane>
+          {tabContent.map(({ title, id, props }, i) => (
+            <TabPane tabId={i + 1} key={`${title}${id}`}>
+              <Row>
+                <Col sm="12">
+                  <h4>{title}</h4>
+                  {getTabContent(id, props)}
+                  {/* <BasicInformation */}
+                  {/* createDataChildInfo={createDataChildInfo} */}
+                  {/* createDataChildContIsCheck=
+                  {createDataChildContIsCheck} */}
+                  {/* // activeTab={activeTab} */}
+                  {/* valueInfo={valueInfo} */}
+                  {/* isCheck={isCheck} */}
+                  {/* toggleTabNext={toggleTabNext} */}
+                  {/* /> */}
+                </Col>
+              </Row>
+            </TabPane>
+          ))}
+          {/* <TabPane tabId={2}> */}
+          {/*  <Row> */}
+          {/*    <Col sm="12"> */}
+          {/*      <h4>Контактная информация:</h4> */}
+          {/*      <ContactInformation */}
+          {/*        createDataChildContact={createDataChildContact} */}
+          {/*        // activeTab={activeTab} */}
+          {/*        valueContact={valueContact} */}
+          {/*        toggleTabPrev={toggleTabPrev} */}
+          {/*        toggleTabNext={toggleTabNext} */}
+          {/*      /> */}
+          {/*    </Col> */}
+          {/*  </Row> */}
+          {/* </TabPane> */}
+          {/* <TabPane tabId={3}> */}
+          {/*  <Row> */}
+          {/*    <Col sm="12"> */}
+          {/*      <h4>Добавить фотографию:</h4> */}
+          {/*      <PhotoFile */}
+          {/*        createDataChildImg={createDataChildImg} */}
+          {/*        // activeTab={activeTab} */}
+          {/*        imgFile={imgFile} */}
+          {/*        toggleTabPrev={toggleTabPrev} */}
+          {/*        toggleTabNext={toggleTabNext} */}
+          {/*      /> */}
+          {/*    </Col> */}
+          {/*  </Row> */}
+          {/* </TabPane> */}
+          {/* <TabPane tabId={4}> */}
+          {/*  <Row> */}
+          {/*    <Col sm="12"> */}
+          {/*      <h4>Публикация:</h4> */}
+          {/*      <Publication */}
+          {/*        valueInfo={valueInfo} */}
+          {/*        isCheck={isCheck} */}
+          {/*        valueContact={valueContact} */}
+          {/*        imgFile={imgFile} */}
+          {/*        activeTab={activeTab} */}
+          {/*        toggleTabPrev={toggleTabPrev} */}
+          {/*      /> */}
+          {/*    </Col> */}
+          {/*  </Row> */}
+          {/* </TabPane> */}
         </TabContent>
       </Container>
     </div>
