@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { FormGroup, Label } from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
@@ -10,22 +10,23 @@ import ButtonNext from '../buttons/buttonNext';
 const ContactInformation = ({
   // activeTab,
   valueContact,
-  createDataChildContact,
+  // createDataChildContact,
+  handleChangeContact,
   toggleTabNext,
   toggleTabPrev,
 }) => {
-  const handleChange = e => {
-    e.preventDefault();
-    const { value, name } = e.target;
-    createDataChildContact(prevValueContact => ({
-      ...prevValueContact,
-      [name]: value,
-    }));
-  };
+  // const handleChange = e => {
+  //   e.preventDefault();
+  //   const { value, name } = e.target;
+  //   createDataChildContact(prevValueContact => ({
+  //     ...prevValueContact,
+  //     [name]: value,
+  //   }));
+  // };
 
-  useEffect(() => {
-    createDataChildContact(valueContact);
-  }, [createDataChildContact, valueContact]);
+  // useEffect(() => {
+  //   createDataChildContact(valueContact);
+  // }, [createDataChildContact, valueContact]);
 
   return (
     <AvForm>
@@ -33,7 +34,7 @@ const ContactInformation = ({
         <Label for="exampleTelephone">
           Telephone:
           <AvField
-            onChange={handleChange}
+            onChange={handleChangeContact}
             type="text"
             name="telephone"
             id="exampleTelephone"
@@ -48,7 +49,7 @@ const ContactInformation = ({
         <Label for="exampleEmail">
           Email:
           <AvField
-            onChange={handleChange}
+            onChange={handleChangeContact}
             type="email"
             name="email"
             id="exampleEmail"
@@ -86,14 +87,16 @@ ContactInformation.propTypes = {
     telephone: PropTypes.string,
     email: PropTypes.string,
   }),
-  createDataChildContact: PropTypes.func,
+  // createDataChildContact: PropTypes.func,
+  handleChangeContact: PropTypes.func,
 };
 ContactInformation.defaultProps = {
   // activeTab: 1,
   valueContact: {},
   toggleTabPrev: () => {},
   toggleTabNext: () => {},
-  createDataChildContact: () => {},
+  // createDataChildContact: () => {},
+  handleChangeContact: () => {},
 };
 
 export default ContactInformation;

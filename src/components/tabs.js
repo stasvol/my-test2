@@ -17,28 +17,23 @@ import ContactInformation from './contactInformation';
 import PhotoFile from './photoFiles';
 import Publication from './publication';
 import arrTab from '../dataComponent/tabArrTabs';
+import contactTelephoneEmail from '../dataComponent/contactTelephone';
+import mainNameDescription from '../dataComponent/mainNameDescription';
 import style from '../style/tabs.module.css';
 // import classesStyle from '../style/styleComponent'
 
-const mainNameDescription = {
-  mainName: '',
-  description: '',
-};
-const contactTelephoneEmail = {
-  telephone: '',
-  email: '',
-};
-
 const Tabs = () => {
   const { activeTab, toggleTabPrev, toggleTabNext } = useActiveTab();
-  const [valueInfo, createDataChildInfo] = useUniversalHook(
+  const [valueInfo, createDataChildInfo, handleChangeInfo] = useUniversalHook(
     mainNameDescription,
   );
   const [isCheck, createDataChildContIsCheck] = useUniversalHook(false);
   const [imgFile, createDataChildImg] = useUniversalHook([]);
-  const [valueContact, createDataChildContact] = useUniversalHook(
-    contactTelephoneEmail,
-  );
+  const [
+    valueContact,
+    createDataChildContact,
+    handleChangeContact,
+  ] = useUniversalHook(contactTelephoneEmail);
 
   const getTabContent = (id, props) => {
     switch (id) {
@@ -64,6 +59,7 @@ const Tabs = () => {
         createDataChildInfo,
         createDataChildContIsCheck,
         valueInfo,
+        handleChangeInfo,
         isCheck,
         toggleTabNext,
       },
@@ -74,6 +70,7 @@ const Tabs = () => {
       props: {
         createDataChildContact,
         valueContact,
+        handleChangeContact,
         toggleTabNext,
         toggleTabPrev,
       },

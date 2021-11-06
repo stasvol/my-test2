@@ -6,6 +6,15 @@ const useUniversalHook = initValue => {
   const basicFunction = data => {
     setValue(data);
   };
-  return [value, basicFunction];
+
+  const handleChange = e => {
+    e.preventDefault();
+    const { value, name } = e.target;
+    setValue(prevValue => ({
+      ...prevValue,
+      [name]: value,
+    }));
+  };
+  return [value, basicFunction, handleChange];
 };
 export default useUniversalHook;

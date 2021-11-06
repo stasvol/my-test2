@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Form, FormGroup, Label, ButtonGroup } from 'reactstrap';
 // import classnames from 'classnames';
@@ -13,7 +13,7 @@ const PhotoFile = ({
   toggleTabPrev,
   toggleTabNext,
 }) => {
-  const maxSizeBit = 5242880;
+  const maxSizeBit = 5 * 1024 * 1024;
   const InputRef = useRef(null);
 
   const saveFile = ({ target: { files } }) => {
@@ -37,9 +37,9 @@ const PhotoFile = ({
     createDataChildImg(prev => prev.filter(img => img !== file));
   };
 
-  useEffect(() => {
-    createDataChildImg(imgFile);
-  }, [createDataChildImg, imgFile]);
+  // useEffect(() => {
+  //   createDataChildImg(imgFile);
+  // }, [createDataChildImg, imgFile]);
 
   const upload = () => {
     InputRef.current.click();

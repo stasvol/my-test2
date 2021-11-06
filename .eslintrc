@@ -281,7 +281,7 @@
     "react/no-array-index-key": "error",
     "react/no-danger": "error",
     "react/no-did-update-set-state": "error",
-    "react/no-multi-comp": "error",
+    "react/no-multi-comp": "off",
     "react/no-string-refs": "error",
     "react/no-set-state": "off",
     "react/no-unknown-property": "error",

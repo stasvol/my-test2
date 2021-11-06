@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import { FormGroup, Label, CustomInput, ButtonGroup } from 'reactstrap';
 // import classnames from 'classnames';
 import ButtonNext from '../buttons/buttonNext';
+import { SuccessButton } from '../buttons/baseButton';
+// import handleChangeInfo from '../eventHandler/eventHandlerInfo';
 import style from '../style/tabs.module.css';
 
 const BasicInformation = ({
@@ -11,29 +13,30 @@ const BasicInformation = ({
   valueInfo,
   isCheck,
   createDataChildContIsCheck,
-  createDataChildInfo,
+  handleChangeInfo,
+  // createDataChildInfo,
   toggleTabNext,
 }) => {
-  const handleChange = e => {
-    e.preventDefault();
-    const { value, name } = e.target;
-    createDataChildInfo(prevValueInfo => ({
-      ...prevValueInfo,
-      [name]: value,
-    }));
-  };
+  // const handleChange = e => {
+  //   e.preventDefault();
+  //   const { value, name } = e.target;
+  //   createDataChildInfo(prevValueInfo => ({
+  //     ...prevValueInfo,
+  //     [name]: value,
+  //   }));
+  // };
 
-  useEffect(() => {
-    createDataChildInfo(valueInfo);
-  }, [createDataChildInfo, valueInfo]);
+  // useEffect(() => {
+  //   createDataChildInfo(valueInfo);
+  // }, [createDataChildInfo, valueInfo]);
 
   const toggleCheck = () => {
     createDataChildContIsCheck(prevIsCheck => !prevIsCheck);
   };
 
-  useEffect(() => {
-    createDataChildContIsCheck(isCheck);
-  }, [createDataChildContIsCheck, isCheck]);
+  // useEffect(() => {
+  //   createDataChildContIsCheck(isCheck);
+  // }, [createDataChildContIsCheck, isCheck]);
 
   return (
     <AvForm className="mt-2">
@@ -41,7 +44,7 @@ const BasicInformation = ({
         <Label sm="12">
           Введите имя:
           <AvField
-            onChange={handleChange}
+            onChange={handleChangeInfo}
             name="mainName"
             type="text"
             placeholder="Text"
@@ -55,7 +58,7 @@ const BasicInformation = ({
         <Label for="exampleText" sm="11">
           Описание:
           <AvField
-            onChange={handleChange}
+            onChange={handleChangeInfo}
             type="textarea"
             name="description"
             id="exampleText"
@@ -100,6 +103,11 @@ const BasicInformation = ({
         {/* > */}
         {/*  next */}
         {/* </Button> */}
+        <SuccessButton
+          className={style.btnNext}
+          onClick={toggleTabNext}
+          disabled={!valueInfo.mainName}
+        />
       </ButtonGroup>
     </AvForm>
   );
@@ -108,18 +116,21 @@ BasicInformation.propTypes = {
   // activeTab: PropTypes.number,
   isCheck: PropTypes.bool,
   toggleTabNext: PropTypes.func,
-  createDataChildInfo: PropTypes.func,
+  // createDataChildInfo: PropTypes.func,
+  handleChangeInfo: PropTypes.func,
   createDataChildContIsCheck: PropTypes.func,
   valueInfo: PropTypes.shape({
     mainName: PropTypes.string,
     description: PropTypes.string,
+    props: PropTypes.node,
   }),
 };
 BasicInformation.defaultProps = {
   // activeTab: 1,
   isCheck: false,
   toggleTabNext: () => {},
-  createDataChildInfo: () => {},
+  // createDataChildInfo: () => {},
+  handleChangeInfo: () => {},
   createDataChildContIsCheck: () => {},
   valueInfo: {},
 };
