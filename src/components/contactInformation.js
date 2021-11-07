@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { FormGroup, Label } from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
+import { SuccessButton, WarningButton } from '../buttons/baseButton';
 // import classnames from 'classnames';
-import ButtonPrev from '../buttons/buttonPrev';
-import ButtonNext from '../buttons/buttonNext';
-// import style from '../style/tabs.module.css';
+// import ButtonPrev from '../buttons/buttonPrev';
+// import ButtonNext from '../buttons/buttonNext';
+
+import style from '../style/tabs.module.css';
 
 const ContactInformation = ({
   // activeTab,
@@ -59,23 +62,33 @@ const ContactInformation = ({
           />
         </Label>
       </FormGroup>
-      <ButtonPrev onClick={toggleTabPrev} />
-      {/* <Button */}
-      {/*  className={classnames({ active: activeTab === 1 }, style.btn)} */}
-      {/*  onClick={toggleTabPrev} */}
-      {/*  color="warning" */}
-      {/* > */}
-      {/*  prev */}
-      {/* </Button> */}
-      {/* <Button */}
-      {/* disabled={!valueContact.telephone} */}
-      {/*  className={classnames({ active: activeTab === 3 }, style.btn)} */}
-      {/*  onClick={toggleTabNext} */}
-      {/*  color="success" */}
-      {/* > */}
-      {/*  next */}
-      {/* </Button> */}
-      <ButtonNext onClick={toggleTabNext} disabled={!valueContact.telephone} />
+      <WarningButton onClick={toggleTabPrev} className={style.btn} />
+
+      {/* /!* <ButtonPrev onClick={toggleTabPrev} /> *!/ */}
+      {/* /!* <Button *!/ */}
+      {/* /!*  className={classnames({ active: activeTab === 1 }, */}
+      {/* style.btn)} *!/ */}
+      {/* /!*  onClick={toggleTabPrev} *!/ */}
+      {/* /!*  color="warning" *!/ */}
+      {/* /!* > *!/ */}
+      {/* /!*  prev *!/ */}
+      {/* /!* </Button> *!/ */}
+      {/* /!* <Button *!/ */}
+      {/* /!* disabled={!valueContact.telephone} *!/ */}
+      {/* /!*  className={classnames({ active: activeTab === 3 }, */}
+      {/* style.btn)} *!/ */}
+      {/* /!*  onClick={toggleTabNext} *!/ */}
+      {/* /!*  color="success" *!/ */}
+      {/* /!* > *!/ */}
+      {/* /!*  next *!/ */}
+      {/* /!* </Button> *!/ */}
+      <SuccessButton
+        className={style.btn}
+        onClick={toggleTabNext}
+        disabled={!valueContact.telephone}
+      />
+      {/* <ButtonNext onClick={toggleTabNext}
+      disabled={!valueContact.telephone}/> */}
     </AvForm>
   );
 };

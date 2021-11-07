@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const useUniversalHook = initValue => {
+const useFieldValueHook = initValue => {
   const [value, setValue] = useState(initValue);
 
   const basicFunction = data => {
@@ -17,4 +17,4 @@ const useUniversalHook = initValue => {
   };
   return [value, basicFunction, handleChange];
 };
-export default useUniversalHook;
+export default useFieldValueHook;

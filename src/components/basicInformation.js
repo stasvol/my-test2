@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import { FormGroup, Label, CustomInput, ButtonGroup } from 'reactstrap';
 // import classnames from 'classnames';
-import ButtonNext from '../buttons/buttonNext';
+// import ButtonNext from '../buttons/buttonNext';
 import { SuccessButton } from '../buttons/baseButton';
 // import handleChangeInfo from '../eventHandler/eventHandlerInfo';
+
 import style from '../style/tabs.module.css';
 
 const BasicInformation = ({
@@ -89,11 +91,11 @@ const BasicInformation = ({
         </Label>
       </FormGroup>
       <ButtonGroup>
-        <ButtonNext
-          className={style.btnNext}
-          onClick={toggleTabNext}
-          disabled={!valueInfo.mainName}
-        />
+        {/* <ButtonNext */}
+        {/*  className={style.btnNext} */}
+        {/*  onClick={toggleTabNext} */}
+        {/*  disabled={!valueInfo.mainName} */}
+        {/* /> */}
         {/* <Button */}
         {/*  disabled={!valueInfo.mainName} */}
         {/*  className={classnames({ active: activeTab === 2 },

@@ -5,6 +5,7 @@
 .on {
   color: #12a20a;
 }
+
 .off {
   color: #cb0707;
 }
@@ -49,6 +50,7 @@
   position: relative;
   width: 250px;
 }
+
 .img {
   height: 200px;
   margin-top: 10px;

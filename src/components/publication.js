@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
-import { ButtonGroup, Form, FormGroup, Input, Label } from 'reactstrap';
-// import classnames from 'classnames';
 import PropTypes from 'prop-types';
+import { ButtonGroup, Form, FormGroup, Input, Label } from 'reactstrap';
 import ModalInfo from '../modal/modalInfo';
-import ButtonPrev from '../buttons/buttonPrev';
-import ButtonSave from '../buttons/buttonSave';
-import checkArr from '../dataComponent/checkArrPublication';
+
+// import classnames from 'classnames';
+
+import { WarningButton, InfoButton } from '../buttons/baseButton';
+// import ButtonSave from '../buttons/buttonSave';
+// import ButtonSave from '../buttons/buttonSave';
+import checkArr from '../constants/checkArrPublication';
+
 import style from '../style/tabs.module.css';
 
 const Publication = ({
@@ -42,26 +46,25 @@ const Publication = ({
   return (
     <div className={style.body}>
       <Form>
-        {checkArr.map(({ name, id }) => {
-          return (
-            <FormGroup check key={`${id}${name}`}>
-              <Label check>
-                <div className={style.check}>
-                  <Input
-                    onChange={handleChange}
-                    type="checkbox"
-                    name={name}
-                    checkbox="Услуга 1"
-                  />{' '}
-                  {name}
-                </div>
-              </Label>
-            </FormGroup>
-          );
-        })}
+        {checkArr.map(({ name, id }) => (
+          <FormGroup check key={`${id}${name}`}>
+            <Label check>
+              <div className={style.check}>
+                <Input
+                  onChange={handleChange}
+                  type="checkbox"
+                  name={name}
+                  checkbox="Услуга 1"
+                />{' '}
+                {name}
+              </div>
+            </Label>
+          </FormGroup>
+        ))}
         <FormGroup check>
           <ButtonGroup>
-            <ButtonPrev onClick={toggleTabPrev} />
+            <WarningButton className={style.btn} onClick={toggleTabPrev} />
+            {/* <ButtonPrev onClick={toggleTabPrev} /> */}
             {/* <Button */}
             {/* className={classnames({active:activeTab === 3},style.btn)} */}
             {/*  onClick={toggleTabPrev} */}
@@ -72,7 +75,8 @@ const Publication = ({
             {/* <Button className={style.btn} color="info" onClick={toggle}> */}
             {/*  save */}
             {/* </Button> */}
-            <ButtonSave onClick={toggle} />
+            {/* <ButtonSave onClick={toggle} /> */}
+            <InfoButton className={style.btn} onClick={toggle} />
           </ButtonGroup>
         </FormGroup>
       </Form>

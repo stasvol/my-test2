@@ -1,11 +1,16 @@
 import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import PropTypes from 'prop-types';
+
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+
 import style from '../style/tabs.module.css';
 
 const ModalInfo = ({ objProps, toggle, modal }) => {
   const showModalInfo = Object.entries(objProps)
     .filter(([key, value]) => {
+      const valueLength = typeof value === 'string' || Array.isArray(value);
+      if (key !== 'imgFile' && value) return valueLength;
+      return false;
       // if (
       //   key !== 'imgFile' &&
       //   value &&
@@ -15,13 +20,15 @@ const ModalInfo = ({ objProps, toggle, modal }) => {
       // }
       // return key !== 'imgFile';
 
-      if (key !== 'imgFile' && value) {
-        if (typeof value === 'string' || Array.isArray(value)) {
-          return value.length;
-        }
-        return true;
-      }
-      return key !== 'imgFile';
+      // if (key !== 'imgFile' && value) {
+      //   if (typeof value === 'string' || Array.isArray(value)) {
+      //     return value.length;
+      //   }
+      //   return true;
+      // }
+      // return key !== 'imgFile';
+      //
+
       // return (
       //   key !== 'imgFile' &&
       //   value &&
@@ -58,11 +65,14 @@ const ModalInfo = ({ objProps, toggle, modal }) => {
 
       <ModalBody>
         {showModalInfo}
-        {objProps.imgFile.map((src, i) => (
-          <div key={i.toString()} className={style.closeImage}>
+        {objProps.imgFile.map(src => (
+          <div
+            key={Math.floor(Math.random() * 10)}
+            className={style.closeImage}
+          >
             <img
               className={style.img}
-              key={`${i.toString()}${src}`}
+              key={Math.ceil(Math.random({ src }) * 10)}
               src={src}
               alt="img"
             />

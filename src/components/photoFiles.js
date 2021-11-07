@@ -1,9 +1,12 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
+
 import { Button, Form, FormGroup, Label, ButtonGroup } from 'reactstrap';
 // import classnames from 'classnames';
-import ButtonPrev from '../buttons/buttonPrev';
-import ButtonNext from '../buttons/buttonNext';
+// import ButtonPrev from '../buttons/buttonPrev';
+// import ButtonNext from '../buttons/buttonNext';
+import { SuccessButton, WarningButton } from '../buttons/baseButton';
+
 import style from '../style/tabs.module.css';
 
 const PhotoFile = ({
@@ -84,7 +87,8 @@ const PhotoFile = ({
       </FormGroup>
       <FormGroup>
         <ButtonGroup>
-          <ButtonPrev onClick={toggleTabPrev} />
+          <WarningButton className={style.btn} onClick={toggleTabPrev} />
+          {/* <ButtonPrev onClick={toggleTabPrev} /> */}
           {/* <Button */}
           {/* className={classnames({active:activeTab === 2 },style.btn)} */}
           {/*  onClick={toggleTabPrev} */}
@@ -100,7 +104,8 @@ const PhotoFile = ({
           {/* > */}
           {/*  next */}
           {/* </Button> */}
-          <ButtonNext onClick={toggleTabNext} />
+          {/* <ButtonNext onClick={toggleTabNext} /> */}
+          <SuccessButton className={style.btn} onClick={toggleTabNext} />
         </ButtonGroup>
       </FormGroup>
     </Form>

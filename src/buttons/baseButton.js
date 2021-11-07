@@ -11,7 +11,7 @@ export const SuccessButton = props => (
     NEXT
   </Button>
 );
-export const warningButton = props => (
+export const WarningButton = props => (
   <Button
     {...props}
     // className={classes}
@@ -23,7 +23,7 @@ export const warningButton = props => (
   </Button>
 );
 
-export const infoButton = props => (
+export const InfoButton = props => (
   <Button
     {...props}
     // className={classes}
