@@ -11,5 +11,6 @@
   "bracketSpacing": true,
   "arrowParens": "avoid",
   "quoteProps": "as-needed",
-  "proseWrap": "always"
+  "proseWrap": "always",
 }
+

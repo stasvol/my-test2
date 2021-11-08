@@ -2,15 +2,11 @@ import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { Button, Form, FormGroup, Label, ButtonGroup } from 'reactstrap';
-// import classnames from 'classnames';
-// import ButtonPrev from '../buttons/buttonPrev';
-// import ButtonNext from '../buttons/buttonNext';
-import { SuccessButton, WarningButton } from '../buttons/baseButton';
+import { SuccessButton, WarningButton } from './buttons/baseButton';
 
 import style from '../style/tabs.module.css';
 
 const PhotoFile = ({
-  // activeTab,
   createDataChildImg,
   imgFile,
   toggleTabPrev,
@@ -39,10 +35,6 @@ const PhotoFile = ({
   const removeImage = file => {
     createDataChildImg(prev => prev.filter(img => img !== file));
   };
-
-  // useEffect(() => {
-  //   createDataChildImg(imgFile);
-  // }, [createDataChildImg, imgFile]);
 
   const upload = () => {
     InputRef.current.click();
@@ -88,23 +80,6 @@ const PhotoFile = ({
       <FormGroup>
         <ButtonGroup>
           <WarningButton className={style.btn} onClick={toggleTabPrev} />
-          {/* <ButtonPrev onClick={toggleTabPrev} /> */}
-          {/* <Button */}
-          {/* className={classnames({active:activeTab === 2 },style.btn)} */}
-          {/*  onClick={toggleTabPrev} */}
-          {/*  color="warning" */}
-          {/* > */}
-          {/*  prev */}
-          {/* </Button> */}
-
-          {/* <Button */}
-          {/* className={classnames({active:activeTab === 4},style.btn)} */}
-          {/*  onClick={toggleTabNext} */}
-          {/*  color="success" */}
-          {/* > */}
-          {/*  next */}
-          {/* </Button> */}
-          {/* <ButtonNext onClick={toggleTabNext} /> */}
           <SuccessButton className={style.btn} onClick={toggleTabNext} />
         </ButtonGroup>
       </FormGroup>
@@ -112,14 +87,12 @@ const PhotoFile = ({
   );
 };
 PhotoFile.propTypes = {
-  // activeTab: PropTypes.number,
   toggleTabPrev: PropTypes.func,
   toggleTabNext: PropTypes.func,
   createDataChildImg: PropTypes.func,
   imgFile: PropTypes.arrayOf(PropTypes.string),
 };
 PhotoFile.defaultProps = {
-  // activeTab: 1,
   toggleTabPrev: () => {},
   toggleTabNext: () => {},
   createDataChildImg: () => {},

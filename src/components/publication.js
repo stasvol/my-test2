@@ -1,19 +1,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { ButtonGroup, Form, FormGroup, Input, Label } from 'reactstrap';
-import ModalInfo from '../modal/modalInfo';
+import ModalInfo from './modal/modalInfo';
 
-// import classnames from 'classnames';
-
-import { WarningButton, InfoButton } from '../buttons/baseButton';
-// import ButtonSave from '../buttons/buttonSave';
-// import ButtonSave from '../buttons/buttonSave';
-import checkArr from '../constants/checkArrPublication';
+import { WarningButton, InfoButton } from './buttons/baseButton';
+import checkArr from './constants/checkArrPublication';
 
 import style from '../style/tabs.module.css';
 
 const Publication = ({
-  // activeTab,
   valueInfo,
   isCheck,
   valueContact,
@@ -64,18 +59,6 @@ const Publication = ({
         <FormGroup check>
           <ButtonGroup>
             <WarningButton className={style.btn} onClick={toggleTabPrev} />
-            {/* <ButtonPrev onClick={toggleTabPrev} /> */}
-            {/* <Button */}
-            {/* className={classnames({active:activeTab === 3},style.btn)} */}
-            {/*  onClick={toggleTabPrev} */}
-            {/*  color="warning" */}
-            {/* > */}
-            {/*  prev */}
-            {/* </Button> */}
-            {/* <Button className={style.btn} color="info" onClick={toggle}> */}
-            {/*  save */}
-            {/* </Button> */}
-            {/* <ButtonSave onClick={toggle} /> */}
             <InfoButton className={style.btn} onClick={toggle} />
           </ButtonGroup>
         </FormGroup>
@@ -87,7 +70,6 @@ const Publication = ({
   );
 };
 Publication.propTypes = {
-  // activeTab: PropTypes.number,
   toggleTabPrev: PropTypes.func,
   valueInfo: PropTypes.shape({
     mainName: PropTypes.string,
@@ -101,7 +83,6 @@ Publication.propTypes = {
   imgFile: PropTypes.arrayOf(PropTypes.string),
 };
 Publication.defaultProps = {
-  // activeTab: 1,
   toggleTabPrev: () => {},
   valueInfo: {},
   isCheck: true,

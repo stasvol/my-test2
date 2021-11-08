@@ -60,6 +60,7 @@
   },
 
   "rules": {
+    "import/prefer-default-export": "off",
     "accessor-pairs": "error",
     "arrow-spacing": ["error", { "before": true, "after": true }],
     "block-spacing": ["error", "always"],

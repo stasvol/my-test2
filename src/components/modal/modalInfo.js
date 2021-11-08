@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-import style from '../style/tabs.module.css';
+import style from '../../style/tabs.module.css';
 
 const ModalInfo = ({ objProps, toggle, modal }) => {
   const showModalInfo = Object.entries(objProps)
     .filter(([key, value]) => {
-      const valueLength = typeof value === 'string' || Array.isArray(value);
+      const valueLength =
+        typeof value === 'string' || Array.isArray(value) ? value.length : true;
       if (key !== 'imgFile' && value) return valueLength;
       return false;
       // if (
@@ -28,7 +29,6 @@ const ModalInfo = ({ objProps, toggle, modal }) => {
       // }
       // return key !== 'imgFile';
       //
-
       // return (
       //   key !== 'imgFile' &&
       //   value &&

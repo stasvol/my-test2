@@ -3,42 +3,20 @@ import PropTypes from 'prop-types';
 
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import { FormGroup, Label, CustomInput, ButtonGroup } from 'reactstrap';
-// import classnames from 'classnames';
-// import ButtonNext from '../buttons/buttonNext';
-import { SuccessButton } from '../buttons/baseButton';
-// import handleChangeInfo from '../eventHandler/eventHandlerInfo';
+import { SuccessButton } from './buttons/baseButton';
 
 import style from '../style/tabs.module.css';
 
 const BasicInformation = ({
-  // activeTab,
   valueInfo,
   isCheck,
   createDataChildContIsCheck,
   handleChangeInfo,
-  // createDataChildInfo,
   toggleTabNext,
 }) => {
-  // const handleChange = e => {
-  //   e.preventDefault();
-  //   const { value, name } = e.target;
-  //   createDataChildInfo(prevValueInfo => ({
-  //     ...prevValueInfo,
-  //     [name]: value,
-  //   }));
-  // };
-
-  // useEffect(() => {
-  //   createDataChildInfo(valueInfo);
-  // }, [createDataChildInfo, valueInfo]);
-
   const toggleCheck = () => {
     createDataChildContIsCheck(prevIsCheck => !prevIsCheck);
   };
-
-  // useEffect(() => {
-  //   createDataChildContIsCheck(isCheck);
-  // }, [createDataChildContIsCheck, isCheck]);
 
   return (
     <AvForm className="mt-2">
@@ -91,20 +69,6 @@ const BasicInformation = ({
         </Label>
       </FormGroup>
       <ButtonGroup>
-        {/* <ButtonNext */}
-        {/*  className={style.btnNext} */}
-        {/*  onClick={toggleTabNext} */}
-        {/*  disabled={!valueInfo.mainName} */}
-        {/* /> */}
-        {/* <Button */}
-        {/*  disabled={!valueInfo.mainName} */}
-        {/*  className={classnames({ active: activeTab === 2 },
-        style.btnNext)} */}
-        {/*  onClick={toggleTabNext} */}
-        {/*  color="success" */}
-        {/* > */}
-        {/*  next */}
-        {/* </Button> */}
         <SuccessButton
           className={style.btnNext}
           onClick={toggleTabNext}
@@ -115,10 +79,8 @@ const BasicInformation = ({
   );
 };
 BasicInformation.propTypes = {
-  // activeTab: PropTypes.number,
   isCheck: PropTypes.bool,
   toggleTabNext: PropTypes.func,
-  // createDataChildInfo: PropTypes.func,
   handleChangeInfo: PropTypes.func,
   createDataChildContIsCheck: PropTypes.func,
   valueInfo: PropTypes.shape({
@@ -128,10 +90,8 @@ BasicInformation.propTypes = {
   }),
 };
 BasicInformation.defaultProps = {
-  // activeTab: 1,
   isCheck: false,
   toggleTabNext: () => {},
-  // createDataChildInfo: () => {},
   handleChangeInfo: () => {},
   createDataChildContIsCheck: () => {},
   valueInfo: {},
