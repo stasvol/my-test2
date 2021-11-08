@@ -81,7 +81,7 @@ const ContentsTabs = ({
   ];
 
   return (
-    <div>
+    <>
       {tabContents.map(({ title, id, props }, i) => (
         <TabPane tabId={i + 1} key={`${title}${id}`}>
           <Row>
@@ -92,7 +92,7 @@ const ContentsTabs = ({
           </Row>
         </TabPane>
       ))}
-    </div>
+    </>
   );
 };
 ContentsTabs.propTypes = {
