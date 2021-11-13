@@ -5,6 +5,7 @@ export const SuccessButton = props => (
     NEXT
   </Button>
 );
+
 export const WarningButton = props => (
   <Button {...props} color="warning">
     PREV

@@ -28,6 +28,7 @@ const PhotoFile = ({
           createDataChildImg(prevImgFile => [...prevImgFile, result]);
         }
       };
+
       reader.readAsDataURL(file);
     });
   };

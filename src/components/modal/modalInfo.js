@@ -10,32 +10,7 @@ const ModalInfo = ({ infoProps, toggle, modal }) => {
         typeof value === 'string' || Array.isArray(value) ? value.length : true;
       if (key !== 'imgFile' && value) return valueLength;
       return false;
-      // if (
-      //   key !== 'imgFile' &&
-      //   value &&
-      //   (typeof value === 'string' || Array.isArray(value))
-      // ) {
-      //   return value.length;
-      // }
-      // return key !== 'imgFile';
-
-      // if (key !== 'imgFile' && value) {
-      //   if (typeof value === 'string' || Array.isArray(value)) {
-      //     return value.length;
-      //   }
-      //   return true;
-      // }
-      // return key !== 'imgFile';
-      //
-      // return (
-      //   key !== 'imgFile' &&
-      //   value &&
-      //   (typeof value === 'string' || Array.isArray(value)
-      //     ? value.length
-      //     : true)
-      // );
     })
-
     .map(([key, value]) => (
       <div key={key.toString()}>
         <div className={style.wid}>
@@ -58,7 +33,6 @@ const ModalInfo = ({ infoProps, toggle, modal }) => {
       <ModalHeader toggle={toggle} close={closeBtn}>
         Ваше объявление
       </ModalHeader>
-
       <ModalBody>
         {showModalInfo}
         {infoProps.imgFile.map((src, id) => (

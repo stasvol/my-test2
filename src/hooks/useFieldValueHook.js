@@ -1,21 +1,22 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 const useFieldValueHook = initValue => {
   const [valueField, setValueField] = useState(initValue);
 
-  const changeValue = data => {
+  const changeValue = useCallback(data => {
     setValueField(data);
-  };
+  }, []);
 
-  const handleChangeField = e => {
+  const handleChangeField = useCallback(e => {
     e.preventDefault();
     const { value, name } = e.target;
     setValueField(prevValue => ({
       ...prevValue,
       [name]: value,
     }));
-  };
+  }, []);
 
   return { valueField, changeValue, handleChangeField };
 };
+
 export default useFieldValueHook;

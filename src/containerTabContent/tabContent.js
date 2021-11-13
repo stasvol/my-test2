@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Col, Row, TabPane } from 'reactstrap';
 
@@ -85,6 +86,5 @@ ContentsTabs.defaultProps = {
   contactInfoProps: {},
   photoInfoProps: {},
   publicInfoProps: {},
-  // props: {},
 };
-export default ContentsTabs;
+export default memo(ContentsTabs);

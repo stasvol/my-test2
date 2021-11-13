@@ -13,7 +13,6 @@ const tabContentFunc = (id, props) => {
       return <PhotoFile {...props} />;
     case 'publicInfo':
       return <Publication {...props} />;
-
     default:
       return null;
   }
