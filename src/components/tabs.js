@@ -1,68 +1,103 @@
-import React from 'react';
+import { useMemo } from 'react';
 import classnames from 'classnames';
 import { Container, Nav, NavItem, NavLink, TabContent } from 'reactstrap';
 
+import mainNameAndDescription from './constants/mainNameAndDescription';
+import contactTelephoneAndEmail from './constants/contactTelephoneAndEmail';
+import tabArr from './constants/tabArrTabs';
 import useActiveTab from '../hooks/useActiveTab';
-import useFieldValueHook from '../hooks/universalHook';
-import arrTab from './constants/tabArrTabs';
-import contactTelephoneEmail from './constants/contactTelephone';
-import mainNameDescription from './constants/mainNameDescription';
-import ContentsTabs from './tabContent';
+import useFieldValueHook from '../hooks/useFieldValueHook';
+import ContentsTabs from '../containerTabContent/tabContent';
 
 import style from '../style/tabs.module.css';
 
 const Tabs = () => {
   const { activeTab, toggleTab, toggleTabPrev, toggleTabNext } = useActiveTab();
-  const [valueInfo, createDataChildInfo, handleChangeInfo] = useFieldValueHook(
-    mainNameDescription,
-  );
-  const [isCheck, createDataChildContIsCheck] = useFieldValueHook(false);
-  const [imgFile, createDataChildImg] = useFieldValueHook([]);
-  const [
-    valueContact,
-    createDataChildContact,
-    handleChangeContact,
-  ] = useFieldValueHook(contactTelephoneEmail);
+  const {
+    valueField: valueInfo,
+    changeValue: createDataChildInfo,
+    handleChangeField: handleChangeInfo,
+  } = useFieldValueHook(mainNameAndDescription);
 
-  const basicInfoProps = {
+  const {
+    valueField: isCheck,
+    changeValue: createDataChildContIsCheck,
+  } = useFieldValueHook(false);
+  const {
+    valueField: imgFile,
+    changeValue: createDataChildImg,
+  } = useFieldValueHook([]);
+
+  const {
+    valueField: valueContact,
+    changeValue: createDataChildContact,
+    handleChangeField: handleChangeContact,
+  } = useFieldValueHook(contactTelephoneAndEmail);
+
+  const childBasicProps = {
     createDataChildInfo,
     createDataChildContIsCheck,
-    valueInfo,
     handleChangeInfo,
-    isCheck,
     toggleTabNext,
     toggleTab,
   };
-  const contactInfoProps = {
+  const basicInfoProps = useMemo(
+    () => ({
+      ...childBasicProps,
+      valueInfo,
+      isCheck,
+    }),
+    [childBasicProps, valueInfo, isCheck],
+  );
+
+  const childContactProps = {
     createDataChildContact,
-    valueContact,
     handleChangeContact,
     toggleTabNext,
     toggleTabPrev,
   };
+  const contactInfoProps = useMemo(
+    () => ({
+      ...childContactProps,
+      valueContact,
+    }),
+    [childContactProps, valueContact],
+  );
 
-  const photoInfoProps = {
+  const childPhotoProps = {
     createDataChildImg,
-    imgFile,
     toggleTabPrev,
     toggleTabNext,
   };
+  const photoInfoProps = useMemo(
+    () => ({
+      ...childPhotoProps,
+      imgFile,
+    }),
+    [childPhotoProps, imgFile],
+  );
 
-  const publicInfoProps = {
+  const childPublicProps = {
     activeTab,
     valueInfo,
     isCheck,
     valueContact,
     imgFile,
-    toggleTabPrev,
-    toggleTab,
   };
+  const publicInfoProps = useMemo(
+    () => ({
+      ...childPublicProps,
+      toggleTabPrev,
+      toggleTab,
+    }),
+    [childPublicProps, toggleTabPrev, toggleTab],
+  );
 
   return (
     <div>
       <Container className="mt-3">
         <Nav tabs className={style.nav}>
-          {arrTab.map(({ name, id }) => (
+          {tabArr.map(({ name, id }) => (
             <NavItem className={style.botton} key={`${id}${name}`}>
               <NavLink
                 disabled

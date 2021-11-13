@@ -1,6 +1,6 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Row, TabPane } from 'reactstrap';
+
 import tabContentFunc from './tabContentFunc';
 
 const ContentsTabs = ({
@@ -13,39 +13,33 @@ const ContentsTabs = ({
     {
       title: 'Основная информация:',
       id: 'basicInfo',
-      basicInfoProps,
+      props: basicInfoProps,
     },
     {
       title: 'Контактная информация:',
       id: 'contactInfo',
-      contactInfoProps,
+      props: contactInfoProps,
     },
     {
       title: 'Добавить фотографию:',
       id: 'photoInfo',
-      photoInfoProps,
+      props: photoInfoProps,
     },
     {
       title: 'Публикация:',
       id: 'publicInfo',
-      publicInfoProps,
+      props: publicInfoProps,
     },
   ];
 
   return (
     <>
-      {tabContents.map(({ title, id }, i) => (
+      {tabContents.map(({ title, id, props }, i) => (
         <TabPane tabId={i + 1} key={`${title}${id}`}>
           <Row>
             <Col sm="12">
               <h4>{title}</h4>
-              {tabContentFunc(
-                id,
-                basicInfoProps,
-                contactInfoProps,
-                photoInfoProps,
-                publicInfoProps,
-              )}
+              {tabContentFunc(id, props)}
             </Col>
           </Row>
         </TabPane>
@@ -91,5 +85,6 @@ ContentsTabs.defaultProps = {
   contactInfoProps: {},
   photoInfoProps: {},
   publicInfoProps: {},
+  // props: {},
 };
 export default ContentsTabs;

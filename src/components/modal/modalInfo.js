@@ -1,12 +1,10 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 import style from '../../style/tabs.module.css';
 
-const ModalInfo = ({ objProps, toggle, modal }) => {
-  const showModalInfo = Object.entries(objProps)
+const ModalInfo = ({ infoProps, toggle, modal }) => {
+  const showModalInfo = Object.entries(infoProps)
     .filter(([key, value]) => {
       const valueLength =
         typeof value === 'string' || Array.isArray(value) ? value.length : true;
@@ -38,18 +36,16 @@ const ModalInfo = ({ objProps, toggle, modal }) => {
       // );
     })
 
-    .map(([key, value]) => {
-      return (
-        <div key={key.toString()}>
-          <div className={style.wid}>
-            <b>{key} :</b>
-            <span className={style.modInput}>
-              <i>{value?.toLocaleString()}</i>
-            </span>
-          </div>
+    .map(([key, value]) => (
+      <div key={key.toString()}>
+        <div className={style.wid}>
+          <b>{key} :</b>
+          <span className={style.modInput}>
+            <i>{value?.toLocaleString()}</i>
+          </span>
         </div>
-      );
-    });
+      </div>
+    ));
 
   const closeBtn = (
     <button className="close" onClick={toggle}>
@@ -65,18 +61,13 @@ const ModalInfo = ({ objProps, toggle, modal }) => {
 
       <ModalBody>
         {showModalInfo}
-        {objProps.imgFile.map(src => (
-          <div
-            key={Math.floor(Math.random() * 10)}
-            className={style.closeImage}
-          >
-            <img
-              className={style.img}
-              key={Math.ceil(Math.random({ src }) * 10)}
-              src={src}
-              alt="img"
-            />
-          </div>
+        {infoProps.imgFile.map((src, id) => (
+          <img
+            className={style.img}
+            key={`${src}${id.toString()}`}
+            src={src}
+            alt="img"
+          />
         ))}
       </ModalBody>
       <ModalFooter>
@@ -88,7 +79,7 @@ const ModalInfo = ({ objProps, toggle, modal }) => {
   );
 };
 ModalInfo.propTypes = {
-  objProps: PropTypes.shape({
+  infoProps: PropTypes.shape({
     valueInfo: PropTypes.shape({
       mainName: PropTypes.string,
       description: PropTypes.string,

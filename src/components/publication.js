@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { ButtonGroup, Form, FormGroup, Input, Label } from 'reactstrap';
-import ModalInfo from './modal/modalInfo';
 
-import { WarningButton, InfoButton } from './buttons/baseButton';
 import checkArr from './constants/checkArrPublication';
+import ModalInfo from './modal/modalInfo';
+import { WarningButton, InfoButton } from './buttons/baseButton';
 
 import style from '../style/tabs.module.css';
 
@@ -30,14 +30,14 @@ const Publication = ({
     });
   };
 
-  const objProps = {
+  const infoProps = {
     ...valueInfo,
     ...valueContact,
     isCheck,
     imgFile,
     check,
   };
-  // const objProps = { ...props, check };
+  // const infoProps = { ...props, check };
   return (
     <div className={style.body}>
       <Form>
@@ -64,7 +64,7 @@ const Publication = ({
         </FormGroup>
       </Form>
       <div>
-        <ModalInfo objProps={objProps} toggle={toggle} modal={modal} />
+        <ModalInfo infoProps={infoProps} toggle={toggle} modal={modal} />
       </div>
     </div>
   );

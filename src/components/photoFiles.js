@@ -1,7 +1,7 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import PropTypes from 'prop-types';
-
 import { Button, Form, FormGroup, Label, ButtonGroup } from 'reactstrap';
+
 import { SuccessButton, WarningButton } from './buttons/baseButton';
 
 import style from '../style/tabs.module.css';
@@ -13,7 +13,7 @@ const PhotoFile = ({
   toggleTabNext,
 }) => {
   const maxSizeBit = 5 * 1024 * 1024;
-  const InputRef = useRef(null);
+  const inputRef = useRef(null);
 
   const saveFile = ({ target: { files } }) => {
     const filesArr = [...files];
@@ -37,7 +37,7 @@ const PhotoFile = ({
   };
 
   const upload = () => {
-    InputRef.current.click();
+    inputRef.current.click();
   };
 
   return (
@@ -45,7 +45,7 @@ const PhotoFile = ({
       <FormGroup>
         <Label for="exampleFile">
           <input
-            ref={InputRef}
+            ref={inputRef}
             hidden
             onChange={saveFile}
             type="file"

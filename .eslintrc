@@ -287,7 +287,7 @@
     "react/no-set-state": "off",
     "react/no-unknown-property": "error",
     "react/prefer-es6-class": "error",
-    "react/react-in-jsx-scope": "error",
+    "react/react-in-jsx-scope": "off",
     "react/self-closing-comp": "error",
     "react/sort-comp": "error",
     "react/jsx-uses-react": "error",
