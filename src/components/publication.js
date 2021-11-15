@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { ButtonGroup, Form, FormGroup, Input, Label } from 'reactstrap';
 
-import { checkArr } from '../constants/constantsValue';
+import { checkArr } from '../constants/checkArr';
 import ModalInfo from './modalInfo';
 import { WarningButton, InfoButton } from './baseButton';
 

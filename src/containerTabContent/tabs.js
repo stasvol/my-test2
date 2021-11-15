@@ -5,8 +5,8 @@ import { Container, Nav, NavItem, NavLink, TabContent } from 'reactstrap';
 import {
   mainNameAndDescription,
   contactTelephoneAndEmail,
-  tabArr,
 } from '../constants/constantsValue';
+import { tabArr } from '../constants/tabArr';
 import useActiveTab from '../hooks/useActiveTab';
 import useFieldValue from '../hooks/useFieldValue';
 import ContentsTabs from './tabContent';
