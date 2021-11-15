@@ -37,7 +37,7 @@ const Publication = ({
     imgFile,
     check,
   };
-  // const infoProps = { ...props, check };
+
   return (
     <div className={style.body}>
       <Form>
@@ -73,6 +73,7 @@ const Publication = ({
     </div>
   );
 };
+
 Publication.propTypes = {
   toggleTabPrev: PropTypes.func,
   valueInfo: PropTypes.shape({
@@ -86,6 +87,7 @@ Publication.propTypes = {
   }),
   imgFile: PropTypes.arrayOf(PropTypes.string),
 };
+
 Publication.defaultProps = {
   toggleTabPrev: () => {},
   valueInfo: {},

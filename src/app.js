@@ -1,4 +1,4 @@
-import Tabs from './components/tabs';
+import Tabs from './containerTabContent/tabs';
 
 import style from './style/app.module.css';
 

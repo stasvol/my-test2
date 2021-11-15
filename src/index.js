@@ -1,10 +1,10 @@
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
-import 'bootstrap/dist/css/bootstrap.css';
 
 import App from './app';
 
-import './index.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import './style/index.css';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

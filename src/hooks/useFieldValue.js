@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 
-const useFieldValueHook = initValue => {
+const useFieldValue = initValue => {
   const [valueField, setValueField] = useState(initValue);
 
   const changeValue = useCallback(data => {
@@ -19,4 +19,4 @@ const useFieldValueHook = initValue => {
   return { valueField, changeValue, handleChangeField };
 };
 
-export default useFieldValueHook;
+export default useFieldValue;

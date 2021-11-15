@@ -2,7 +2,7 @@ import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Col, Row, TabPane } from 'reactstrap';
 
-import tabContentFunc from './tabContentFunc';
+import contentForTabs from './contentForTabs';
 
 const ContentsTabs = ({
   basicInfoProps,
@@ -40,7 +40,7 @@ const ContentsTabs = ({
           <Row>
             <Col sm="12">
               <h4>{title}</h4>
-              {tabContentFunc(id, props)}
+              {contentForTabs(id, props)}
             </Col>
           </Row>
         </TabPane>
@@ -48,6 +48,7 @@ const ContentsTabs = ({
     </>
   );
 };
+
 ContentsTabs.propTypes = {
   basicInfoProps: PropTypes.shape({
     createDataChildInfo: PropTypes.func,
@@ -61,6 +62,7 @@ ContentsTabs.propTypes = {
       description: PropTypes.string,
     }),
   }),
+
   contactInfoProps: PropTypes.shape({
     createDataChildContact: PropTypes.func,
     handleChangeContact: PropTypes.func,
@@ -81,6 +83,7 @@ ContentsTabs.propTypes = {
     toggleTab: PropTypes.func,
   }),
 };
+
 ContentsTabs.defaultProps = {
   basicInfoProps: {},
   contactInfoProps: {},

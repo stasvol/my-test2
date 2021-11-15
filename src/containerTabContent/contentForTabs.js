@@ -3,7 +3,7 @@ import ContactInformation from '../components/contactInformation';
 import PhotoFile from '../components/photoFiles';
 import Publication from '../components/publication';
 
-const tabContentFunc = (id, props) => {
+const contentForTabs = (id, props) => {
   switch (id) {
     case 'basicInfo':
       return <BasicInformation {...props} />;
@@ -17,4 +17,5 @@ const tabContentFunc = (id, props) => {
       return null;
   }
 };
-export default tabContentFunc;
+
+export default contentForTabs;

@@ -6,13 +6,14 @@ import { SuccessButton, WarningButton } from './buttons/baseButton';
 
 import style from '../style/tabs.module.css';
 
+const maxSizeBit = 5 * 1024 * 1024;
+
 const PhotoFile = ({
   createDataChildImg,
   imgFile,
   toggleTabPrev,
   toggleTabNext,
 }) => {
-  const maxSizeBit = 5 * 1024 * 1024;
   const inputRef = useRef(null);
 
   const saveFile = ({ target: { files } }) => {
@@ -91,12 +92,14 @@ const PhotoFile = ({
     </Form>
   );
 };
+
 PhotoFile.propTypes = {
   toggleTabPrev: PropTypes.func,
   toggleTabNext: PropTypes.func,
   createDataChildImg: PropTypes.func,
   imgFile: PropTypes.arrayOf(PropTypes.string),
 };
+
 PhotoFile.defaultProps = {
   toggleTabPrev: () => {},
   toggleTabNext: () => {},
