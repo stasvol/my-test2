@@ -72,7 +72,10 @@ const BasicInformation = ({
           className={style.btnNext}
           onClick={toggleTabNext}
           disabled={!valueInfo.mainName}
-        />
+        >
+          {' '}
+          next
+        </SuccessButton>
       </ButtonGroup>
     </AvForm>
   );

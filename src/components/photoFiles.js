@@ -80,8 +80,12 @@ const PhotoFile = ({
       </FormGroup>
       <FormGroup>
         <ButtonGroup>
-          <WarningButton className={style.btn} onClick={toggleTabPrev} />
-          <SuccessButton className={style.btn} onClick={toggleTabNext} />
+          <WarningButton className={style.btn} onClick={toggleTabPrev}>
+            prev
+          </WarningButton>
+          <SuccessButton className={style.btn} onClick={toggleTabNext}>
+            next
+          </SuccessButton>
         </ButtonGroup>
       </FormGroup>
     </Form>

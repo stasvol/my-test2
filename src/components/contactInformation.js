@@ -42,12 +42,17 @@ const ContactInformation = ({
         />
       </Label>
     </FormGroup>
-    <WarningButton onClick={toggleTabPrev} className={style.btn} />
+    <WarningButton onClick={toggleTabPrev} className={style.btn}>
+      prev
+    </WarningButton>
     <SuccessButton
       className={style.btn}
       onClick={toggleTabNext}
       disabled={!valueContact.telephone}
-    />
+    >
+      {' '}
+      next
+    </SuccessButton>
   </AvForm>
 );
 

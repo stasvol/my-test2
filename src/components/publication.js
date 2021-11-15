@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { ButtonGroup, Form, FormGroup, Input, Label } from 'reactstrap';
 
-import checkArr from './constants/checkArrPublication';
+import { checkArr } from '../constants/constantsValue';
 import ModalInfo from './modal/modalInfo';
 import { WarningButton, InfoButton } from './buttons/baseButton';
 
@@ -58,8 +58,12 @@ const Publication = ({
         ))}
         <FormGroup check>
           <ButtonGroup>
-            <WarningButton className={style.btn} onClick={toggleTabPrev} />
-            <InfoButton className={style.btn} onClick={toggle} />
+            <WarningButton className={style.btn} onClick={toggleTabPrev}>
+              prev
+            </WarningButton>
+            <InfoButton className={style.btn} onClick={toggle}>
+              save
+            </InfoButton>
           </ButtonGroup>
         </FormGroup>
       </Form>

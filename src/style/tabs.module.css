@@ -21,11 +21,13 @@
 
 .btn {
   float: none;
+  text-transform: uppercase;
   width: 150px;
 }
 
 .btnNext {
   margin: 20px;
+  text-transform: uppercase;
   width: 250px;
 }
 

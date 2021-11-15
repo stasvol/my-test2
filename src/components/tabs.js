@@ -2,9 +2,11 @@ import { useMemo, memo } from 'react';
 import classnames from 'classnames';
 import { Container, Nav, NavItem, NavLink, TabContent } from 'reactstrap';
 
-import mainNameAndDescription from './constants/mainNameAndDescription';
-import contactTelephoneAndEmail from './constants/contactTelephoneAndEmail';
-import tabArr from './constants/tabArrTabs';
+import {
+  mainNameAndDescription,
+  contactTelephoneAndEmail,
+  tabArr,
+} from '../constants/constantsValue';
 import useActiveTab from '../hooks/useActiveTab';
 import useFieldValueHook from '../hooks/useFieldValueHook';
 import ContentsTabs from '../containerTabContent/tabContent';
