@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Form, FormGroup, Label, ButtonGroup } from 'reactstrap';
 
-import { SuccessButton, WarningButton } from './buttons/baseButton';
+import { SuccessButton, WarningButton } from './baseButton';
 
 import style from '../style/tabs.module.css';
 

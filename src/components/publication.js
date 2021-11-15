@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { ButtonGroup, Form, FormGroup, Input, Label } from 'reactstrap';
 
 import { checkArr } from '../constants/constantsValue';
-import ModalInfo from './modal/modalInfo';
-import { WarningButton, InfoButton } from './buttons/baseButton';
+import ModalInfo from './modalInfo';
+import { WarningButton, InfoButton } from './baseButton';
 
 import style from '../style/tabs.module.css';
 

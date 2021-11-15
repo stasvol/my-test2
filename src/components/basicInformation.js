@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { FormGroup, Label, CustomInput, ButtonGroup } from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 
-import { SuccessButton } from './buttons/baseButton';
+import { SuccessButton } from './baseButton';
 
 import style from '../style/tabs.module.css';
 

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-import style from '../../style/tabs.module.css';
+import style from '../style/tabs.module.css';
 
 const ModalInfo = ({ infoProps, toggle, modal }) => {
   const showModalInfo = Object.entries(infoProps)
