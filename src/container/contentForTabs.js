@@ -1,7 +1,7 @@
 import BasicInformation from '../components/basicInformation';
 import ContactInformation from '../components/contactInformation';
-import PhotoFile from '../components/photoFiles';
-import Publication from '../components/publication';
+import PhotoFile from './photoFiles';
+import Publication from './publication';
 
 const contentForTabs = (id, props) => {
   switch (id) {

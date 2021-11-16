@@ -4,10 +4,12 @@
 
 .on {
   color: #12a20a;
+  text-transform: uppercase;
 }
 
 .off {
   color: #cb0707;
+  text-transform: uppercase;
 }
 
 .check {

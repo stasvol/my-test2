@@ -1,6 +1,6 @@
-import Tabs from './containerTabContent/tabs';
+import Tabs from './tabs';
 
-import style from './style/app.module.css';
+import style from '../style/app.module.css';
 
 const App = () => (
   <div className={style.app}>
