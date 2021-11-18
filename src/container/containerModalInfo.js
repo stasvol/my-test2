@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+
+import ModalInfo from '../components/modalInfo';
 
 import style from '../style/tabs.module.css';
 
-const ModalInfo = ({ infoProps, toggle, modal }) => {
+const ContainerModalInfo = ({ infoProps, toggle, modal }) => {
   const showModalInfo = Object.entries(infoProps)
     .filter(([key, value]) => {
       const valueLength =
@@ -21,38 +22,16 @@ const ModalInfo = ({ infoProps, toggle, modal }) => {
         </div>
       </div>
     ));
-
-  const closeBtn = (
-    <button className="close" onClick={toggle}>
-      &times;
-    </button>
-  );
-
   return (
-    <Modal isOpen={modal} toggle={toggle}>
-      <ModalHeader toggle={toggle} close={closeBtn}>
-        Ваше объявление
-      </ModalHeader>
-      <ModalBody>
-        {showModalInfo}
-        {infoProps.imgFile.map((src, id) => (
-          <img
-            className={style.img}
-            key={`${src}${id.toString()}`}
-            src={src}
-            alt="img"
-          />
-        ))}
-      </ModalBody>
-      <ModalFooter>
-        <Button color="secondary" onClick={toggle}>
-          Cancel
-        </Button>
-      </ModalFooter>
-    </Modal>
+    <ModalInfo
+      showModalInfo={showModalInfo}
+      infoProps={infoProps}
+      toggle={toggle}
+      modal={modal}
+    />
   );
 };
-ModalInfo.propTypes = {
+ContainerModalInfo.propTypes = {
   infoProps: PropTypes.shape({
     valueInfo: PropTypes.shape({
       mainName: PropTypes.string,
@@ -67,9 +46,9 @@ ModalInfo.propTypes = {
   toggle: PropTypes.func,
   modal: PropTypes.bool,
 };
-ModalInfo.defaultProps = {
+ContainerModalInfo.defaultProps = {
   toggle: () => {},
   modal: false,
 };
 
-export default ModalInfo;
+export default ContainerModalInfo;

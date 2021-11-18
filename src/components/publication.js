@@ -1,43 +1,19 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { ButtonGroup, Form, FormGroup, Input, Label } from 'reactstrap';
 
 import { checkArr } from '../constants/checkArr';
-import ModalInfo from './modalInfo';
-import { WarningButton, InfoButton } from '../components/baseButton';
+import ContainerModalInfo from '../container/containerModalInfo';
+import { WarningButton, InfoButton } from './baseButton';
 
 import style from '../style/tabs.module.css';
 
 const Publication = ({
-  valueInfo,
-  isCheck,
-  valueContact,
-  imgFile,
+  handleChange,
   toggleTabPrev,
+  infoProps,
+  toggle,
+  modal,
 }) => {
-  const [check, setCheck] = useState([]);
-  const [modal, setModal] = useState(false);
-
-  const toggle = () => setModal(!modal);
-
-  const handleChange = ({ target: { name } }) => {
-    setCheck(prevCheck => {
-      const checkInArr = prevCheck.some(check => check === name);
-
-      return checkInArr
-        ? prevCheck.filter(check => check !== name)
-        : [...prevCheck, name];
-    });
-  };
-
-  const infoProps = {
-    ...valueInfo,
-    ...valueContact,
-    isCheck,
-    imgFile,
-    check,
-  };
-
   return (
     <div className={style.body}>
       <Form>
@@ -68,7 +44,11 @@ const Publication = ({
         </FormGroup>
       </Form>
       <div>
-        <ModalInfo infoProps={infoProps} toggle={toggle} modal={modal} />
+        <ContainerModalInfo
+          infoProps={infoProps}
+          toggle={toggle}
+          modal={modal}
+        />
       </div>
     </div>
   );
@@ -76,24 +56,27 @@ const Publication = ({
 
 Publication.propTypes = {
   toggleTabPrev: PropTypes.func,
-  valueInfo: PropTypes.shape({
-    mainName: PropTypes.string,
-    description: PropTypes.string,
-  }),
-  isCheck: PropTypes.bool,
-  valueContact: PropTypes.shape({
-    telephone: PropTypes.string,
-    email: PropTypes.string,
-  }),
-  imgFile: PropTypes.arrayOf(PropTypes.string),
+  handleChange: PropTypes.func,
+  infoProps: PropTypes.shape({
+    valueInfo: PropTypes.shape({
+      mainName: PropTypes.string,
+      description: PropTypes.string,
+    }),
+    valueContact: PropTypes.shape({
+      telephone: PropTypes.string,
+      email: PropTypes.string,
+    }),
+    imgFile: PropTypes.arrayOf(PropTypes.string),
+  }).isRequired,
+  toggle: PropTypes.func,
+  modal: PropTypes.bool,
 };
 
 Publication.defaultProps = {
   toggleTabPrev: () => {},
-  valueInfo: {},
-  isCheck: true,
-  valueContact: {},
-  imgFile: [],
+  handleChange: () => {},
+  toggle: () => {},
+  modal: false,
 };
 
 export default Publication;

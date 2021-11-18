@@ -38,68 +38,51 @@ const Tabs = () => {
     handleChangeField: handleChangeContact,
   } = useFieldValue(contactTelephoneAndEmail);
 
+  const childBasic = useMemo(
+    () => ({ createDataChildInfo, handleChangeInfo, valueInfo }),
+    [createDataChildInfo, handleChangeInfo, valueInfo],
+  );
+
   const basicInfoProps = useMemo(
     () => ({
-      createDataChildInfo,
+      ...childBasic,
       createDataChildContIsCheck,
-      handleChangeInfo,
       toggleTab,
-      valueInfo,
       isCheck,
       toggleTabNext,
     }),
-    [
-      valueInfo,
-      isCheck,
-      toggleTab,
-      toggleTabNext,
-      createDataChildInfo,
-      createDataChildContIsCheck,
-      handleChangeInfo,
-    ],
+    [childBasic, isCheck, toggleTab, toggleTabNext, createDataChildContIsCheck],
+  );
+
+  const childContact = useMemo(
+    () => ({ valueContact, createDataChildContact, handleChangeContact }),
+    [valueContact, createDataChildContact, handleChangeContact],
   );
 
   const contactInfoProps = useMemo(
-    () => ({
-      valueContact,
-      createDataChildContact,
-      toggleTabNext,
-      toggleTabPrev,
-      handleChangeContact,
-    }),
-    [
-      toggleTabNext,
-      toggleTabPrev,
-      handleChangeContact,
-      valueContact,
-      createDataChildContact,
-    ],
+    () => ({ ...childContact, toggleTabNext, toggleTabPrev }),
+    [childContact, toggleTabNext, toggleTabPrev],
   );
+
+  const childPhoto = useMemo(() => ({ createDataChildImg, imgFile }), [
+    createDataChildImg,
+    imgFile,
+  ]);
 
   const photoInfoProps = useMemo(
-    () => ({ createDataChildImg, toggleTabPrev, toggleTabNext, imgFile }),
-    [imgFile, createDataChildImg, toggleTabPrev, toggleTabNext],
+    () => ({ ...childPhoto, toggleTabPrev, toggleTabNext }),
+    [childPhoto, toggleTabPrev, toggleTabNext],
   );
 
+  const childPublic = useMemo(() => ({ toggleTabPrev, toggleTab, activeTab }), [
+    toggleTabPrev,
+    toggleTab,
+    activeTab,
+  ]);
+
   const publicInfoProps = useMemo(
-    () => ({
-      toggleTabPrev,
-      toggleTab,
-      imgFile,
-      activeTab,
-      valueInfo,
-      isCheck,
-      valueContact,
-    }),
-    [
-      toggleTabPrev,
-      toggleTab,
-      imgFile,
-      activeTab,
-      valueInfo,
-      isCheck,
-      valueContact,
-    ],
+    () => ({ ...childPublic, imgFile, valueInfo, isCheck, valueContact }),
+    [childPublic, imgFile, valueInfo, isCheck, valueContact],
   );
 
   return (

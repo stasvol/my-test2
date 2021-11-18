@@ -2,41 +2,19 @@ import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Form, FormGroup, Label, ButtonGroup } from 'reactstrap';
 
-import { SuccessButton, WarningButton } from '../components/baseButton';
+import { maxSizeBit } from '../constants/publicSize';
+import { SuccessButton, WarningButton } from './baseButton';
 
 import style from '../style/tabs.module.css';
 
-const maxSizeBit = 5 * 1024 * 1024;
-
 const PhotoFile = ({
-  createDataChildImg,
+  saveFile,
+  removeImage,
   imgFile,
   toggleTabPrev,
   toggleTabNext,
 }) => {
   const inputRef = useRef(null);
-
-  const saveFile = ({ target: { files } }) => {
-    const filesArr = [...files];
-
-    filesArr.forEach(file => {
-      if (!file.type.match('image')) return;
-
-      const reader = new FileReader();
-
-      reader.onload = ({ currentTarget: { result } }) => {
-        if (files.length <= 5) {
-          createDataChildImg(prevImgFile => [...prevImgFile, result]);
-        }
-      };
-
-      reader.readAsDataURL(file);
-    });
-  };
-
-  const removeImage = file => {
-    createDataChildImg(prev => prev.filter(img => img !== file));
-  };
 
   const upload = () => {
     inputRef.current.click();
@@ -96,14 +74,16 @@ const PhotoFile = ({
 PhotoFile.propTypes = {
   toggleTabPrev: PropTypes.func,
   toggleTabNext: PropTypes.func,
-  createDataChildImg: PropTypes.func,
+  saveFile: PropTypes.func,
+  removeImage: PropTypes.func,
   imgFile: PropTypes.arrayOf(PropTypes.string),
 };
 
 PhotoFile.defaultProps = {
   toggleTabPrev: () => {},
   toggleTabNext: () => {},
-  createDataChildImg: () => {},
+  saveFile: () => {},
+  removeImage: () => {},
   imgFile: [],
 };
 

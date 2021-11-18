@@ -1,7 +1,7 @@
 import BasicInformation from '../components/basicInformation';
 import ContactInformation from '../components/contactInformation';
-import PhotoFile from './photoFiles';
-import Publication from './publication';
+import ContainerPhotoFile from './containerPhotoFiles';
+import ContainerPublication from './containerPublication';
 
 const contentForTabs = (id, props) => {
   switch (id) {
@@ -10,9 +10,9 @@ const contentForTabs = (id, props) => {
     case 'contactInfo':
       return <ContactInformation {...props} />;
     case 'photoInfo':
-      return <PhotoFile {...props} />;
+      return <ContainerPhotoFile {...props} />;
     case 'publicInfo':
-      return <Publication {...props} />;
+      return <ContainerPublication {...props} />;
     default:
       return null;
   }
