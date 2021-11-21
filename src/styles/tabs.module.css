@@ -33,7 +33,7 @@
   width: 250px;
 }
 
-.btnAbsol {
+.btnInfo {
   text-transform: uppercase;
 }
 
@@ -43,11 +43,7 @@
   justify-content: center;
 }
 
-.botton {
-  margin-bottom: 20px;
-}
-
-.modInput {
+.modalInput {
   min-width: 460px;
 }
 

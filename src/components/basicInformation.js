@@ -3,24 +3,25 @@ import { FormGroup, Label, CustomInput, ButtonGroup } from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 
 import { SuccessButton } from './baseButton';
+import { FullWidthlabel } from './fullWidthlabel';
 
-import style from '../style/tabs.module.css';
+import style from '../styles/tabs.module.css';
 
 const BasicInformation = ({
   valueInfo,
   isCheck,
-  createDataChildContIsCheck,
+  childIsCheck,
   handleChangeInfo,
   toggleTabNext,
 }) => {
   const toggleCheck = () => {
-    createDataChildContIsCheck(prevIsCheck => !prevIsCheck);
+    childIsCheck(prevIsCheck => !prevIsCheck);
   };
 
   return (
     <AvForm className="mt-2">
       <FormGroup check inline>
-        <Label sm="12">
+        <FullWidthlabel>
           Введите имя:
           <AvField
             onChange={handleChangeInfo}
@@ -31,10 +32,10 @@ const BasicInformation = ({
             required
             value={valueInfo.mainName}
           />
-        </Label>
+        </FullWidthlabel>
       </FormGroup>
       <FormGroup>
-        <Label for="exampleText" sm="11">
+        <FullWidthlabel for="exampleText">
           Описание:
           <AvField
             onChange={handleChangeInfo}
@@ -44,17 +45,16 @@ const BasicInformation = ({
             placeholder="text"
             value={valueInfo.description}
           />
-        </Label>
+        </FullWidthlabel>
       </FormGroup>
-
       <FormGroup check>
         <Label check>
           Статус:
           <b>
             {isCheck ? (
-              <i className={style.on}> ON</i>
+              <i className={style.on}> on</i>
             ) : (
-              <i className={style.off}> OFF</i>
+              <i className={style.off}> off</i>
             )}
           </b>
           <CustomInput
@@ -80,22 +80,24 @@ const BasicInformation = ({
     </AvForm>
   );
 };
+
 BasicInformation.propTypes = {
   isCheck: PropTypes.bool,
   toggleTabNext: PropTypes.func,
   handleChangeInfo: PropTypes.func,
-  createDataChildContIsCheck: PropTypes.func,
+  childIsCheck: PropTypes.func,
   valueInfo: PropTypes.shape({
     mainName: PropTypes.string,
     description: PropTypes.string,
     props: PropTypes.node,
   }),
 };
+
 BasicInformation.defaultProps = {
   isCheck: false,
   toggleTabNext: () => {},
   handleChangeInfo: () => {},
-  createDataChildContIsCheck: () => {},
+  childIsCheck: () => {},
   valueInfo: {},
 };
 

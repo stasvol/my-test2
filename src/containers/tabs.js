@@ -11,52 +11,42 @@ import useActiveTab from '../hooks/useActiveTab';
 import useFieldValue from '../hooks/useFieldValue';
 import ContentsTabs from './tabContent';
 
-import style from '../style/tabs.module.css';
+import style from '../styles/tabs.module.css';
 
 const Tabs = () => {
   const { activeTab, toggleTab, toggleTabPrev, toggleTabNext } = useActiveTab();
 
   const {
     valueField: valueInfo,
-    changeValue: createDataChildInfo,
+    changeValue: childInfo,
     handleChangeField: handleChangeInfo,
   } = useFieldValue(mainNameAndDescription);
 
-  const {
-    valueField: isCheck,
-    changeValue: createDataChildContIsCheck,
-  } = useFieldValue(false);
+  const { valueField: isCheck, changeValue: childIsCheck } = useFieldValue(
+    false,
+  );
 
-  const {
-    valueField: imgFile,
-    changeValue: createDataChildImg,
-  } = useFieldValue([]);
+  const { valueField: imgFile, changeValue: addImg } = useFieldValue([]);
 
   const {
     valueField: valueContact,
-    changeValue: createDataChildContact,
+    changeValue: addContact,
     handleChangeField: handleChangeContact,
   } = useFieldValue(contactTelephoneAndEmail);
 
   const childBasic = useMemo(
-    () => ({ createDataChildInfo, handleChangeInfo, valueInfo }),
-    [createDataChildInfo, handleChangeInfo, valueInfo],
+    () => ({ childInfo, handleChangeInfo, valueInfo }),
+    [childInfo, handleChangeInfo, valueInfo],
   );
 
   const basicInfoProps = useMemo(
-    () => ({
-      ...childBasic,
-      createDataChildContIsCheck,
-      toggleTab,
-      isCheck,
-      toggleTabNext,
-    }),
-    [childBasic, isCheck, toggleTab, toggleTabNext, createDataChildContIsCheck],
+    () => ({ ...childBasic, childIsCheck, toggleTab, isCheck, toggleTabNext }),
+    [childBasic, isCheck, toggleTab, toggleTabNext, childIsCheck],
   );
 
   const childContact = useMemo(
-    () => ({ valueContact, createDataChildContact, handleChangeContact }),
-    [valueContact, createDataChildContact, handleChangeContact],
+    () => ({ valueContact, addContact, handleChangeContact }),
+    [valueContact, addContact, handleChangeContact],
   );
 
   const contactInfoProps = useMemo(
@@ -64,25 +54,21 @@ const Tabs = () => {
     [childContact, toggleTabNext, toggleTabPrev],
   );
 
-  const childPhoto = useMemo(() => ({ createDataChildImg, imgFile }), [
-    createDataChildImg,
-    imgFile,
-  ]);
+  const childPhoto = useMemo(() => ({ addImg, imgFile }), [addImg, imgFile]);
 
   const photoInfoProps = useMemo(
     () => ({ ...childPhoto, toggleTabPrev, toggleTabNext }),
     [childPhoto, toggleTabPrev, toggleTabNext],
   );
 
-  const childPublic = useMemo(() => ({ toggleTabPrev, toggleTab, activeTab }), [
-    toggleTabPrev,
-    toggleTab,
-    activeTab,
-  ]);
+  const childPublic = useMemo(
+    () => ({ toggleTabPrev, toggleTab, activeTab, isCheck }),
+    [toggleTabPrev, toggleTab, activeTab, isCheck],
+  );
 
   const publicInfoProps = useMemo(
-    () => ({ ...childPublic, imgFile, valueInfo, isCheck, valueContact }),
-    [childPublic, imgFile, valueInfo, isCheck, valueContact],
+    () => ({ ...childPublic, imgFile, valueInfo, valueContact }),
+    [childPublic, imgFile, valueInfo, valueContact],
   );
 
   return (

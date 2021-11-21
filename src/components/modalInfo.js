@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-import style from '../style/tabs.module.css';
+import style from '../styles/tabs.module.css';
 
 const ModalInfo = ({
   showModalInfo,
@@ -24,9 +24,9 @@ const ModalInfo = ({
       <ModalBody>
         {showModalInfo?.map(({ key, value }) => (
           <div key={key.toString()}>
-            <div className={style.wid}>
+            <div>
               <b>{key} :</b>
-              <span className={style.modInput}>
+              <span className={style.modalInput}>
                 <i>{value?.toLocaleString()}</i>
               </span>
             </div>
@@ -49,6 +49,7 @@ const ModalInfo = ({
     </Modal>
   );
 };
+
 ModalInfo.propTypes = {
   infoProps: PropTypes.shape({
     imgFile: PropTypes.arrayOf(PropTypes.string),
@@ -65,8 +66,10 @@ ModalInfo.propTypes = {
   toggle: PropTypes.func,
   modal: PropTypes.bool,
 };
+
 ModalInfo.defaultProps = {
   toggle: () => {},
   modal: false,
 };
+
 export default ModalInfo;

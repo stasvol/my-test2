@@ -32,6 +32,7 @@ const ContainerModalInfo = ({ infoProps, toggle, modal }) => {
     />
   );
 };
+
 ContainerModalInfo.propTypes = {
   infoProps: PropTypes.shape({
     valueInfo: PropTypes.shape({
@@ -47,6 +48,7 @@ ContainerModalInfo.propTypes = {
   toggle: PropTypes.func,
   modal: PropTypes.bool,
 };
+
 ContainerModalInfo.defaultProps = {
   toggle: () => {},
   modal: false,

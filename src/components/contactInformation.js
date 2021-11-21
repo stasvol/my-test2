@@ -4,7 +4,7 @@ import { AvForm, AvField } from 'availity-reactstrap-validation';
 
 import { SuccessButton, WarningButton } from './baseButton';
 
-import style from '../style/tabs.module.css';
+import style from '../styles/tabs.module.css';
 
 const ContactInformation = ({
   valueContact,

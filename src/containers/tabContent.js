@@ -1,8 +1,9 @@
 import { memo } from 'react';
 import PropTypes from 'prop-types';
-import { Col, Row, TabPane } from 'reactstrap';
+import { Row, TabPane } from 'reactstrap';
 
 import contentForTabs from './contentForTabs';
+import { FullWidthCol } from '../components/fullWidthCol';
 
 const ContentsTabs = ({
   basicInfoProps,
@@ -38,10 +39,10 @@ const ContentsTabs = ({
       {tabContents.map(({ title, id, props }, i) => (
         <TabPane tabId={i + 1} key={`${title}${id}`}>
           <Row>
-            <Col sm="12">
+            <FullWidthCol>
               <h4>{title}</h4>
               {contentForTabs(id, props)}
-            </Col>
+            </FullWidthCol>
           </Row>
         </TabPane>
       ))}

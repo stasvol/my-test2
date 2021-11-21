@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 import { ButtonGroup, Form, FormGroup, Input, Label } from 'reactstrap';
 
 import { checkArr } from '../constants/checkArr';
-import ContainerModalInfo from '../container/containerModalInfo';
+import ContainerModalInfo from '../containers/containerModalInfo';
 import { WarningButton, InfoButton } from './baseButton';
 
-import style from '../style/tabs.module.css';
+import style from '../styles/tabs.module.css';
 
 const Publication = ({
   handleChange,
@@ -13,46 +13,40 @@ const Publication = ({
   infoProps,
   toggle,
   modal,
-}) => {
-  return (
-    <div className={style.body}>
-      <Form>
-        {checkArr.map(({ name, id }) => (
-          <FormGroup check key={`${id}${name}`}>
-            <Label check>
-              <div className={style.check}>
-                <Input
-                  onChange={handleChange}
-                  type="checkbox"
-                  name={name}
-                  checkbox="Услуга 1"
-                />{' '}
-                {name}
-              </div>
-            </Label>
-          </FormGroup>
-        ))}
-        <FormGroup check>
-          <ButtonGroup>
-            <WarningButton className={style.btn} onClick={toggleTabPrev}>
-              prev
-            </WarningButton>
-            <InfoButton className={style.btn} onClick={toggle}>
-              save
-            </InfoButton>
-          </ButtonGroup>
+}) => (
+  <div className={style.body}>
+    <Form>
+      {checkArr.map(({ name, id }) => (
+        <FormGroup check key={`${id}${name}`}>
+          <Label check>
+            <div className={style.check}>
+              <Input
+                onChange={handleChange}
+                type="checkbox"
+                name={name}
+                checkbox="Услуга 1"
+              />{' '}
+              {name}
+            </div>
+          </Label>
         </FormGroup>
-      </Form>
-      <div>
-        <ContainerModalInfo
-          infoProps={infoProps}
-          toggle={toggle}
-          modal={modal}
-        />
-      </div>
+      ))}
+      <FormGroup check>
+        <ButtonGroup>
+          <WarningButton className={style.btn} onClick={toggleTabPrev}>
+            prev
+          </WarningButton>
+          <InfoButton className={style.btn} onClick={toggle}>
+            save
+          </InfoButton>
+        </ButtonGroup>
+      </FormGroup>
+    </Form>
+    <div>
+      <ContainerModalInfo infoProps={infoProps} toggle={toggle} modal={modal} />
     </div>
-  );
-};
+  </div>
+);
 
 Publication.propTypes = {
   toggleTabPrev: PropTypes.func,

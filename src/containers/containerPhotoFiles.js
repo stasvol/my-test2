@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 
-import { maxLengthFile } from '../constants/publicSize';
+import { fileMaxLength } from '../constants/publicSize';
 import PhotoFile from '../components/photoFiles';
 
 const ContainerPhotoFile = ({
-  createDataChildImg,
+  addImg,
   imgFile,
   toggleTabPrev,
   toggleTabNext,
@@ -18,8 +18,8 @@ const ContainerPhotoFile = ({
       const reader = new FileReader();
 
       reader.onload = ({ currentTarget: { result } }) => {
-        if (files.length <= maxLengthFile) {
-          createDataChildImg(prevImgFile => [...prevImgFile, result]);
+        if (files.length <= fileMaxLength) {
+          addImg(prevImgFile => [...prevImgFile, result]);
         }
       };
 
@@ -28,7 +28,7 @@ const ContainerPhotoFile = ({
   };
 
   const removeImage = file => {
-    createDataChildImg(prev => prev.filter(img => img !== file));
+    addImg(prev => prev.filter(img => img !== file));
   };
 
   return (
@@ -45,14 +45,14 @@ const ContainerPhotoFile = ({
 ContainerPhotoFile.propTypes = {
   toggleTabPrev: PropTypes.func,
   toggleTabNext: PropTypes.func,
-  createDataChildImg: PropTypes.func,
+  addImg: PropTypes.func,
   imgFile: PropTypes.arrayOf(PropTypes.string),
 };
 
 ContainerPhotoFile.defaultProps = {
   toggleTabPrev: () => {},
   toggleTabNext: () => {},
-  createDataChildImg: () => {},
+  addImg: () => {},
   imgFile: [],
 };
 

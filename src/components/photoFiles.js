@@ -2,10 +2,10 @@ import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Form, FormGroup, Label, ButtonGroup } from 'reactstrap';
 
-import { maxSizeBit } from '../constants/publicSize';
-import { SuccessButton, WarningButton } from './baseButton';
+import { byteMaxSize } from '../constants/publicSize';
+import { SuccessButton, WarningButton, InfoButton } from './baseButton';
 
-import style from '../style/tabs.module.css';
+import style from '../styles/tabs.module.css';
 
 const PhotoFile = ({
   saveFile,
@@ -32,17 +32,12 @@ const PhotoFile = ({
             name="file"
             id="exampleFile"
             multiple
-            maxfilesize={maxSizeBit}
+            maxfilesize={byteMaxSize}
           />
         </Label>
-        <Button
-          className={style.btnAbsol}
-          id="button"
-          color="info"
-          onClick={upload}
-        >
-          UPLOAD FILES
-        </Button>
+        <InfoButton className={style.btnInfo} id="button" onClick={upload}>
+          upload files
+        </InfoButton>
       </FormGroup>
       <FormGroup>
         {imgFile.map((file, i) => {
