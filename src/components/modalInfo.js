@@ -22,7 +22,16 @@ const ModalInfo = ({
         Ваше объявление
       </ModalHeader>
       <ModalBody>
-        {showModalInfo}
+        {showModalInfo?.map(({ key, value }) => (
+          <div key={key.toString()}>
+            <div className={style.wid}>
+              <b>{key} :</b>
+              <span className={style.modInput}>
+                <i>{value?.toLocaleString()}</i>
+              </span>
+            </div>
+          </div>
+        ))}
         {imgFile.map((src, id) => (
           <img
             className={style.img}

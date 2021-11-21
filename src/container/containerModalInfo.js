@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import ModalInfo from '../components/modalInfo';
 
-import style from '../style/tabs.module.css';
+// import style from '../style/tabs.module.css';
 
 const ContainerModalInfo = ({ infoProps, toggle, modal }) => {
   const showModalInfo = Object.entries(infoProps)
@@ -12,16 +12,17 @@ const ContainerModalInfo = ({ infoProps, toggle, modal }) => {
       if (key !== 'imgFile' && value) return valueLength;
       return false;
     })
-    .map(([key, value]) => (
-      <div key={key.toString()}>
-        <div className={style.wid}>
-          <b>{key} :</b>
-          <span className={style.modInput}>
-            <i>{value?.toLocaleString()}</i>
-          </span>
-        </div>
-      </div>
-    ));
+    .map(([key, value]) => ({ key, value }));
+  // .map(([key, value]) => (
+  //   <div key={key.toString()}>
+  //     <div className={style.wid}>
+  //       <b>{key} :</b>
+  //       <span className={style.modInput}>
+  //         <i>{value?.toLocaleString()}</i>
+  //       </span>
+  //     </div>
+  //   </div>
+  // ));
   return (
     <ModalInfo
       showModalInfo={showModalInfo}
