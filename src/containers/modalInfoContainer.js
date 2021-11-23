@@ -2,9 +2,7 @@ import PropTypes from 'prop-types';
 
 import ModalInfo from '../components/modalInfo';
 
-// import style from '../style/tabs.module.css';
-
-const ContainerModalInfo = ({ infoProps, toggle, modal }) => {
+const ModalInfoContainer = ({ infoProps, toggle, modal }) => {
   const showModalInfo = Object.entries(infoProps)
     .filter(([key, value]) => {
       const valueLength =
@@ -33,7 +31,7 @@ const ContainerModalInfo = ({ infoProps, toggle, modal }) => {
   );
 };
 
-ContainerModalInfo.propTypes = {
+ModalInfoContainer.propTypes = {
   infoProps: PropTypes.shape({
     valueInfo: PropTypes.shape({
       mainName: PropTypes.string,
@@ -49,9 +47,9 @@ ContainerModalInfo.propTypes = {
   modal: PropTypes.bool,
 };
 
-ContainerModalInfo.defaultProps = {
+ModalInfoContainer.defaultProps = {
   toggle: () => {},
   modal: false,
 };
 
-export default ContainerModalInfo;
+export default ModalInfoContainer;

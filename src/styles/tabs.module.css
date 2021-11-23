@@ -37,22 +37,8 @@
   text-transform: uppercase;
 }
 
-.nav {
-  border-bottom: none;
-  display: flex;
-  justify-content: center;
-}
-
 .modalInput {
   min-width: 460px;
-}
-
-.closeImage {
-  height: auto;
-  margin: 0;
-  padding: 0;
-  position: relative;
-  width: 250px;
 }
 
 .img {

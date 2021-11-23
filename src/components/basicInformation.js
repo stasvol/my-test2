@@ -3,7 +3,7 @@ import { FormGroup, Label, CustomInput, ButtonGroup } from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 
 import { SuccessButton } from './baseButton';
-import { FullWidthlabel } from './fullWidthlabel';
+import { FullWidthLabelField, FullWidthLabelTextarea } from './fullWidthlabel';
 
 import style from '../styles/tabs.module.css';
 
@@ -21,7 +21,7 @@ const BasicInformation = ({
   return (
     <AvForm className="mt-2">
       <FormGroup check inline>
-        <FullWidthlabel>
+        <FullWidthLabelField>
           Введите имя:
           <AvField
             onChange={handleChangeInfo}
@@ -32,20 +32,20 @@ const BasicInformation = ({
             required
             value={valueInfo.mainName}
           />
-        </FullWidthlabel>
+        </FullWidthLabelField>
       </FormGroup>
       <FormGroup>
-        <FullWidthlabel for="exampleText">
+        <FullWidthLabelTextarea for="text">
           Описание:
           <AvField
             onChange={handleChangeInfo}
             type="textarea"
-            name="description"
-            id="exampleText"
+            name="textarea"
+            id="text"
             placeholder="text"
             value={valueInfo.description}
           />
-        </FullWidthlabel>
+        </FullWidthLabelTextarea>
       </FormGroup>
       <FormGroup check>
         <Label check>
@@ -60,7 +60,7 @@ const BasicInformation = ({
           <CustomInput
             onClick={toggleCheck}
             type="switch"
-            id="exampleCustomSwitch"
+            id="customSwitch"
             name="customSwitch"
             label="select"
             value={isCheck}

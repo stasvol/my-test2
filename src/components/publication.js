@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { ButtonGroup, Form, FormGroup, Input, Label } from 'reactstrap';
 
 import { checkArr } from '../constants/checkArr';
-import ContainerModalInfo from '../containers/containerModalInfo';
+import ModalInfoContainer from '../containers/modalInfoContainer';
 import { WarningButton, InfoButton } from './baseButton';
 
 import style from '../styles/tabs.module.css';
@@ -43,7 +43,7 @@ const Publication = ({
       </FormGroup>
     </Form>
     <div>
-      <ContainerModalInfo infoProps={infoProps} toggle={toggle} modal={modal} />
+      <ModalInfoContainer infoProps={infoProps} toggle={toggle} modal={modal} />
     </div>
   </div>
 );

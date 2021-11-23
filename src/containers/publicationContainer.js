@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Publication from '../components/publication';
 
-const ContainerPublication = ({
+const PublicationContainer = ({
   valueInfo,
   isCheck,
   valueContact,
@@ -44,7 +44,7 @@ const ContainerPublication = ({
   );
 };
 
-ContainerPublication.propTypes = {
+PublicationContainer.propTypes = {
   toggleTabPrev: PropTypes.func,
   valueInfo: PropTypes.shape({
     mainName: PropTypes.string,
@@ -58,7 +58,7 @@ ContainerPublication.propTypes = {
   imgFile: PropTypes.arrayOf(PropTypes.string),
 };
 
-ContainerPublication.defaultProps = {
+PublicationContainer.defaultProps = {
   toggleTabPrev: () => {},
   valueInfo: {},
   isCheck: true,
@@ -66,4 +66,4 @@ ContainerPublication.defaultProps = {
   imgFile: [],
 };
 
-export default ContainerPublication;
+export default PublicationContainer;

@@ -14,13 +14,13 @@ const ContactInformation = ({
 }) => (
   <AvForm>
     <FormGroup>
-      <Label for="exampleTelephone">
+      <Label for="telephone">
         Telephone:
         <AvField
           onChange={handleChangeContact}
           type="text"
           name="telephone"
-          id="exampleTelephone"
+          id="telephone"
           placeholder="telephone number"
           bsSize="lg"
           required
@@ -29,13 +29,13 @@ const ContactInformation = ({
       </Label>
     </FormGroup>
     <FormGroup>
-      <Label for="exampleEmail">
+      <Label for="email">
         Email:
         <AvField
           onChange={handleChangeContact}
           type="email"
           name="email"
-          id="exampleEmail"
+          id="email"
           placeholder="email"
           bsSize="lg"
           value={valueContact.email}

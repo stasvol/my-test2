@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { fileMaxLength } from '../constants/publicSize';
 import PhotoFile from '../components/photoFiles';
 
-const ContainerPhotoFile = ({
+const PhotoFileContainer = ({
   addImg,
   imgFile,
   toggleTabPrev,
@@ -42,18 +42,18 @@ const ContainerPhotoFile = ({
   );
 };
 
-ContainerPhotoFile.propTypes = {
+PhotoFileContainer.propTypes = {
   toggleTabPrev: PropTypes.func,
   toggleTabNext: PropTypes.func,
   addImg: PropTypes.func,
   imgFile: PropTypes.arrayOf(PropTypes.string),
 };
 
-ContainerPhotoFile.defaultProps = {
+PhotoFileContainer.defaultProps = {
   toggleTabPrev: () => {},
   toggleTabNext: () => {},
   addImg: () => {},
   imgFile: [],
 };
 
-export default ContainerPhotoFile;
+export default PhotoFileContainer;

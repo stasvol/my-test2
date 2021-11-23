@@ -91,4 +91,5 @@ ContentsTabs.defaultProps = {
   photoInfoProps: {},
   publicInfoProps: {},
 };
+
 export default memo(ContentsTabs);
