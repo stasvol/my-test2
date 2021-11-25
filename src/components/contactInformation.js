@@ -18,7 +18,7 @@ const ContactInformation = ({
         Telephone:
         <AvField
           onChange={handleChangeContact}
-          type="text"
+          type="tel"
           name="telephone"
           id="telephone"
           placeholder="telephone number"

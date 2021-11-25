@@ -5,13 +5,13 @@ import { Row, TabPane } from 'reactstrap';
 import contentForTabs from './contentForTabs';
 import { FullWidthCol } from '../components/cols';
 
-const ContentsTabs = ({
+const TabContents = ({
   basicInfoProps,
   contactInfoProps,
   photoInfoProps,
   publicInfoProps,
 }) => {
-  const tabContents = [
+  const tabContent = [
     {
       title: 'Основная информация:',
       id: 'basicInfo',
@@ -36,7 +36,7 @@ const ContentsTabs = ({
 
   return (
     <>
-      {tabContents.map(({ title, id, props }, i) => (
+      {tabContent.map(({ title, id, props }, i) => (
         <TabPane tabId={i + 1} key={`${title}${id}`}>
           <Row>
             <FullWidthCol>
@@ -50,7 +50,7 @@ const ContentsTabs = ({
   );
 };
 
-ContentsTabs.propTypes = {
+TabContents.propTypes = {
   basicInfoProps: PropTypes.shape({
     createDataChildInfo: PropTypes.func,
     createDataChildContIsCheck: PropTypes.func,
@@ -85,11 +85,11 @@ ContentsTabs.propTypes = {
   }),
 };
 
-ContentsTabs.defaultProps = {
+TabContents.defaultProps = {
   basicInfoProps: {},
   contactInfoProps: {},
   photoInfoProps: {},
   publicInfoProps: {},
 };
 
-export default memo(ContentsTabs);
+export default memo(TabContents);

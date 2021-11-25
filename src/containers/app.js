@@ -9,7 +9,7 @@ import {
 import { tabArr } from '../constants/tabArr';
 import useActiveTab from '../hooks/useActiveTab';
 import useFieldValue from '../hooks/useFieldValue';
-import ContentsTabs from './contentsTabs';
+import TabContents from './tabContents';
 
 import style from '../styles/app.module.css';
 
@@ -89,7 +89,7 @@ const App = () => {
           ))}
         </Nav>
         <TabContent activeTab={activeTab}>
-          <ContentsTabs
+          <TabContents
             basicInfoProps={basicInfoProps}
             contactInfoProps={contactInfoProps}
             photoInfoProps={photoInfoProps}
