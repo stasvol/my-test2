@@ -9,7 +9,7 @@ import {
 import { tabArr } from '../constants/tabArr';
 import useActiveTab from '../hooks/useActiveTab';
 import useFieldValue from '../hooks/useFieldValue';
-import ContentsTabs from './tabContent';
+import ContentsTabs from './contentsTabs';
 
 import style from '../styles/app.module.css';
 

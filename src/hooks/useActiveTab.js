@@ -26,4 +26,5 @@ const useActiveTab = (initActiveTab = 1) => {
     toggleTabPrev,
   };
 };
+
 export default useActiveTab;

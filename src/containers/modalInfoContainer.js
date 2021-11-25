@@ -11,16 +11,7 @@ const ModalInfoContainer = ({ infoProps, toggle, modal }) => {
       return false;
     })
     .map(([key, value]) => ({ key, value }));
-  // .map(([key, value]) => (
-  //   <div key={key.toString()}>
-  //     <div className={style.wid}>
-  //       <b>{key} :</b>
-  //       <span className={style.modInput}>
-  //         <i>{value?.toLocaleString()}</i>
-  //       </span>
-  //     </div>
-  //   </div>
-  // ));
+
   return (
     <ModalInfo
       showModalInfo={showModalInfo}

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Button, Form, FormGroup, Label, ButtonGroup } from 'reactstrap';
 
 import { byteMaxSize } from '../constants/publicSize';
-import { SuccessButton, WarningButton, InfoButton } from './baseButton';
+import { SuccessButton, WarningButton, InfoButton } from './baseButtons';
 
 import style from '../styles/tabs.module.css';
 

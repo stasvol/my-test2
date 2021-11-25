@@ -3,7 +3,7 @@ import { ButtonGroup, Form, FormGroup, Input, Label } from 'reactstrap';
 
 import { checkArr } from '../constants/checkArr';
 import ModalInfoContainer from '../containers/modalInfoContainer';
-import { WarningButton, InfoButton } from './baseButton';
+import { WarningButton, InfoButton } from './baseButtons';
 
 import style from '../styles/tabs.module.css';
 

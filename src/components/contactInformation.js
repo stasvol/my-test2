@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { FormGroup, Label } from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 
-import { SuccessButton, WarningButton } from './baseButton';
+import { SuccessButton, WarningButton } from './baseButtons';
 
 import style from '../styles/tabs.module.css';
 
@@ -65,6 +65,7 @@ ContactInformation.propTypes = {
   }),
   handleChangeContact: PropTypes.func,
 };
+
 ContactInformation.defaultProps = {
   valueContact: {},
   toggleTabPrev: () => {},

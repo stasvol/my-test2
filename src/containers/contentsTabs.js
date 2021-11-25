@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Row, TabPane } from 'reactstrap';
 
 import contentForTabs from './contentForTabs';
-import { FullWidthCol } from '../components/fullWidthCol';
+import { FullWidthCol } from '../components/cols';
 
 const ContentsTabs = ({
   basicInfoProps,
