@@ -1,0 +1,65 @@
+.wrap {
+  cursor: pointer;
+}
+
+.on {
+  color: #12a20a;
+  text-transform: uppercase;
+}
+
+.off {
+  color: #cb0707;
+  text-transform: uppercase;
+}
+
+.check {
+  background: #d9d9d9;
+  border: 1px solid #c0c0c0;
+  height: 50px;
+  margin-bottom: 10px;
+  padding: 15px 10px 10px 80px;
+  width: 300px;
+}
+
+.btn {
+  float: none;
+  text-transform: uppercase;
+  width: 150px;
+}
+
+.btnNext {
+  margin: 20px;
+  text-transform: uppercase;
+  width: 250px;
+}
+
+.btnInfo {
+  text-transform: uppercase;
+}
+
+.modalInput {
+  min-width: 460px;
+}
+
+.img {
+  height: 200px;
+  margin-top: 10px;
+  width: 300px;
+}
+
+.closeImage:hover .btnClose {
+  opacity: 1;
+}
+
+.btnClose {
+  background: #cdcaca;
+  cursor: pointer;
+  height: 40px;
+  margin-left: 260px;
+  margin-top: 10px;
+  opacity: 0;
+  padding-bottom: 5px;
+  position: absolute;
+  transition: opacity 2ms;
+  width: 40px;
+}
