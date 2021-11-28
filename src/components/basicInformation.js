@@ -3,7 +3,7 @@ import { FormGroup, Label, CustomInput, ButtonGroup } from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 
 import { SuccessButton } from './baseButtons';
-import { LargeWidthLabelField, MediumWidthLabelTextarea } from './labels';
+import { LargeWidthLabelField } from './labels';
 
 import style from '../styles/tabs.module.css';
 
@@ -20,14 +20,14 @@ const BasicInformation = ({
 
   return (
     <AvForm className="mt-2">
-      <FormGroup check inline>
+      <FormGroup>
         <LargeWidthLabelField>
           Введите имя:
           <AvField
             onChange={handleChangeInfo}
             name="mainName"
             type="text"
-            placeholder="Text"
+            placeholder="Your name"
             bsSize="lg"
             required
             value={valueInfo.mainName}
@@ -35,17 +35,18 @@ const BasicInformation = ({
         </LargeWidthLabelField>
       </FormGroup>
       <FormGroup>
-        <MediumWidthLabelTextarea for="text">
+        <LargeWidthLabelField for="text">
           Описание:
           <AvField
             onChange={handleChangeInfo}
             type="textarea"
             name="textarea"
             id="text"
-            placeholder="text"
+            bsSize="lg"
+            placeholder="Description"
             value={valueInfo.description}
           />
-        </MediumWidthLabelTextarea>
+        </LargeWidthLabelField>
       </FormGroup>
       <FormGroup check>
         <Label check>
@@ -67,6 +68,7 @@ const BasicInformation = ({
           />
         </Label>
       </FormGroup>
+
       <ButtonGroup>
         <SuccessButton
           className={style.btnNext}

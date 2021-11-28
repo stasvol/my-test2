@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { FormGroup, Label } from 'reactstrap';
+import { FormGroup, Label, ButtonGroup } from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 
 import { SuccessButton, WarningButton } from './baseButtons';
@@ -42,17 +42,21 @@ const ContactInformation = ({
         />
       </Label>
     </FormGroup>
-    <WarningButton onClick={toggleTabPrev} className={style.btn}>
-      prev
-    </WarningButton>
-    <SuccessButton
-      className={style.btn}
-      onClick={toggleTabNext}
-      disabled={!valueContact.telephone}
-    >
-      {' '}
-      next
-    </SuccessButton>
+    <FormGroup>
+      <ButtonGroup>
+        <WarningButton onClick={toggleTabPrev} className={style.btn}>
+          prev
+        </WarningButton>
+        <SuccessButton
+          className={style.btn}
+          onClick={toggleTabNext}
+          disabled={!valueContact.telephone}
+        >
+          {' '}
+          next
+        </SuccessButton>
+      </ButtonGroup>
+    </FormGroup>
   </AvForm>
 );
 

@@ -11,20 +11,25 @@
   color: #cb0707;
   text-transform: uppercase;
 }
-
 .check {
   background: #d9d9d9;
   border: 1px solid #c0c0c0;
-  height: 50px;
   margin-bottom: 10px;
-  padding: 15px 10px 10px 80px;
-  width: 300px;
+  padding-left: 20px;
+  width: 250px;
+}
+
+.check [style] {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
 }
 
 .btn {
   float: none;
+  margin-top: 10px;
   text-transform: uppercase;
-  width: 150px;
+  width: 125px;
 }
 
 .btnNext {
@@ -44,7 +49,7 @@
 .img {
   height: 200px;
   margin-top: 10px;
-  width: 300px;
+  width: 250px;
 }
 
 .closeImage:hover .btnClose {
@@ -55,7 +60,7 @@
   background: #cdcaca;
   cursor: pointer;
   height: 40px;
-  margin-left: 260px;
+  margin-left: 210px;
   margin-top: 10px;
   opacity: 0;
   padding-bottom: 5px;
@@ -63,3 +68,27 @@
   transition: opacity 2ms;
   width: 40px;
 }
+
+/* element.style { */
+
+/* } */
+
+/* input[type="radio"], input[type="checkbox"] { */
+
+/*  box-sizing: border-box; */
+
+/*  padding: 0; */
+
+/* } */
+
+/* .form-check-input { */
+
+/*   position: absolute; */
+
+/*  margin-top: 0.3rem; */
+
+/*  margin-right: 10px; */
+
+/*   margin-left: -3rem; */
+
+/* } */
