@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import { FormGroup, Label, ButtonGroup } from 'reactstrap';
-import { AvForm, AvField } from 'availity-reactstrap-validation';
+import { AvForm } from 'availity-reactstrap-validation';
 
 import { SuccessButton, WarningButton } from './baseButtons';
+import { WidthField } from './fields';
 
 import style from '../styles/tabs.module.css';
 
@@ -16,13 +17,12 @@ const ContactInformation = ({
     <FormGroup>
       <Label for="telephone">
         Telephone:
-        <AvField
+        <WidthField
           onChange={handleChangeContact}
           type="tel"
           name="telephone"
           id="telephone"
           placeholder="telephone number"
-          bsSize="lg"
           required
           value={valueContact.telephone}
         />
@@ -31,13 +31,12 @@ const ContactInformation = ({
     <FormGroup>
       <Label for="email">
         Email:
-        <AvField
+        <WidthField
           onChange={handleChangeContact}
           type="email"
           name="email"
           id="email"
           placeholder="email"
-          bsSize="lg"
           value={valueContact.email}
         />
       </Label>

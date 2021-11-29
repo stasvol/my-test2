@@ -19,7 +19,7 @@
   width: 250px;
 }
 
-.check [style] {
+.form > .check {
   box-sizing: border-box;
   display: flex;
   justify-content: center;

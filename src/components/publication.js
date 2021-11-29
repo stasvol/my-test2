@@ -16,7 +16,7 @@ const Publication = ({
 }) => (
   <div className={style.body}>
     <FormGroup>
-      <Form>
+      <Form className={style.form}>
         {checkArr.map(({ name, id }) => (
           <FormGroup check key={`${id}${name}`}>
             <Label check>
