@@ -3,7 +3,7 @@ import { FormGroup, Label, CustomInput, ButtonGroup } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
 
 import { SuccessButton } from './baseButtons';
-import { WidthField } from './fields';
+import { LargeField } from './fields';
 
 import style from '../styles/tabs.module.css';
 
@@ -23,7 +23,7 @@ const BasicInformation = ({
       <FormGroup>
         <Label>
           Введите имя:
-          <WidthField
+          <LargeField
             onChange={handleChangeInfo}
             name="mainName"
             type="text"
@@ -36,7 +36,7 @@ const BasicInformation = ({
       <FormGroup>
         <Label for="text">
           Описание:
-          <WidthField
+          <LargeField
             onChange={handleChangeInfo}
             type="textarea"
             name="textarea"

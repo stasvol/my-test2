@@ -3,7 +3,7 @@ import { FormGroup, Label, ButtonGroup } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
 
 import { SuccessButton, WarningButton } from './baseButtons';
-import { WidthField } from './fields';
+import { LargeField } from './fields';
 
 import style from '../styles/tabs.module.css';
 
@@ -17,7 +17,7 @@ const ContactInformation = ({
     <FormGroup>
       <Label for="telephone">
         Telephone:
-        <WidthField
+        <LargeField
           onChange={handleChangeContact}
           type="tel"
           name="telephone"
@@ -31,7 +31,7 @@ const ContactInformation = ({
     <FormGroup>
       <Label for="email">
         Email:
-        <WidthField
+        <LargeField
           onChange={handleChangeContact}
           type="email"
           name="email"

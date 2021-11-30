@@ -1,3 +1,3 @@
 import { AvField } from 'availity-reactstrap-validation';
 
-export const WidthField = props => <AvField {...props} bsSize="lg" />;
+export const LargeField = props => <AvField {...props} bsSize="lg" />;
