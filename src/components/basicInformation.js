@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import { FormGroup, Label, CustomInput, ButtonGroup } from 'reactstrap';
-import { AvForm, AvField } from 'availity-reactstrap-validation';
+import { AvForm } from 'availity-reactstrap-validation';
 
 import { SuccessButton } from './baseButtons';
-import { LargeWidthLabelField, MediumWidthLabelTextarea } from './labels';
+import { LargeField } from './fields';
 
 import style from '../styles/tabs.module.css';
 
@@ -20,32 +20,31 @@ const BasicInformation = ({
 
   return (
     <AvForm className="mt-2">
-      <FormGroup check inline>
-        <LargeWidthLabelField>
+      <FormGroup>
+        <Label>
           Введите имя:
-          <AvField
+          <LargeField
             onChange={handleChangeInfo}
             name="mainName"
             type="text"
-            placeholder="Text"
-            bsSize="lg"
+            placeholder="Your name"
             required
             value={valueInfo.mainName}
           />
-        </LargeWidthLabelField>
+        </Label>
       </FormGroup>
       <FormGroup>
-        <MediumWidthLabelTextarea for="text">
+        <Label for="text">
           Описание:
-          <AvField
+          <LargeField
             onChange={handleChangeInfo}
             type="textarea"
             name="textarea"
             id="text"
-            placeholder="text"
+            placeholder="Description"
             value={valueInfo.description}
           />
-        </MediumWidthLabelTextarea>
+        </Label>
       </FormGroup>
       <FormGroup check>
         <Label check>
@@ -67,6 +66,7 @@ const BasicInformation = ({
           />
         </Label>
       </FormGroup>
+
       <ButtonGroup>
         <SuccessButton
           className={style.btnNext}

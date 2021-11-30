@@ -15,33 +15,35 @@ const Publication = ({
   modal,
 }) => (
   <div className={style.body}>
-    <Form>
-      {checkArr.map(({ name, id }) => (
-        <FormGroup check key={`${id}${name}`}>
-          <Label check>
-            <div className={style.check}>
-              <Input
-                onChange={handleChange}
-                type="checkbox"
-                name={name}
-                checkbox="Услуга 1"
-              />{' '}
-              {name}
-            </div>
-          </Label>
+    <FormGroup>
+      <Form className={style.form}>
+        {checkArr.map(({ name, id }) => (
+          <FormGroup check key={`${id}${name}`}>
+            <Label check>
+              <div className={style.check}>
+                <Input
+                  onChange={handleChange}
+                  type="checkbox"
+                  name={name}
+                  checkbox="Услуга 1"
+                />{' '}
+                {name}
+              </div>
+            </Label>
+          </FormGroup>
+        ))}
+        <FormGroup check>
+          <ButtonGroup>
+            <WarningButton className={style.btn} onClick={toggleTabPrev}>
+              prev
+            </WarningButton>
+            <InfoButton className={style.btn} onClick={toggle}>
+              save
+            </InfoButton>
+          </ButtonGroup>
         </FormGroup>
-      ))}
-      <FormGroup check>
-        <ButtonGroup>
-          <WarningButton className={style.btn} onClick={toggleTabPrev}>
-            prev
-          </WarningButton>
-          <InfoButton className={style.btn} onClick={toggle}>
-            save
-          </InfoButton>
-        </ButtonGroup>
-      </FormGroup>
-    </Form>
+      </Form>
+    </FormGroup>
     <div>
       <ModalInfoContainer infoProps={infoProps} toggle={toggle} modal={modal} />
     </div>
